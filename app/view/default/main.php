@@ -57,24 +57,3 @@
 		</div>
 	</div>
 </div>
-
-<!--contact modal
-==================-->
-<div class="modal fade" id="contact">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>Contact Us</h2>
-			</div>
-			<div class="modal-body">
-				<p>If you have any queries please write to us at <span style="color:#d2322d">abiusx at owasp dot org</span> or
-					<span style="color:#d2322d">johanna.curiel at owasp dot org</span>
-				</p>
-				<p>Thank You</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-			</div>
-		</div>
-	</div>
-</div>
