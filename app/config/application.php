@@ -10,8 +10,8 @@
  * title for your application. Name would better follow identifier rules.
  */
 const jf_Application_Version=jf\version; //put version of your application here, as a string. For jframework, version is the same as core.
-const jf_Application_Name="jframework" ; //follow identifier rules for this name
-const jf_Application_Title="jframework Website" ; //title of your application
+const jf_Application_Name="WebGoatPHP" ; //follow identifier rules for this name
+const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
 
 /**
  * Mode detection
