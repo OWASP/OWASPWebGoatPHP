@@ -1,0 +1,10 @@
+#TODO: add view detector in hooks, as a callback member of base view class
+#FIXME: sessions are somewhat buggy, fix them
+
+__DONE__
+1047 #TODO: add embed.php to root of jframework for embedded mode
+1048 #TODO: add transition scripts based on versions
+1047 #TODO: allow multiple runs in a single process
+1078 #FIXME: add index page to all requests with /"" at end of them
+1025 #FIXME: rename jFramework in loader to jframework
+1048 #FIXME: Http::Root() only returns valid when Request is set via .htaccess, not in embed mode

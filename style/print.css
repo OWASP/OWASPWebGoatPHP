@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+@media print {
+	.sortbox {
+		display: none;
+	}
+	#smenuBar {
+		display: none;
+	}
+	#body {
+		background-color: white;
+		width:auto;
+	}
+	#Tracker {
+		display: none;
+	}
+	.noprint {
+		display: none;
+	}
+	body {
+		width:auto;
+	}
+	#Copyright.Footer {
+		color:gray;
+	}
+	#Copyright.Footer a {
+		color:black;
+		font-decoration:none;
+	}
+	#datetime.Footer {
+		display:block;
+	}
+	.security {
+		display:none;
+	}
+}
+@media screen {
+	#datetime.Footer {
+		display:none;
+	}
+}

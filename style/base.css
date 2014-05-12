@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+* {
+	font-family:"XB Roya","B Nazanin","Tahoma";
+}
+body {
+	margin:0px;
+	padding:0px;
+}
+.body {
+	margin:0px;
+	margin:auto;
+	padding:0px;
+	min-width:770px;
+	width:100%;
+	min-height:520px;
+}
+.Footer
+{
+	font-family: "Tahoma";
+	font-size: 10px;
+	text-align: center;
+}
+.header {
+	font-size: small;
+}
+p {
+	text-align:justify;
+	text-indent: 1em;
+}

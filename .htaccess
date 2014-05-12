@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (.*)
+RewriteRule ^(.*)$ _japp/loader.php?__r=$1&%1
+
+
+#RewriteCond %{query_string} ^(.*)
+#RewriteRule (.*) _japp/loader.php?__r=$1&%1
+</IfModule>
