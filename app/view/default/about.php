@@ -45,7 +45,7 @@
 					    <div class="panel-body">
 			        		User can browse all the challenges that are available, can view hints and submit solutions. All the     submissions are evaluated by server side scripts. Each challenge is accompanied by a verbose explanation of the vulnerability and it's solution. This mode is suitable for individuals who want a hands-on experience with various security flaws.
 			        		<br><br>
-			        		<a href="<?php echo jf::url().'/single' ?>" class="btn btn-primary">Get Started</a>
+			        		<a href="<?php echo jf::url().'/mode/single' ?>" class="btn btn-primary">Get Started</a>
 						</div>
 			    	</div>
 	  			</div>
