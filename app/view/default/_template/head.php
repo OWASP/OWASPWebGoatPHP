@@ -1,13 +1,14 @@
 <?php if (jf::$RunMode->IsEmbed()) return; ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><?php echo $this->Title()?:jf_Application_Title; ?></title>
-<link rel="shortcut icon" href="<?php echo (jf::url());?>/img/jlogo.png" />
-<link rel="stylesheet" href="<?php echo (jf::url());?>/style/base.css" />
-<script src="<?php echo jf::url();?>/script/jquery-1.9.1.min.js"></script>
-<?php echo $this->HeadData();?>
-<base href="<?php echo jf::url();?>/" />
-</head>
-<body>
+	<head>
+		<title><?php echo $this->Title()?:jf_Application_Title; ?></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="author" content="Shivam Dixit">
+		<link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/bootstrap.min.css'?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/style.css'?>">
+		<!-- <link rel="stylesheet" href="<?php //echo (jf::url());?>/style/base.css" /> -->
+		<link rel="shortcut icon" href="<?php echo (jf::url());?>/img/jlogo.png" />
+	</head>
+	<body>

@@ -8,5 +8,5 @@ class BaseLauncher extends Model
 	{
 		return $this->Result;
 	}
-	
+
 }

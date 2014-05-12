@@ -1,21 +1,16 @@
 <?php if (jf::$RunMode->IsEmbed()) return;?>
-<div id='Tracker' class='Footer'>
-<?php
-$x=jf::$Profiler->Timer();
-printf("This page was generated in %.4f seconds (%.4f DB, %.4f PHP) with %d database queries.",
-    $x,jf::db()->QueryTime(),$x-jf::db()->QueryTime() ,jf::db()->QueryCount());
-?>
+
+<!--footer
+===========-->
+<div class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left"><strong>The project is under development.</strong></p>.
+		<a href="#" class="btn navbar-btn btn-danger pull-right">Contribute!</a>
+	</div>
 </div>
-<div id='Copyright' class='Footer'>
-<a href='<?php echo constant("SiteRoot") ?>'><?php echo jf_Application_Title; ?></a>
-powered by
-<a href='http://jframework.info/' style="">
-<img title='jframework 4' src="<?php echo (jf::url());?>/img/jlogo.png" width=16 height=16  style="
-text-decoration:none;
-outline:none;
-border: 0 solid;
-vertical-align: middle;"/>
- </a>
-</div>
+
+
+<script type="text/javascript" src="<?php echo jf::url().'/script/jquery-2.1.1.min.js'?>"></script>
+<script type="text/javascript" src="<?php echo jf::url().'/script/bootstrap.min.js'?>"></script>
 </body>
 </html>

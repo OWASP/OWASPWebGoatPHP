@@ -8,14 +8,14 @@ namespace jf;
 class FileLauncher extends BaseLauncher
 {
 	public static $StaticContentPrefix = array ("img" => "images", "images"=>"images",
-			"image"=>"images","files"=>"files","file" => "files", "script" => "script", "style" => "style" );
+			"image"=>"images", "files"=>"files", "file" => "files", "script" => "script", "style" => "style", "fonts" => "fonts" );
 	protected $Request=null;
 	function  __construct($Request)
 	{
 		$this->Request=$Request;
 		if (!$this->Launch())
 				jf::run ( "view/_internal/error/404");
-	}	
+	}
 	/**
 	 * Launches an application controller. Returns what the controller returns.
 	 * If it is false, a not found error is displayed.
@@ -31,10 +31,9 @@ class FileLauncher extends BaseLauncher
 		array_unshift($Parts,$Type);
 
 		$file=jf::root().DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR,$Parts);
-		
-		
+
 		$FileMan=new DownloadManager();
 		return $FileMan->Feed($file);
 	}
-	
+
 }
