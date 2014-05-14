@@ -8,7 +8,7 @@ class DoctrinePlugin extends JPlugin {
 	static public $eventManager;
 	/**
 	 *	@var Doctrine\ORM\EntityManager
-	 * 
+	 *
 	 */
 	static public $entityManager;
 	public static function AutoloadSetup() {
@@ -81,7 +81,8 @@ class DoctrinePlugin extends JPlugin {
 
 		require_once(__DIR__ . "/doctrine/helper.php");
 	}
-	private static function Shutdown() {
+
+	public static function Shutdown() {
 		self::$entityManager->flush();
 	}
 
