@@ -4,15 +4,15 @@ class UserLoginController extends JControl
 {
     function Start()
     {
-        // if(jf::CurrentUser())   //If user is already logged in
-        // {
-        //     if(isset($_GET["return"]))
-        //         $Return = $_GET["return"];
-        //     else
-        //         $Return = "";
+        if(jf::CurrentUser())   //If user is already logged in
+        {
+            if(isset($_GET["return"]))
+                $Return = $_GET["return"];
+            else
+                $Return = "";
 
-        //     $this->Redirect(SiteRoot."".$Return,true,1);
-        // }
+            $this->Redirect(SiteRoot."".$Return,true,1);
+        }
 
         if(isset($_COOKIE["jFramework_Login_Remember"]))    //If remember me cookie is set
         {

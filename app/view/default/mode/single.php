@@ -12,7 +12,7 @@
 		<div class="collapse navbar-collapse navHeaderCollapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<?php echo jf::url()?>">Home</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="<?php echo jf::url().'/about'?>">About</a></li>
 				<li><a href="#">Documentation</a></li>
 				<li><a href="#">Github</a></li>
 				<li><a href="#contact" data-toggle="modal">Contact</a></li>
