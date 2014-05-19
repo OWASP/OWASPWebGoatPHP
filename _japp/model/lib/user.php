@@ -1,5 +1,6 @@
 <?php
 namespace jf;
+
 class MultipleLogin
 {
 	/**
@@ -234,8 +235,8 @@ class UserManager extends Model
     @param Username of the new user
     @param Password of the new user
     @return integer UserID on success
-		null on User Already Exists
-	 */
+               null on User Already Exists
+	*/
 	function CreateUser($Username, $Password)
 	{
 		$Result = $this->UserExists ( $Username );
