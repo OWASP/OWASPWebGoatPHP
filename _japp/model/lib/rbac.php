@@ -105,7 +105,7 @@ class RBACManager extends Model
 	 * @return boolean
 	 */
 
-	function Check($Permission, $User = null)
+	function Check($Permission, $UserID = null)
 	{
 		//convert permission and user to ID
 		if (is_int ( $Permission ))
@@ -119,16 +119,16 @@ class RBACManager extends Model
 			else
 				$PermissionID=$this->Permissions->TitleID($Permission);
 		}
-		if ($User === null)
+		if ($UserID === null)
 			$UserID = jf::CurrentUser ();
-		elseif (!is_int($User))
-			$UserID=jf::$User->UserID($User);
+		elseif (!is_int($UserID))
+			$UserID=jf::$User->UserID($UserID);
 
 		//if invalid, throw exception
 		if ($PermissionID===null)
 			throw new RBACPermissionNotFoundException("The permission '{$Permission}' not found.");
 		if ($UserID===null)
-			throw new RBACUserNotFoundException("The user '{$User}' provided to RBAC::Check function not found.");
+			throw new RBACUserNotFoundException("The user '{$UserID}' provided to RBAC::Check function not found.");
 
 		if ($this->ps_Check===null)
 		{
