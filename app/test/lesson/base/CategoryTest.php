@@ -1,6 +1,6 @@
 <?php
 
-namespace wgphp;
+namespace webgoat;
 
 /**
  * Tests for the Category class

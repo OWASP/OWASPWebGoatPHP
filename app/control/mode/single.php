@@ -18,7 +18,7 @@ class ModeSingleController extends JControl
                     $this->error = "Cannot find the given lesson.";
                 } else {
 
-                    $className = "\\wgphp\\". $lessonName;
+                    $className = "\\webgoat\\". $lessonName;
                     $obj = new $className();
                     $obj->init();
 
@@ -51,7 +51,7 @@ class ModeSingleController extends JControl
             throw new \Exception("Argument 'Lesson Path' missing.");
         }
 
-        $categoryObj = new \wgphp\Category();
+        $categoryObj = new \webgoat\Category();
         $categories = $categoryObj->getCategories();
         $categoryLessons = array();
 
@@ -63,7 +63,7 @@ class ModeSingleController extends JControl
 
         foreach ($subDirectories as $lessonDir) {
 
-            $className = "\\wgphp\\".basename($lessonDir);
+            $className = "\\webgoat\\".basename($lessonDir);
             $obj = new $className();
 
             array_push($categoryLessons[$categories[$obj->getCategoryId()]], array(

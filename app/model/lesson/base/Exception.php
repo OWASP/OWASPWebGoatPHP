@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-namespace wgphp;
+namespace webgoat;
 
 class APIException extends \Exception {}
 class ArgumentMissingException extends APIException {}
