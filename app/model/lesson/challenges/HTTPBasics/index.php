@@ -26,7 +26,7 @@ namespace webgoat;
  *
  * Lesson Name : HTTP Basics
  */
-class HTTPBasics extends LessonAdapter
+class HTTPBasics extends BaseLesson
 {
     public function init()
     {
