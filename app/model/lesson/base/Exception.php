@@ -21,6 +21,8 @@
 
 namespace webgoat;
 
+class GeneralSettingsMissingException extends \Exception {}
+class LessonNotFoundException extends \Exception {}
 class APIException extends \Exception {}
 class ArgumentMissingException extends APIException {}
 class InvalidHeaderException extends APIException {}

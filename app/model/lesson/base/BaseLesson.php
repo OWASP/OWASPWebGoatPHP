@@ -33,32 +33,18 @@ abstract class BaseLesson
     protected $htmlContent;
 
     /**
+     * @var array Array containing hints of the lesson
+     */
+    protected $hints;
+
+    /**
      * Constructor for LessonAdapter
      */
     public function __construct()
     {
-        //Do nothing
+        $this->htmlContent = "";
+        $this->hints = array();
     }
-
-    /**********************************************************
-     * Abstract methods which are required to be implemented  *
-     * when creating a new challenge.                         *
-     **********************************************************/
-
-    abstract public function init();    //It will be called at the start. Use it for initial setup
-
-    abstract public function getTitle();    //Returns the title of lesson
-
-    abstract public function getCategoryId();   //Returns the id of the category of lesson
-
-    abstract public function createContent();   //Generate HTML using API
-
-    abstract public function evaluateSubmission();  //Evaluate user submission and generate content to display
-
-    abstract public function getHints();    //Returns the hints for a challenge
-
-    abstract public function destruct();    //For deleting the db etc
-
 
     /**
      * Check if lesson is completed or not
@@ -80,6 +66,24 @@ abstract class BaseLesson
         \jf::SaveSessionSetting(__CLASS__, $bool);
     }
 
+    protected function saveSessionData($key = null, $value = null)
+    {
+        if ($key == null || $value == null) {
+            throw new ArgumentMissingException('Missing key/value for saving session data');
+        }
+
+        \jf::SaveSessionSetting($key, $value);
+    }
+
+    protected function getSessionData($key = null)
+    {
+        if ($key == null) {
+            throw new ArgumentMissingException('Missing key to get session data');
+        }
+
+        return \jf::LoadSessionSetting($key);
+    }
+
     /**
      * Get the HTML content of the lesson
      *
@@ -91,117 +95,7 @@ abstract class BaseLesson
     }
 
     /**
-     * Resets the lesson by first destructing
-     * and then initializing
-     */
-    public function resetLesson()
-    {
-        $this->destruct();
-
-        $this->init();
-    }
-
-    /***************************************
-     * API to create content of the Lesson *
-     ***************************************/
-
-    /**
-     * Adds the opening <div> to $htmlContent
-     *
-     * @param string $class Class for the <div>
-     */
-    protected function addDivOpen($class = null)
-    {
-        if ($class != null) {
-            $this->htmlContent .= "<div class='$class'>";
-        } else {
-            $this->htmlContent .= "<div>";
-        }
-    }
-
-    /**
-     * Adds the closing <div> to $htmlContent
-     */
-    protected function addDivClose()
-    {
-        $this->htmlContent .= "</div>";
-    }
-
-    /**
-     * Adds the <p> tag to $htmlContent
-     *
-     * @param string $text Content of the p tag
-     * @param string $class Class for the p tag
-     *
-     * @throws ArgumentMissingException If the arguments are missing
-     */
-    protected function addParagraph($text = null, $class = null)
-    {
-        if ($text == null) {
-            throw new ArgumentMissingException("Text of the paragraph tag is missing");
-        }
-
-        if ($class != null) {
-            $this->htmlContent .= "<p class='$class'>$text</p>";
-        } else {
-            $this->htmlContent .= "<p>$text</p>";
-        }
-
-    }
-
-    /**
-     * Adds the <h> tag to the $htmlContent
-     *
-     * @param string $text Text of the <h> tag
-     * @param int $number Specifies h1, h2, h3 etc. Ex: $number = 4 for <h4> tag
-     * @param string $class Class of the header tag
-     *
-     * @throws InvalidHeaderException If the $number specified is invalid header tag number
-     * @throws ArgumentMissingException If the arguments are missing
-     */
-    protected function addHeader($text = null, $number = null, $class = null)
-    {
-        if ($text == null) {
-            throw new ArgumentMissingException("Text of the header tag is missing");
-        }
-
-        if ($number == null || $number < 1 || $number > 7) {
-            throw new InvalidHeaderException("Invalid value of number {'$number'} for header tag");
-        }
-
-        if ($class != null) {
-            $this->htmlContent .= "<h$number class='$class'>$text</h$number>";
-        } else {
-            $this->htmlContent .= "<h$number>$text</h$number>";
-        }
-    }
-
-    /**
-     * Adds a line break to $htmlContent
-     */
-    protected function addLineBreak()
-    {
-        $this->htmlContent .= "<br>";
-    }
-
-    /**
-     * Adds raw HTML to $htmlContent
-     *
-     * @param string $html A valid string containing HTML
-     *
-     * @throws ArgumentMissingException If the argument is missing
-     */
-    protected function addRaw($html = null)
-    {
-        if ($html == null) {
-            throw new ArgumentMissingException("HTML content missing for adding raw html.");
-        }
-
-        $this->htmlContent .= $html;
-    }
-
-    /**
-     * Adds the success message.
+     * Function to have a uniform success message.
      * Use it when the lesson gets completed
      */
     protected function addSuccessMessage()
@@ -210,4 +104,16 @@ abstract class BaseLesson
                                     Congratulations. You have successfully completed this lesson.
                                </div>";
     }
+
+    /**********************************************************
+     * Abstract methods which are required to be implemented  *
+     * when creating a new challenge.                         *
+     **********************************************************/
+    abstract public function start();
+
+    abstract public function getCategoryId();   //Returns the id of the category of lesson
+
+    abstract public function getHints();    //Returns the hints for a challenge
+
+    abstract public function reset();
 }

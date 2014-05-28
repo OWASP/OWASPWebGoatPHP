@@ -8,7 +8,8 @@ namespace jf;
 class FileLauncher extends BaseLauncher
 {
 	public static $StaticContentPrefix = array ("img" => "images", "images"=>"images",
-			"image"=>"images", "files"=>"files", "file" => "files", "script" => "script", "style" => "style", "fonts" => "fonts" );
+			"image"=>"images", "files"=>"files", "file" => "files", "script" => "script", "style" => "style",
+            "fonts" => "fonts");
 	protected $Request=null;
 	function  __construct($Request)
 	{
