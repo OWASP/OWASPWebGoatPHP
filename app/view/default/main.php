@@ -38,7 +38,7 @@
 		<div class="col-md-3">
 			<h3>Single-User Mode</h3>
 			<p>Browse all the lessons that are available. You can view hints and submit solutions. This mode is suitable for individuals who want a hands-on experience with various security flaws.</p>
-			<a href="<?php echo jf::url().'/mode/single' ?>" class="btn btn-default">Get Started</a>
+			<a href="<?php echo jf::url().'/mode/single/challenges/' ?>" class="btn btn-default">Get Started</a>
 		</div>
 		<div class="col-md-3">
 			<h3>Workshop Mode</h3>
