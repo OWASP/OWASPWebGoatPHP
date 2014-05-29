@@ -68,7 +68,7 @@ class HTTPBasics extends BaseLesson
     {
         array_push(
             $this->hints,
-            "Type in your name and press 'go'",
+            "Type in your name and press 'Submit'",
             "Turn on Show Parameters or other features",
             "Try to intercept the request with WebScarab",
             "Press the Show Lesson Plan button to view a lesson summary",

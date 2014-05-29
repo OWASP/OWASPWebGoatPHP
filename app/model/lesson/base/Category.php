@@ -26,7 +26,7 @@ namespace webgoat;
  *
  * @author Shivam Dixit <shivamd001@gmail.com>
  */
-class Category
+class Category extends \JModel
 {
     protected $categories;
 

@@ -25,7 +25,7 @@ namespace webgoat;
  * Base class to create lessons.
  * Contains the API and the abstract methods.
  */
-abstract class BaseLesson
+abstract class BaseLesson extends \JModel
 {
     /**
      * @var string Contains the content of lesson in HTML format.

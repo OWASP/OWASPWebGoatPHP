@@ -24,13 +24,13 @@ class SingleModeController extends JCatchControl
                 jf::DeleteGeneralSetting("categoryLessons");    //FIXME: Throwing error "incomplete object" without it
 
                 if (!jf::LoadGeneralSetting("categoryLessons")) {
-                    \webgoat\Scanner::run();
+                    \webgoat\LessonScanner::run();
                 }
 
                 $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
 
                 try {
-                    $lessonObj = \webgoat\Scanner::getLessonObject($nameOfLesson);
+                    $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
                     $lessonObj->start();
                     $this->lessonTitle = $lessonObj->getTitle();
                     $this->hints = $lessonObj->getHints();
