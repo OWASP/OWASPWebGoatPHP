@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+
+    $("li.active").closest('div.panel-collapse').addClass('in');
+    /********************************************
+     *          Code for bottom panel           *
+     ********************************************/
     $("#lesson-plan-btn").click(function(){
         $.ajax({
             url: 'static/plan.html',
@@ -47,6 +52,9 @@ $(document).ready(function(){
     $("#hints-btn").click(function(){
         //Returns a random hint
         //alert(hints[Math.floor((Math.random() * (hints.length - 1)))]);
+        if (hints.length == 0) {
+            $("#options-container").html("Sorry, no hints present for this lesson");
+        }
         $("#options-container").html(hints[Math.floor((Math.random() * (hints.length - 1)))]);
     });
 

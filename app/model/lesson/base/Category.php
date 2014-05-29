@@ -73,7 +73,7 @@ class Category
             return Category::DEFAULT_CATEGORY_ID;
         }
 
-        if ($id = array_search($category, $this->categories)) {
+        if (($id = array_search($category, $this->categories)) !== false) {
             return $id;
         } else {
             return Category::DEFAULT_CATEGORY_ID;

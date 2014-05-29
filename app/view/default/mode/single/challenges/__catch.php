@@ -45,13 +45,13 @@
                             </h4>
                         </div>
 
-                        <?php foreach($lessons as $lesson):?>
-                            <div class="panel-collapse collapse" id="section<?php echo $i; ?>">
-                                <div class="panel-body">
+                        <div class="panel-collapse collapse" id="section<?php echo $i; ?>">
+                            <div class="panel-body">
+                                <?php foreach($lessons as $lesson):?>
                                     <ul class="nav nav-pills nav-stacked">
                                         <li class="<?php if ((isset($this->nameOfLesson) &&
                                             $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
-                                            <a href="<?php echo "$lesson[0]/"?>">
+                                            <a href="<?php echo LESSON_URL."$lesson[0]/"?>">
                                                 <?php if ($lesson[1]->isCompleted()):?>
                                                     <span class="glyphicon glyphicon-ok"></span>
                                                 <?php endif; ?>
@@ -59,9 +59,9 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
 
