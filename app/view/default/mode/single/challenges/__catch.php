@@ -1,5 +1,9 @@
 <!--navbar
 ============-->
+<script type="text/javascript">
+    var hints = <?php if(!isset($this->error)) echo json_encode($this->hints)?>
+</script>
+
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <a href="#" class="navbar-brand" style="color:white"><b>Single User Mode</b></a>
@@ -47,7 +51,7 @@
                                     <ul class="nav nav-pills nav-stacked">
                                         <li class="<?php if ((isset($this->nameOfLesson) &&
                                             $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
-                                            <a href="<?php echo $lesson[0];?>">
+                                            <a href="<?php echo "$lesson[0]/"?>">
                                                 <?php if ($lesson[1]->isCompleted()):?>
                                                     <span class="glyphicon glyphicon-ok"></span>
                                                 <?php endif; ?>
@@ -80,30 +84,22 @@
             </div><!--Main content ends-->
             <hr>
 
+            <div id="options-container" class="text-success">
+
+            </div>
+            <br>
 
             <!-- Options
             ============-->
             <div class="row">
-                <div class="col-lg-9 center"><!--To Place it in the center-->
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option1"> Hints
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option2"> Parameter Inspector
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option3"> Cookie Inspector
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option4"> Lesson Plan
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option5"> Show Code
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="options" id="option6"> Solution
-                        </label>
+                <div class="col-lg-8 center"><!--To Place it in the center-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" id="hints-btn" >Hints</button>
+                        <button type="button" class="btn btn-info" id="parameter-btn">Parameters</button>
+                        <button type="button" class="btn btn-default" id="cookie-btn">Cookies</button>
+                        <button type="button" class="btn btn-info" id="lesson-plan-btn">Lesson Plan</button>
+                        <button type="button" class="btn btn-default" id="show-code-btn">Show Code</button>
+                        <button type="button" class="btn btn-info" id="solution-btn">Solution</button>
                     </div>
                 </div>
             </div>

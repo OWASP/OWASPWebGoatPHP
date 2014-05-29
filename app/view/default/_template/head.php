@@ -9,6 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/bootstrap.min.css'?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/style.css'?>">
 		<!-- <link rel="stylesheet" href="<?php //echo (jf::url());?>/style/base.css" /> -->
-		<link rel="shortcut icon" href="<?php echo (jf::url());?>/img/jlogo.png" />
+        <link rel="stylesheet" href="<?php echo jf::url()?>/style/reveal.css">
 	</head>
 	<body>
