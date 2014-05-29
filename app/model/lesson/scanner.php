@@ -29,7 +29,7 @@ namespace webgoat;
  *
  * @package webgoat
  */
-class Scanner
+class LessonScanner extends \JModel
 {
     /**
      * Function to scan all the sub directories in the
