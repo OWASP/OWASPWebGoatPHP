@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/signin.css'?>">
 
 <div class="container">
-	<form class="form-signin" role="form" method="post" action="<?php echo jf::url().'/user/login?return=/mode/single/challenges/'?>">
+	<form class="form-signin" role="form" method="post" action="<?php echo jf::url().'/user/login?return=/mode/single/challenges/WebGoatIntro/'?>">
 		<?php
 			if (isset($this->Result) and !$this->Result)
 			{
