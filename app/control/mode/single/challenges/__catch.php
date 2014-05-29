@@ -14,8 +14,8 @@ class SingleModeController extends JCatchControl
 
             if (strpos($relativePath, "/static/") !== false) {
                 if (file_exists($fileName)) {
-                    echo file_get_contents($fileName);
-                    return true;
+                    $FileMan=new \jf\DownloadManager();
+                    return $FileMan->Feed($fileName);
                 }
             } else {
 
