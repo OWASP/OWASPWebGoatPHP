@@ -60,7 +60,6 @@ class HTTPBasics extends BaseLesson
         return $category->getCategoryId("General");
     }
 
-
     /**
      * Starting point of the lesson
      */
@@ -75,7 +74,7 @@ class HTTPBasics extends BaseLesson
             "Press the Show Solution button to view a lesson solution"
         );
 
-        if (!empty($_POST)) {
+        if (isset($_POST['name'])) {
             $this->setCompleted(true);
             $this->addSuccessMessage();
             $this->htmlContent .= file_get_contents(__DIR__."/content.html");

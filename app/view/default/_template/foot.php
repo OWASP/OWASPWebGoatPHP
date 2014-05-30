@@ -3,21 +3,21 @@
 <!--contact modal
 ==================-->
 <div class="modal fade" id="contact">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>Contact Us</h2>
-			</div>
-			<div class="modal-body">
-				<p>If you have any queries please write to us at
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="modal-body">
+                <p>If you have any queries please write to us at
                      <span style="color:#d2322d">webgoatphp at owasp dot org</span></p>
-				<p>Thank You</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-			</div>
-		</div>
-	</div>
+                <p>Thank You</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="pop-up-div" class="reveal-modal large">
@@ -28,12 +28,12 @@
 <!--footer
 ===========-->
 <div class="navbar navbar-default navbar-fixed-bottom" style="z-index: 10;">
-	<div class="container">
-		<p class="navbar-text pull-left"><strong>The project is under development.</strong></p>.
-		<a href="https://github.com/shivamdixit/WebGoatPHP" class="btn navbar-btn btn-danger pull-right" target="_blank">
+    <div class="container">
+        <p class="navbar-text pull-left"><strong>The project is under development.</strong></p>.
+        <a href="https://github.com/shivamdixit/WebGoatPHP" class="btn navbar-btn btn-success pull-right" target="_blank">
             Contribute!
         </a>
-	</div>
+    </div>
 </div>
 
 

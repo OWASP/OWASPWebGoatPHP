@@ -58,4 +58,15 @@ $(document).ready(function(){
         $("#options-container").html(hints[Math.floor((Math.random() * (hints.length - 1)))]);
     });
 
+    $("#reset-btn").click(function(e){
+        e.preventDefault();
+
+        $.ajax({
+            url: $(this).attr("href"),
+            success: function(data) {
+                window.location.reload();
+            }
+        });
+    });
+
 });

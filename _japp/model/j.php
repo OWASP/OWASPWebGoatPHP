@@ -254,7 +254,7 @@ class jf
 	 * @param int $UserID
 	 * @return mixed
 	 */
-    static function LoadUserSetting($Name,$UserID)
+    static function LoadUserSetting($Name,$UserID=null)
 	{
 		$a=func_get_args();
 		return call_user_func_array(array(jf::$Settings,"LoadUser"),$a);

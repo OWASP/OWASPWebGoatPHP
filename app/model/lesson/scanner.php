@@ -50,11 +50,12 @@ class LessonScanner extends \JModel
 
         foreach ($subDirectories as $lessonDir) {
 
-            require_once($lessonDir."/index.php");
-
             $className = "\\webgoat\\".basename($lessonDir);
-            $obj = new $className();
+            if (!class_exists($className)) {
+                throw new ClassNotFoundException("No class {$className} exists. Please run loadClasses() first.");
+            }
 
+            $obj = new $className();
             $classNameWithoutNamespace = basename($lessonDir);
 
             //array key contains categories, value contains lessons belonging to that category
@@ -95,5 +96,17 @@ class LessonScanner extends \JModel
         }
 
         throw new LessonNotFoundException("Lesson '$lessonName' not found");
+    }
+
+    /**
+     * Loads all the classes in the challenges directory
+     * so that their object can be created directly.
+     */
+    public static function loadClasses()
+    {
+        $subDirectories = glob(LESSON_PATH.'*', GLOB_ONLYDIR);
+        foreach ($subDirectories as $lessonDir) {
+            require_once($lessonDir."/index.php");
+        }
     }
 }

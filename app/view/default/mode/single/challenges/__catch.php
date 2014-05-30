@@ -75,7 +75,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="page-header">
-                        <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?></h3>
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?></h3>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="<?php echo LESSON_URL."reset/$lesson[0]/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="page-body">
                         <?php if(!isset($this->error)) echo $this->htmlContent;?>

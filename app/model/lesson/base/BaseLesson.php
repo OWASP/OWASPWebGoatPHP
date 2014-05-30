@@ -53,7 +53,7 @@ abstract class BaseLesson extends \JModel
      */
     public static function isCompleted()
     {
-        return \jf::LoadSessionSetting(__CLASS__);
+        return \jf::LoadUserSetting("completed_".__CLASS__);
     }
 
     /**
@@ -63,7 +63,7 @@ abstract class BaseLesson extends \JModel
      */
     protected function setCompleted($bool = false)
     {
-        \jf::SaveSessionSetting(__CLASS__, $bool);
+        \jf::SaveUserSetting("completed_".__CLASS__, $bool);
     }
 
     protected function saveSessionData($key = null, $value = null)

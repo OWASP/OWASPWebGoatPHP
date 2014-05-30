@@ -20,28 +20,38 @@ class SingleModeController extends JCatchControl
             } else {
 
                 $nameOfLesson = basename($relativePath);
+                \webgoat\LessonScanner::loadClasses();
 
-                jf::DeleteGeneralSetting("categoryLessons");    //FIXME: Throwing error "incomplete object" without it
+                if (strpos($relativePath, "reset/") !== false) {
+                    $lessonNameWithNS = "\\webgoat\\".$nameOfLesson;
+                    $obj = new $lessonNameWithNS();
+                    $obj->reset();
 
-                if (!jf::LoadGeneralSetting("categoryLessons")) {
-                    \webgoat\LessonScanner::run();
+                    echo json_encode(array("status" => true));
+                    return true;
+
+                } else {
+
+                    if (!jf::LoadGeneralSetting("categoryLessons")) {
+                        \webgoat\LessonScanner::run();
+                    }
+
+                    $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
+                    try {
+
+                        $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
+                        $lessonObj->start();
+                        $this->lessonTitle = $lessonObj->getTitle();
+                        $this->hints = $lessonObj->getHints();
+                        $this->htmlContent = $lessonObj->getContent();
+                        $this->nameOfLesson = $nameOfLesson;
+
+                    } catch (Exception $e) {
+                        $this->error = "Lesson Not found. Please select a lesson.";
+                    }
+
+                    return $this->Present();
                 }
-
-                $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
-
-                try {
-                    $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
-                    $lessonObj->start();
-                    $this->lessonTitle = $lessonObj->getTitle();
-                    $this->hints = $lessonObj->getHints();
-                    $this->htmlContent = $lessonObj->getContent();
-                    $this->nameOfLesson = $nameOfLesson;
-
-                } catch (Exception $e) {
-                    $this->error = "Lesson Not found. Please select a lesson.";
-                }
-
-                return $this->Present();
             }
         } else {
             $this->Redirect(jf::url().'/user/login');
