@@ -1,9 +1,8 @@
-<!--navbar
-============-->
 <script type="text/javascript">
     var hints = <?php if(!isset($this->error)) echo json_encode($this->hints)?>
 </script>
-
+<!--navbar
+============-->
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <a href="#" class="navbar-brand" style="color:white"><b>Single User Mode</b></a>
@@ -13,6 +12,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        <a href="?refresh=true" class="btn navbar-btn btn-sm btn-warning pull-left">Refresh List</a>
+
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo jf::url()?>">Home</a></li>
@@ -80,7 +81,7 @@
                                 <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?></h3>
                             </div>
                             <div class="col-lg-2">
-                                <a href="<?php echo LESSON_URL."reset/$lesson[0]/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset</a>
+                                <a href="<?php echo LESSON_URL."reset/$lesson[0]/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                             </div>
                         </div>
                     </div>

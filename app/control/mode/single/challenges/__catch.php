@@ -32,7 +32,7 @@ class SingleModeController extends JCatchControl
 
                 } else {
 
-                    if (!jf::LoadGeneralSetting("categoryLessons")) {
+                    if (((isset($_GET['refresh'])) || (!jf::LoadGeneralSetting("categoryLessons")))) {
                         \webgoat\LessonScanner::run();
                     }
 
