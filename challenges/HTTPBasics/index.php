@@ -49,15 +49,13 @@ class HTTPBasics extends BaseLesson
     }
 
     /**
-     * Get category Id of the lesson
-     * Category Ids are defined in the Category class
+     * Get category of the lesson
      *
-     * @return int Returns the lesson category
+     * @return string Returns the lesson category
      */
-    public function getCategoryId()
+    public function getCategory()
     {
-        $category = new Category();
-        return $category->getCategoryId("General");
+        return "General";
     }
 
     /**

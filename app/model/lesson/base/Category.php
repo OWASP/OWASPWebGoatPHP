@@ -108,5 +108,4 @@ class Category extends \JModel
 
         return max(array_keys($this->categories));
     }
-
 }

@@ -111,7 +111,7 @@ abstract class BaseLesson extends \JModel
      **********************************************************/
     abstract public function start();
 
-    abstract public function getCategoryId();   //Returns the id of the category of lesson
+    abstract public function getCategory();   //Returns the id of the category of lesson
 
     abstract public function getHints();    //Returns the hints for a challenge
 

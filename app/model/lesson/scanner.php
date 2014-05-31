@@ -59,7 +59,7 @@ class LessonScanner extends \JModel
             $classNameWithoutNamespace = basename($lessonDir);
 
             //array key contains categories, value contains lessons belonging to that category
-            array_push($categoryLessons[$categories[$obj->getCategoryId()]], array($classNameWithoutNamespace, $obj));
+            array_push($categoryLessons[$obj->getCategory()], array($classNameWithoutNamespace, $obj));
         }
 
         \jf::SaveGeneralSetting('categoryLessons', $categoryLessons);
