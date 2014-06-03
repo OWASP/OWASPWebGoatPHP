@@ -100,9 +100,9 @@ abstract class BaseLesson extends \JModel
      */
     protected function addSuccessMessage()
     {
-        $this->htmlContent .= "<div class='alert alert-success'>
+        $this->htmlContent = "<div class='alert alert-success'>
                                     Congratulations. You have successfully completed this lesson.
-                               </div>";
+                               </div>". $this->htmlContent;
     }
 
     /**********************************************************
@@ -110,6 +110,8 @@ abstract class BaseLesson extends \JModel
      * when creating a new challenge.                         *
      **********************************************************/
     abstract public function start();
+
+    abstract public function getTitle();    //Returns the hints for a challenge
 
     abstract public function getCategory();   //Returns the id of the category of lesson
 
