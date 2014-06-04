@@ -24,7 +24,7 @@ namespace webgoat;
 /**
  * Main logic of the lesson
  *
- * Lesson Name : Webgoat Introduction
+ * Lesson Name: Path Based Access Control
  */
 class PathBasedAccessControl extends BaseLesson
 {

@@ -24,7 +24,7 @@ namespace webgoat;
 /**
  * Main logic of the lesson
  *
- * Lesson Name : Webgoat Introduction
+ * Lesson Name: Access Control Matrix
  */
 class AccessControlMatrix extends BaseLesson
 {

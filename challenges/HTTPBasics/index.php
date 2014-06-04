@@ -24,7 +24,7 @@ namespace webgoat;
 /**
  * Main logic of the lesson
  *
- * Lesson Name : HTTP Basics
+ * Lesson Name: HTTP Basics
  */
 class HTTPBasics extends BaseLesson
 {
