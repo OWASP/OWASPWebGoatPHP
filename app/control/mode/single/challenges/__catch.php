@@ -47,7 +47,8 @@ class SingleModeController extends JCatchControl
                         $this->nameOfLesson = $nameOfLesson;
 
                     } catch (Exception $e) {
-                        $this->error = "Lesson Not found. Please select a lesson.";
+                        //$this->error = "Lesson Not found. Please select a lesson.";
+                        $this->error = $e->getMessage();
                     }
 
                     return $this->Present();
