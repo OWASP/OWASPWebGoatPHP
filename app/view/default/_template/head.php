@@ -10,5 +10,6 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/style.css'?>">
 		<!-- <link rel="stylesheet" href="<?php //echo (jf::url());?>/style/base.css" /> -->
         <link rel="stylesheet" href="<?php echo jf::url()?>/style/reveal.css">
-	</head>
+        <script type="text/javascript" src="<?php echo jf::url()?>/script/jquery-2.1.1.min.js"></script>
+    </head>
 	<body>

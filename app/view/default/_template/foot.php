@@ -37,7 +37,6 @@
 </div>
 
 
-<script type="text/javascript" src="<?php echo jf::url()?>/script/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/prettify/prettify.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/jquery.reveal.js"></script>
