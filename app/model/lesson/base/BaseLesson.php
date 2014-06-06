@@ -64,8 +64,17 @@ abstract class BaseLesson extends \JModel
     protected function setCompleted($bool = false)
     {
         \jf::SaveUserSetting("completed_".get_called_class(), $bool);
+        $this->addSuccessMessage();
     }
 
+    /**
+     * Store some data in the session
+     *
+     * @param string|int $key   The key associated with the value
+     * @param mixed $value  The actual value to be stored
+     *
+     * @throws ArgumentMissingException If $key or $value is missing
+     */
     protected function saveSessionData($key = null, $value = null)
     {
         if ($key == null || $value == null) {
@@ -75,6 +84,14 @@ abstract class BaseLesson extends \JModel
         \jf::SaveSessionSetting($key, $value);
     }
 
+    /**
+     * Get the stored session data
+     *
+     * @param string|int $key The key associated with the value
+     *
+     * @return mixed    The stored data
+     * @throws ArgumentMissingException If $key is missing
+     */
     protected function getSessionData($key = null)
     {
         if ($key == null) {
@@ -82,6 +99,22 @@ abstract class BaseLesson extends \JModel
         }
 
         return \jf::LoadSessionSetting($key);
+    }
+
+    /**
+     * Function to remove the stored session data
+     *
+     * @param string|int $key The key associated with the value
+     *
+     * @throws ArgumentMissingException If $key is missing
+     */
+    protected function deleteSessionData($key = null)
+    {
+        if ($key == null) {
+            throw new ArgumentMissingException('Missing key to get session data');
+        }
+
+        \jf::DeleteSessionSetting($key);
     }
 
     /**
@@ -95,13 +128,35 @@ abstract class BaseLesson extends \JModel
     }
 
     /**
-     * Function to have a uniform success message.
-     * Use it when the lesson gets completed
+     * Get hints of the lesson
+     *
+     * @return array Returns an array containing all the hints
+     */
+    public function getHints()
+    {
+        return $this->hints;
+    }
+
+    /**
+     * Function to add a uniform success message.
      */
     protected function addSuccessMessage()
     {
         $this->htmlContent = "<div class='alert alert-success'>
                                     Congratulations. You have successfully completed this lesson.
+                               </div>". $this->htmlContent;
+    }
+
+    /**
+     * To display a uniform error message at
+     * the top of the lesson.
+     *
+     * @param string $error Error Message to be displayed
+     */
+    protected function addErrorMessage($error = null)
+    {
+        $this->htmlContent = "<div class='alert alert-danger'>
+                                    Error !! $error
                                </div>". $this->htmlContent;
     }
 
@@ -114,8 +169,6 @@ abstract class BaseLesson extends \JModel
     abstract public function getTitle();    //Returns the hints for a challenge
 
     abstract public function getCategory();   //Returns the id of the category of lesson
-
-    abstract public function getHints();    //Returns the hints for a challenge
 
     abstract public function reset();
 }
