@@ -40,16 +40,6 @@ class HTMLFieldRestrictions extends BaseLesson
     }
 
     /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
-    }
-
-    /**
      * Get category of the lesson
      *
      * @return string Returns the lesson category
@@ -81,7 +71,6 @@ class HTMLFieldRestrictions extends BaseLesson
                             if ($_POST['radio'] != "foo" && $_POST['radio'] != "bar") {
                                 if ($_POST['select'] != "foo" && $_POST['select'] != "bar") {
                                     $this->setCompleted(true);
-                                    $this->addSuccessMessage();
                                 }
                             }
                         }

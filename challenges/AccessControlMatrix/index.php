@@ -41,16 +41,6 @@ class AccessControlMatrix extends BaseLesson
     }
 
     /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
-    }
-
-    /**
      * Get category of the lesson
      *
      * @return string Returns the lesson category
@@ -88,7 +78,6 @@ class AccessControlMatrix extends BaseLesson
                 $string .= "<span class='text-success'>Access Granted</span></h4>";
                 if ($resource == "account_manager" && $userId != ($this->getUserId("Mark"))) {
                     $this->setCompleted(true);
-                    $this->addSuccessMessage();
                 }
 
             } else {

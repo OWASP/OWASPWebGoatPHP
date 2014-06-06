@@ -39,16 +39,6 @@ class WebGoatIntro extends BaseLesson
     }
 
     /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
-    }
-
-    /**
      * Get category of the lesson
      *
      * @return string Returns the lesson category
@@ -65,7 +55,6 @@ class WebGoatIntro extends BaseLesson
     public function start()
     {
         $this->setCompleted(true);
-        $this->addSuccessMessage();
         $this->htmlContent .= file_get_contents(__DIR__."/content.html");
     }
 

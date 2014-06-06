@@ -39,16 +39,6 @@ class HiddenFields extends BaseLesson
     }
 
     /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
-    }
-
-    /**
      * Get category of the lesson
      *
      * @return string Returns the lesson category
@@ -77,7 +67,6 @@ class HiddenFields extends BaseLesson
 
             if ($_POST['price'] < 3000) {
                 $this->setCompleted(true);
-                $this->addSuccessMessage();
             }
         }
     }

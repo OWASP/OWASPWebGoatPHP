@@ -48,16 +48,6 @@ class SampleLesson extends BaseLesson
     }
 
     /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
-    }
-
-    /**
      * Get category of the lesson
      *
      * @return string Returns the lesson category
