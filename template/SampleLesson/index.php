@@ -76,7 +76,6 @@ class SampleLesson extends BaseLesson
 
             // If the submission is correct
             $this->setCompleted(true);
-            $this->addSuccessMessage();
         }
     }
 
