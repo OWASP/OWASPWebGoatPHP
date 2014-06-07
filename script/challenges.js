@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 
     $("li.active").closest('div.panel-collapse').addClass('in');
+
     /********************************************
      *          Code for bottom panel           *
      ********************************************/
@@ -55,7 +56,7 @@ $(document).ready(function(){
         if (hints.length == 0) {
             $("#options-container").html("Sorry, no hints present for this lesson");
         }
-        $("#options-container").html(hints[Math.floor((Math.random() * (hints.length - 1)))]);
+        $("#options-container").html(hints[Math.round((Math.random() * (hints.length - 1)))]);
     });
 
     $("#reset-btn").click(function(e){
