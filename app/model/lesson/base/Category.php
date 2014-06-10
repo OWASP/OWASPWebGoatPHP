@@ -40,13 +40,13 @@ class Category extends \JModel
      */
     public function __construct()
     {
-        $this->categories = array(0 => 'Introduction', 1 => 'General', 2 => 'Access Control Flaws',
-            3 => "AJAX Security", 4 => "Authentication Flaws", 5 => "Buffer Overflows", 6 => "Code Quality",
-            7 => "Concurrency", 8 => "Cross-Site Scripting (XSS)", 9 => "Improper Error Handling",
-            10 => "Injection Flaws", 11 => "Denial of Service", 12 => "Insecure Communication",
-            13 => "Insecure Configuration", 14 => "Insecure Storage", 15 => "Malicious Execution",
-            16 => "Parameter Tampering", 17 => "Session Management Flaws", 18 => "Web Services",
-            19 => "Admin Functions", 20 => "Challenge");
+        $this->categories = array('Introduction', 'General', 'Access Control Flaws',
+            "AJAX Security", "Authentication Flaws", "Code Quality",
+            "Concurrency", "Cross-Site Scripting (XSS)", "Improper Error Handling",
+            "Injection Flaws", "Denial of Service", "Insecure Communication",
+            "Insecure Configuration", "Insecure Storage", "Malicious Execution",
+            "Parameter Tampering", "Session Management Flaws", "Web Services",
+            "Admin Functions", "Challenge");
     }
 
     /**
