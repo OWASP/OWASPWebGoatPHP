@@ -1,8 +1,6 @@
 var originalAlert = window.alert;
 
 window.alert = function(message) {
-    var form = $("#xss-form");
-
     $.ajax({
         type: "POST",
         url: window.location.href,

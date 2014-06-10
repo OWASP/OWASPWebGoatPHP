@@ -35,7 +35,7 @@ class XSS1 extends BaseLesson
      */
     public function getTitle()
     {
-        return "XSS 1";
+        return "XSS 1 (Reflected)";
     }
 
     /**
