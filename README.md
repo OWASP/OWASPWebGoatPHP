@@ -11,4 +11,4 @@ WebGoatPHP supports four different modes i.e single mode, workshop mode, contest
 * Commit your changes
 * Create a pull request
 
-For any questions write an email to: shivamd001@gmail.com
+If you have any questions write an email to: shivamd001@gmail.com
