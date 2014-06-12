@@ -4,6 +4,9 @@ OWASP WebGoatPHP is a port of OWASP WebGoat to PHP and MySQL/SQLite databases. T
 
 WebGoatPHP supports four different modes i.e single mode, workshop mode, contest mode and secure coding mode.
 
+###Project Proposal
+The proposal of the project can be found [here](http://shivamdixit.com/posts/gsoc-14-webgoatphp-proposal/)
+
 ###Contribute
 
 * Fork the repo
