@@ -42,11 +42,10 @@ class Category extends \JModel
     {
         $this->categories = array('Introduction', 'General', 'Access Control Flaws',
             "AJAX Security", "Authentication Flaws", "Code Quality",
-            "Concurrency", "Cross-Site Scripting (XSS)", "Improper Error Handling",
-            "Injection Flaws", "Denial of Service", "Insecure Communication",
+            "Cross-Site Scripting (XSS)", "Improper Error Handling", "Injection Flaws",
             "Insecure Configuration", "Insecure Storage", "Malicious Execution",
-            "Parameter Tampering", "Session Management Flaws", "Web Services",
-            "Admin Functions", "Challenge");
+            "Parameter Tampering", "Session Management Flaws", "Web Services", "Challenge"
+        );
     }
 
     /**
