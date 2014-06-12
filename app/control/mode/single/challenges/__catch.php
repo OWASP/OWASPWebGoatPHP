@@ -14,12 +14,12 @@ class SingleModeController extends JCatchControl
 
             if (strpos($relativePath, "/static/") !== false) {
                 if (file_exists($fileName)) {
-                    $FileMan=new \jf\DownloadManager();
+                    $FileMan = new \jf\DownloadManager();
                     return $FileMan->Feed($fileName);
                 }
             } else {
 
-                $nameOfLesson = basename($relativePath);
+                $nameOfLesson = stristr($relativePath, "/", true);
                 \webgoat\LessonScanner::loadClasses();
 
                 if (strpos($relativePath, "reset/") !== false) {

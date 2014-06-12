@@ -82,7 +82,7 @@
                             </div>
                             <?php if (!isset($this->error)):?>
                                 <div class="col-lg-2">
-                                    <a href="<?php echo LESSON_URL."reset/$this->nameOfLesson/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
+                                    <a href="<?php echo LESSON_URL."$this->nameOfLesson/reset/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
                             <?php endif;?>
                         </div>
