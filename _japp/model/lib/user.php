@@ -192,7 +192,7 @@ class UserManager extends Model
 	 * One of the constants from MultipleLogin
 	 * @var integer
 	 */
-	static $MultipleLoginPolicy=MultipleLogin::Overwrite;
+	static $MultipleLoginPolicy=MultipleLogin::Allowed;
 	/**
 	Logs in a user if credentials are valid, and based on multipleLoginPolicy
     @param string $Username of the user
