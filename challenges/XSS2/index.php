@@ -67,6 +67,7 @@ class XSS2 extends BaseLesson
 
         if (isset($_POST['success'])) {     // If the submission is correct
             $this->setCompleted(true);
+            $this->deleteMessages();    // Delete the messages so that it doesn't keep looping
         }
 
         $this->htmlContent .= file_get_contents(__DIR__."/content.html");
@@ -86,6 +87,14 @@ class XSS2 extends BaseLesson
     }
 
     /**
+     * Function to delete the messages
+     */
+    public function deleteMessages()
+    {
+        \jf::SQL("DELETE FROM ".self::TABLE_NAME);
+    }
+
+    /**
      * Reset the lesson
      */
     public function reset()
@@ -99,7 +108,7 @@ class XSS2 extends BaseLesson
 
     private function addMessage($message)
     {
-        \jf::SQL("INSERT INTO ".self::TABLE_NAME."(message) VALUES ('$message')");
+        \jf::SQL("INSERT INTO ".self::TABLE_NAME."(message) VALUES (?)", $message);
     }
 
     private function getMessages()
