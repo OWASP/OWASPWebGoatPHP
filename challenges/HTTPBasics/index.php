@@ -57,7 +57,7 @@ class HTTPBasics extends BaseLesson
             $this->hints,
             "Type in your name and press 'Submit'",
             "Turn on Show Parameters or other features",
-            "Try to intercept the request with WebScarab",
+            "Try to intercept the request with OWASP ZAP",
             "Press the Show Lesson Plan button to view a lesson summary",
             "Press the Show Solution button to view a lesson solution"
         );

@@ -59,7 +59,7 @@ class NumericSQLInjection extends BaseLesson
             'The application is taking the input and concatenating it at the end of a pre-formed SQL command',
             'Compound SQL statements can be made by joining multiple tests with
             keywords like AND and OR. Try appending a SQL statement that always resolves to true',
-            'Try to intercept the post request with WebScarab and replace the station with -> 101 OR 1 = 1'
+            'Try to intercept the post request with OWASP ZAP and replace the station with -> 101 OR 1 = 1'
         );
         $this->htmlContent .= file_get_contents(__DIR__."/content.html");
         $allStationInfo = $this->getWeatherInfo();
