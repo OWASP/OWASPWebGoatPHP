@@ -65,23 +65,29 @@ class XPATHInjection extends BaseLesson
         if (isset($_POST['submit'])) {
 
             $xml = simplexml_load_file($filePath);
-            $employees = $xml->xpath("/employees/employee[loginID='$_POST[username]' and passwd='$_POST[pass]']");
 
-            if (count($employees) == 0) {
-                $this->addErrorMessage("Login Failed.");
-            }
-            if (count($employees) > 1) {
-                // If the submission is correct
-                $this->setCompleted(true);
-            }
+            try {
+                $employees = $xml->xpath("/employees/employee[loginID='$_POST[username]' and passwd='$_POST[pass]']");
 
-            foreach ($employees as $employee) {
-                $this->htmlContent .= "
+                if (count($employees) == 0) {
+                    $this->addErrorMessage("Login Failed.");
+                }
+
+                if (count($employees) > 1) {
+                    // If the submission is correct
+                    $this->setCompleted(true);
+                }
+
+                foreach ($employees as $employee) {
+                    $this->htmlContent .= "
                 <tr>
                     <td>$employee->loginID</td>
                     <td>$employee->accountno</td>
                     <td>$employee->salary</td>
                 </tr>";
+                }
+            } catch (\Exception $e) {
+                $this->addErrorMessage("Login Failed.");
             }
         }
         $this->htmlContent .= "</tbody></table></div></div><br>";
