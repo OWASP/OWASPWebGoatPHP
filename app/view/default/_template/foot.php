@@ -25,18 +25,6 @@
     <div class="ajax-content"></div>
 </div>
 
-<!--footer
-===========-->
-<div class="navbar navbar-default navbar-fixed-bottom" style="z-index: 10;">
-    <div class="container">
-        <p class="navbar-text pull-left"><strong>The project is under development.</strong></p>.
-        <a href="https://github.com/shivamdixit/WebGoatPHP" class="btn navbar-btn btn-success pull-right" target="_blank">
-            Contribute!
-        </a>
-    </div>
-</div>
-
-
 <script type="text/javascript" src="<?php echo jf::url()?>/script/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/prettify/prettify.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/jquery.reveal.js"></script>
