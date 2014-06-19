@@ -3,20 +3,20 @@ Custom Styles
 */
 
 .page-header {
-	margin-top: 0px;
+    margin-top: 0px;
 }
 
 .center {
-	float: none;
+    float: none;
     margin-left: auto;
     margin-right: auto;
 }
 
 body {
-	margin-bottom: 55px; /*To prevent text from going under the footer*/
+    margin-bottom: 55px; /*To prevent text from going under the footer*/
 }
 
 .large-font {
-	font-weight: bold;
-	font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
