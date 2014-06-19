@@ -32,7 +32,7 @@ class InitController extends JControl
         $RBAC = jf::$RBAC;
         //Create a guest user
         $userId = jf::$User->CreateUser('guest', 'guest');
-        $userId2 = jf::$User->CreateUser('workshop.admin','Admin!234');
+        $userId2 = jf::$User->CreateUser('workshop.admin', 'Admin!234');
 
         //Create RBAC permissions
 
