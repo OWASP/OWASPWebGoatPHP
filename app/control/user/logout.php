@@ -15,6 +15,6 @@ class UserLogoutController extends JControl
             $Return = "";
         }
 
-        $this->Redirect(SiteRoot."".$Return);
+        $this->Redirect(SiteRoot.$Return);
     }
 }
