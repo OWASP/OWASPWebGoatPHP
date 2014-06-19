@@ -2,22 +2,19 @@
 
 class UserLogoutController extends JControl
 {
-    function Start()
+    public function Start()
     {
-        if(jf::CurrentUser())   //If user is already logged in
-        {
+        // If user is logged in
+        if (jf::CurrentUser()) {
             jf::Logout();
-            setcookie("jFramework_Login_Remember", null,null,"/");
         }
 
-        if(isset($_GET["return"]))
+        if (isset($_GET["return"])) {
             $Return = $_GET["return"];
-        else
+        } else {
             $Return = "";
+        }
 
         $this->Redirect(SiteRoot."".$Return);
-
     }
 }
-
-?>
