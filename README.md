@@ -14,4 +14,4 @@ The proposal of the project can be found [here](http://shivamdixit.com/posts/gso
 * Commit your changes
 * Create a pull request
 
-If you have any questions write an email to: shivamd001@gmail.com
+If you have any questions write an email to: shivam.dixit@owasp.org
