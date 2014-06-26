@@ -105,19 +105,19 @@ class AccessControlMatrix extends BaseLesson
             \jf::$RBAC->Permissions->Remove($permId, true);
         }
 
-        $permId0 = \jf::$RBAC->Permissions->Add('root_lesson_AccessControlMatrix', 'Root');
-        $permId1 = \jf::$RBAC->Permissions->Add('public_share', 'Public Share', $permId0);
-        $permId2 = \jf::$RBAC->Permissions->Add('time_card_entry', 'Time Card Entry', $permId0);
-        $permId3 = \jf::$RBAC->Permissions->Add('performance_review', 'Performance Review'. $permId0);
-        $permId4 = \jf::$RBAC->Permissions->Add('site_manager', 'Site Manager', $permId0);
-        $permId5 = \jf::$RBAC->Permissions->Add('account_manager', 'Account Manager', $permId0);
+        $permId0 = \jf::$RBAC->Permissions->Add('root_lesson_AccessControlMatrix', 'Root lesson AccessControlMatrix');
+        $permId1 = \jf::$RBAC->Permissions->Add('public_share', 'Public Share lesson AccessControlMatrix', $permId0);
+        $permId2 = \jf::$RBAC->Permissions->Add('time_card_entry', 'Time Card Entry lesson AccessControlMatrix', $permId0);
+        $permId3 = \jf::$RBAC->Permissions->Add('performance_review', 'Performance Review lesson AccessControlMatrix'. $permId0);
+        $permId4 = \jf::$RBAC->Permissions->Add('site_manager', 'Site Manager lesson AccessControlMatrix', $permId0);
+        $permId5 = \jf::$RBAC->Permissions->Add('account_manager', 'Account Manager lesson AccessControlMatrix', $permId0);
 
 
-        $roleId0 = \jf::$RBAC->Roles->Add('root_lesson_AccessControlMatrix', 'Root');
-        $roleId1 = \jf::$RBAC->Roles->Add('public', 'Public', $roleId0);
-        $roleId2 = \jf::$RBAC->Roles->Add('user', 'User', $roleId0);
-        $roleId3 = \jf::$RBAC->Roles->Add('manager', 'Manager', $roleId0);
-        $roleId4 = \jf::$RBAC->Roles->Add('admin', 'Administrator', $roleId0);
+        $roleId0 = \jf::$RBAC->Roles->Add('root_lesson_AccessControlMatrix', 'Root lesson AccessControlMatrix');
+        $roleId1 = \jf::$RBAC->Roles->Add('public', 'Public lesson AccessControlMatrix', $roleId0);
+        $roleId2 = \jf::$RBAC->Roles->Add('user', 'User lesson AccessControlMatrix', $roleId0);
+        $roleId3 = \jf::$RBAC->Roles->Add('manager', 'Manager lesson AccessControlMatrix', $roleId0);
+        $roleId4 = \jf::$RBAC->Roles->Add('admin', 'Administrator lesson AccessControlMatrix', $roleId0);
 
         \jf::$RBAC->Permissions->Assign($roleId0, $permId0);
 

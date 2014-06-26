@@ -100,7 +100,7 @@ class LessonScanner extends \JModel
 
     /**
      * Loads all the classes in the challenges directory
-     * so that their object can be created directly.
+     * so that their object can be used directly.
      */
     public static function loadClasses()
     {
