@@ -10,6 +10,16 @@ The proposal of the project can be found [here](http://shivamdixit.com/posts/gso
 ###Screenshots
 ![WebgoatPHP Interface](https://raw.githubusercontent.com/shivamdixit/WebGoatPHP/master/challenges/WebGoatIntro/static/interface.png "WebgoatPHP Interface")
 
+1. List of all the lessons and their categories
+2. To refresh the list of lessons and categories (if a new lesson/category is added)
+3. Content of the lesson
+4. Reset the lesson to inital state
+5. Get random hints of the lesson
+6. This will show GET parameters
+7. This will show the COOKIES
+8. Get the plan of the lesson
+9. This will show the solution of the lesson
+
 ###Installation
 * Clone the git repo. `git clone https://github.com/shivamdixit/WebGoatPHP.git`
 * Move it to your document root
