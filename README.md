@@ -8,7 +8,7 @@ WebGoatPHP supports four different modes i.e single mode, workshop mode, contest
 The proposal of the project can be found [here](http://shivamdixit.com/posts/gsoc-14-webgoatphp-proposal/)
 
 ###Screenshots
-![WebgoatPHP Interface](https://github.com/shivamdixit/WebGoatPHP/blob/master/challenges/WebGoatIntro/static/interface.png "WebgoatPHP Interface")
+![WebgoatPHP Interface](https://raw.githubusercontent.com/shivamdixit/WebGoatPHP/master/challenges/WebGoatIntro/static/interface.png "WebgoatPHP Interface")
 
 ###Installation
 * Clone the git repo. `git clone https://github.com/shivamdixit/WebGoatPHP.git`
