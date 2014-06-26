@@ -7,7 +7,10 @@ WebGoatPHP supports four different modes i.e single mode, workshop mode, contest
 ###Project Proposal
 The proposal of the project can be found [here](http://shivamdixit.com/posts/gsoc-14-webgoatphp-proposal/)
 
-### Installation
+###Screenshots
+![WebgoatPHP Interface](https://github.com/shivamdixit/WebGoatPHP/blob/master/challenges/WebGoatIntro/static/interface.png "WebgoatPHP Interface")
+
+###Installation
 * Clone the git repo. `git clone https://github.com/shivamdixit/WebGoatPHP.git`
 * Move it to your document root
 * Import the database from SQL/webgoat.php
