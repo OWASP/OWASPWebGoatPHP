@@ -5,7 +5,7 @@
 ============-->
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a href="#" class="navbar-brand" style="color:white"><b>Single User Mode</b></a>
+        <a href="#" class="navbar-brand" style="color:white"><b>Workshop Mode</b></a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
@@ -49,17 +49,19 @@
                         <div class="panel-collapse collapse" id="section<?php echo $i; ?>">
                             <div class="panel-body">
                                 <?php foreach($lessons as $lesson):?>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li class="<?php if ((isset($this->nameOfLesson) &&
-                                            $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
-                                            <a href="<?php echo SINGLE_MODE_LESSON_URL."$lesson[0]/"?>">
-                                                <?php if ($lesson[1]->isCompleted()):?>
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                <?php endif; ?>
-                                                <?php echo $lesson[1]->getTitle(); ?>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <?php if (!in_array($lesson[0], $this->hiddenLessons)):?>
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li class="<?php if ((isset($this->nameOfLesson) &&
+                                                $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
+                                                <a href="<?php echo WORKSHOP_MODE_LESSON_URL."$lesson[0]/"?>">
+                                                    <?php if ($lesson[1]->isCompleted()):?>
+                                                        <span class="glyphicon glyphicon-ok"></span>
+                                                    <?php endif; ?>
+                                                    <?php echo $lesson[1]->getTitle(); ?>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    <?php endif;?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -82,7 +84,7 @@
                             </div>
                             <?php if (!isset($this->error)):?>
                                 <div class="col-lg-2">
-                                    <a href="<?php echo SINGLE_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
+                                    <a href="<?php echo WORKSHOP_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
                             <?php endif;?>
                         </div>
