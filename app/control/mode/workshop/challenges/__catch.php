@@ -44,17 +44,24 @@ class WorkshopModeController extends JCatchControl
                         }
 
                         $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
-                        try {
-                            $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
-                            $lessonObj->start();
-                            $this->lessonTitle = $lessonObj->getTitle();
-                            $this->hints = $lessonObj->getHints();
-                            $this->htmlContent = $lessonObj->getContent();
-                            $this->nameOfLesson = $nameOfLesson;
-                            $this->hiddenLessons = jf::LoadGeneralSetting("hiddenWorkshopLessons");
-                        } catch (Exception $e) {
-                            //$this->error = "Lesson Not found. Please select a lesson.";
-                            $this->error = $e->getMessage();
+                        $this->hiddenLessons = jf::LoadGeneralSetting("hiddenWorkshopLessons");
+
+                        if (!empty($this->hiddenLessons) && in_array($nameOfLesson, $this->hiddenLessons)) {
+                            // Not allowed to view the lesson
+                            $this->error = "Lesson not found";
+                        } else {
+                            // Allowed to view the lesson
+                            try {
+                                $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
+                                $lessonObj->start();
+                                $this->lessonTitle = $lessonObj->getTitle();
+                                $this->hints = $lessonObj->getHints();
+                                $this->htmlContent = $lessonObj->getContent();
+                                $this->nameOfLesson = $nameOfLesson;
+                            } catch (Exception $e) {
+                                //$this->error = "Lesson Not found. Please select a lesson.";
+                                $this->error = $e->getMessage();
+                            }
                         }
 
                         return $this->Present();

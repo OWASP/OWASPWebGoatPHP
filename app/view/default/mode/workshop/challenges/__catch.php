@@ -49,7 +49,8 @@
                         <div class="panel-collapse collapse" id="section<?php echo $i; ?>">
                             <div class="panel-body">
                                 <?php foreach($lessons as $lesson):?>
-                                    <?php if (!in_array($lesson[0], $this->hiddenLessons)):?>
+                                    <?php if (isset($this->hiddenLessons)
+                                        && in_array($lesson[0], $this->hiddenLessons)) continue;?>
                                         <ul class="nav nav-pills nav-stacked">
                                             <li class="<?php if ((isset($this->nameOfLesson) &&
                                                 $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
@@ -61,7 +62,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    <?php endif;?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
