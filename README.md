@@ -26,6 +26,7 @@ The proposal of the project can be found [here](http://shivamdixit.com/posts/gso
 * Import the database from SQL/webgoat.php
 * Enter your database connection details in app/config/application.php (Line 52)
 * Open the application from localhost
+* Default username:password for single-user mode: `guest:guest`
 
 ###Contribute
 
