@@ -13,12 +13,13 @@
             <span class="icon-bar"></span>
         </button>
         <a href="?refresh=true" class="btn navbar-btn btn-sm btn-warning pull-left">Refresh List</a>
-
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo jf::url()?>">Home</a></li>
                 <li><a href="<?php echo jf::url().'/about'?>">About</a></li>
-                <li><a href="#">Documentation</a></li>
+                <?php if (jf::Check("workshop")): ?>
+                    <li><a href="<?php echo WORKSHOP_ADMIN_URL;?>">Dashboard</a></li>
+                <?php endif;?>
                 <li><a href="#">Github</a></li>
                 <li><a href="#contact" data-toggle="modal">Contact</a></li>
                 <li><a href="<?php echo jf::url().'/user/logout'?>">Logout</a></li>
