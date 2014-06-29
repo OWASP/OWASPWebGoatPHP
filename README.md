@@ -41,4 +41,4 @@ Workshop Mode:
 * Commit your changes
 * Create a pull request
 
-If you have any questions write an email to: shivam.dixit@owasp.org
+If you have any questions join the discussion on our [mailing list](https://lists.owasp.org/mailman/listinfo/owasp_webgoatphp) or write an email to: shivam.dixit[at]owasp.org
