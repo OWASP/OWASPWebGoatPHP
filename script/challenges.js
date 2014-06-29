@@ -65,7 +65,13 @@ $(document).ready(function(){
         $.ajax({
             url: $(this).attr("href"),
             success: function(data) {
-                window.location.reload();
+                // This way of refresh will ensure that in firefox
+                // POST data is not sent again. Will work even if
+                // hash is present in the url.
+                // window.location.href = window.location.href; not works
+                // if hash is present. window.location.reload(); send
+                // the POST data again causing lesson complete again
+                window.location = window.location.pathname;
             }
         });
     });
