@@ -26,6 +26,7 @@ class ModeWorkshopUserDeleteController extends JControl
     const UNAUTHORIZED_MESSAGE = "You are not authorized for this action";
     const PARAMETER_MISSING_MESSAGE = "Required POST parameter is missing";
     const PERMISSION_NAME = "delete_workshop_users";
+    const ROLE_NAME = "workshop_user";
 
     public function Start()
     {
@@ -35,20 +36,29 @@ class ModeWorkshopUserDeleteController extends JControl
             // Check if POST parameter present
             if (isset($_POST['username'])) {
                 $username = $_POST['username'];
-
                 if (jf::$User->UserExists($username)) {
+
+                    // First remove the user role association
+                    $userId = jf::$User->UserID($username);
+                    $roleId = jf::$RBAC->Roles->TitleId(self::ROLE_NAME);
+                    jf::$RBAC->Users->Unassign($roleId, $userId);
+                    // Delete the user
                     jf::$User->DeleteUser($username);
                     echo json_encode(array('status' => true, 'message' => self::SUCCESS_MESSAGE));
+
                 } else {
                     // User does not exists. Error!
                     echo json_encode(array('status' => false, 'message' => self::USER_NOT_EXISTS_MESSAGE));
                 }
+
             } else {
                 echo json_encode(array('status' => false, 'message' => self::PARAMETER_MISSING_MESSAGE));
             }
+
         } else {
             echo json_encode(array('status' => false, 'message' => self::UNAUTHORIZED_MESSAGE));
         }
+
         return true;
     }
 }
