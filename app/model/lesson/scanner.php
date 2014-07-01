@@ -80,7 +80,7 @@ class LessonScanner extends \JModel
     public static function getLessonObject($lessonName = null)
     {
         if ($lessonName == null) {
-            throw new ArgumentMissingException("Lesson Name missing");
+            throw new ArgumentMissingException("Please select a lesson");
         }
 
         if (!\jf::LoadGeneralSetting('categoryLessons')) {
