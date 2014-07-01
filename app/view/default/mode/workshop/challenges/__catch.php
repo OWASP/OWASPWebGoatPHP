@@ -12,7 +12,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="?refresh=true" class="btn navbar-btn btn-sm btn-warning pull-left">Refresh List</a>
+        <a href="?refresh=true" class="btn navbar-btn btn-xs btn-info pull-left">Refresh List</a>
+
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo jf::url()?>">Home</a></li>
@@ -30,7 +31,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-md-3">
 
             <!--Accordion
             ============-->
@@ -72,7 +73,7 @@
             </div><!--Accordion ends-->
         </div>
 
-        <div class="col-lg-9">
+        <div class="col-md-9">
 
             <!-- Main content
             ==================-->
@@ -80,11 +81,11 @@
                 <div class="panel-body">
                     <div class="page-header">
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-md-10">
                                 <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?></h3>
                             </div>
                             <?php if (!isset($this->error)):?>
-                                <div class="col-lg-2">
+                                <div class="col-md-2">
                                     <a href="<?php echo WORKSHOP_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
                             <?php endif;?>
