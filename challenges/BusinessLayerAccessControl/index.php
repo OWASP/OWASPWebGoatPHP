@@ -142,7 +142,7 @@ class BusinessLayerAccessControl extends BaseLesson
                 <div class="col-sm-offset-2 col-sm-4">
                     <input type="submit" value="Login" name="submit" class="btn btn-default">
                 </div>
-            </div></form></div></div>';
+            </div></form>';
     }
 
     private function showScreen2($id = null)

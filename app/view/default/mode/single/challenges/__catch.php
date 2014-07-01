@@ -12,7 +12,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="?refresh=true" class="btn navbar-btn btn-xs btn-info pull-left">Refresh List</a>
+        <a href="?refresh=true" class="btn navbar-btn btn-xs btn-success pull-left">Refresh List</a>
 
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav navbar-right">
@@ -78,11 +78,13 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col-md-10">
-                                <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?></h3>
+                                <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?>
+                                </h3>
                             </div>
                             <?php if (!isset($this->error)):?>
                                 <div class="col-md-2">
-                                    <a href="<?php echo SINGLE_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>" class="btn btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
+                                    <a href="<?php echo SINGLE_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>"
+                                       class="btn btn-sm btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
                             <?php endif;?>
                         </div>
