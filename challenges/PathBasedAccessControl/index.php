@@ -64,22 +64,21 @@ class PathBasedAccessControl extends BaseLesson
 
         $this->htmlContent .= file_get_contents(__DIR__."/content.html");
         $this->htmlContent .= "<h4>Current Directory : </h4>
-                               <p>$allowedDir</p><br>
-                               <div class='row'>
-                                   <div class='col-sm-4 col-sm-offset-4'>
-                               ";
+                               <p>$allowedDir</p><br>";
 
-        $this->htmlContent .= '<form class="form-horizontal" method="POST">
+        $this->htmlContent .= '<form class="form" method="POST">
                                    <div class="form-group">
                                        <label for="file">View a file :</label>
-                                       <select name="file" id="file" class="form-control">';
+                                       <div class="row">
+                                           <div class="col-sm-4">
+                                               <select name="file" id="file" class="form-control">';
 
         foreach ($filesInDir as $file) {
             $this->htmlContent .= "<option value='$file'>$file</option>";
         }
 
-        $this->htmlContent .= "</select></div>
-        <div class='form-group'><input type='submit' value='Submit' class='btn btn-default'></div></form></div></div>
+        $this->htmlContent .= "</select></div></div></div>
+        <div class='form-group'><input type='submit' value='Submit' class='btn btn-default'></div></form>
         <br><h4>Contents of File:</h4>";
 
         if (isset($_POST['file'])) {
@@ -88,7 +87,10 @@ class PathBasedAccessControl extends BaseLesson
             $filePath = $allowedDir.$fileName;
 
             if (file_exists($filePath)) {
+                // Add pre tags so that file is displayed in actual format
+                $this->htmlContent .= "$fileName<pre>";
                 $this->htmlContent .= file_get_contents($filePath);
+                $this->htmlContent .= "</pre>";
 
                 if (strpos($fileName, "/") != false) {
                     $this->setCompleted(true);

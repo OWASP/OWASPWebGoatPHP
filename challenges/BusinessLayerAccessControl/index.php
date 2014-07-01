@@ -117,15 +117,12 @@ class BusinessLayerAccessControl extends BaseLesson
 
     private function showScreen1()
     {
-        $this->htmlContent .= '<div class="row">
-            <div class="col-md-4 col-md-offset-1">
+        $this->htmlContent .= '<div class="row"><div class="col-sm-offset-2 col-sm-4"><h4>Login</h4></div></div><br>
                 <form class="form-horizontal" method="POST">
                     <div class="form-group">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="form-group">
-                        <label for="user">User:</label>
-                        <select name="user" class="form-control" id="user">';
+                        <label for="user" class="col-sm-2 control-label">User:</label>
+                        <div class="col-sm-4">
+                            <select name="user" class="form-control" id="user">';
 
         $users = $this->getUsers();
 
@@ -133,14 +130,18 @@ class BusinessLayerAccessControl extends BaseLesson
             $this->htmlContent .= "<option value='$user[id]'>$user[first_name] $user[last_name] ($user[role])</option>";
         }
 
-        $this->htmlContent .= '</select></div>
+        $this->htmlContent .= '</select></div></div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" name="password" id="password">
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Login" name="submit" class="btn btn-default">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <input type="submit" value="Login" name="submit" class="btn btn-default">
+                </div>
             </div></form></div></div>';
     }
 
