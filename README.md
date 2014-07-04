@@ -41,4 +41,12 @@ Workshop Mode:
 * Commit your changes
 * Create a pull request
 
+###Adding a lesson/challenge
+Adding a new challenge is very simple. All the challenges must be present in challenges directory and must extend class 'BaseLesson'. A template is provided in template/SampleLesson. The name of the directory must be same as the name of the class in index.php. Any static content like images, scripts etc. must be placed inside a directory 'static' within the lesson directory.
+
+There are few methods which your lesson need to implement like start(), getTitle(), getCategory(), reset() etc.
+
+Once you have added the lesson click on "Refresh List" button at the top of the application.
+
+###Contact
 If you have any questions join the discussion on our [mailing list](https://lists.owasp.org/mailman/listinfo/owasp_webgoatphp) or write an email to: shivam.dixit[at]owasp.org
