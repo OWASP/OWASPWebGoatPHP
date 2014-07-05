@@ -40,7 +40,23 @@ class ModeWorkshopAdmin extends JControl
                 // Get the list of all the lessons/categories
                 $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
                 $this->hiddenLessons = jf::LoadGeneralSetting("hiddenWorkshopLessons");
+
+                // To generate 'overview' section of the dashboard
+                // Store all the stats
+                $obj = new \webgoat\WorkshopUsers();
+                $workshopUsers = $obj->getAll();
+                $this->totalUsers = count($workshopUsers);
+                $this->totalCategories = count($this->allCategoryLesson);
+
+                $lessonCount = 0;
+                foreach ($this->allCategoryLesson as $category => $lessons) {
+                    $lessonCount += count($lessons);
+                }
+                $this->totalLessons = $lessonCount;
+                $this->totalVisibleLessons = $lessonCount - count($this->hiddenLessons);
+
                 return $this->Present();
+
             } else {
                 // User not authorized
                 $this->Redirect(SiteRoot);  // Redirect to home page instead of Login Page

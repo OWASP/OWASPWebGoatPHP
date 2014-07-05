@@ -52,7 +52,10 @@
 </div>
 
 <div class="hidden" id="overview-content">
-    <p>Coming Soon...</p>
+    <h4>Total Users: <?php echo $this->totalUsers;?></h4>
+    <h4>Total Categories: <?php echo $this->totalCategories;?></h4>
+    <h4>Total Lessons: <?php echo $this->totalLessons;?></h4>
+    <h4>Total Visible Lessons: <?php echo $this->totalVisibleLessons;?></h4>
 </div>
 
 <div class="hidden" id="reports-content">
