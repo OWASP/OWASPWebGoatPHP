@@ -34,8 +34,8 @@ Workshop Mode:
 * Open the application from localhost
 * Default username:password for single-user mode: `guest:guest`
 
-###Contribute
 
+###Contribute
 * Fork the repo
 * Create your branch
 * Commit your changes
