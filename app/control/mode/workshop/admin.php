@@ -5,7 +5,9 @@ class ModeWorkshopAdmin extends JControl
     public function Start()
     {
         if (jf::CurrentUser()) {
+            // Authorize the user
             if (jf::Check('workshop')) {
+
                 $hiddenLessons = jf::LoadGeneralSetting("hiddenWorkshopLessons");
 
                 // If request to hide the lesson
@@ -39,7 +41,7 @@ class ModeWorkshopAdmin extends JControl
 
                 // Get the list of all the lessons/categories
                 $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
-                $this->hiddenLessons = jf::LoadGeneralSetting("hiddenWorkshopLessons");
+                $this->hiddenLessons = $hiddenLessons;
 
                 // To generate 'overview' section of the dashboard
                 // Store all the stats
@@ -55,6 +57,23 @@ class ModeWorkshopAdmin extends JControl
                 $this->totalLessons = $lessonCount;
                 $this->totalVisibleLessons = $lessonCount - count($this->hiddenLessons);
 
+                // For each lesson store a list of users
+                // who have completed it
+                $lessonsCompletedBy = array();
+                $lessonPrefix = "completed_webgoat\\";
+                foreach ($this->allCategoryLesson as $category => $lessons) {
+                    foreach ($lessons as $lesson) {
+                        $lessonsCompletedBy[$lesson[0]] = array();
+                        foreach ($workshopUsers as $user) {
+                            if (jf::LoadUserSetting($lessonPrefix.$lesson[0], $user['ID'])) {
+                                array_push($lessonsCompletedBy[$lesson[0]], $user['Username']);
+                            }
+                        }
+                    }
+                }
+
+                // To generate the reports page
+                $this->reports = $lessonsCompletedBy;
                 return $this->Present();
 
             } else {

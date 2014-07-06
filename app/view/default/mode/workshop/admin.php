@@ -59,7 +59,28 @@
 </div>
 
 <div class="hidden" id="reports-content">
-    <p>Coming Soon...</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Lesson Name</th>
+                    <th>Completed By</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->reports as $lesson => $users): ?>
+                        <tr>
+                            <td><?php echo $lesson; ?></td>
+                            <td><?php foreach ($users as $userName) { echo $userName."<br>";} ?></td>
+                            <td><?php echo count($users);?></td>
+                        </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div class="hidden" id="analytics-content">
