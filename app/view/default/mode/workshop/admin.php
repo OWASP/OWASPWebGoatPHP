@@ -62,133 +62,130 @@
             <h1 class="page-header" id="heading"></h1>
             <div id="main-content">
 
+                <div class="hidden" id="overview-content">
+                    <p>Total Users: <?php echo $this->totalUsers;?></p>
+                    <p>Total Categories: <?php echo $this->totalCategories;?></p>
+                    <p>Total Lessons: <?php echo $this->totalLessons;?></p>
+                    <p>Total Visible Lessons: <?php echo $this->totalVisibleLessons;?></p>
+                </div>
+
+                <div class="hidden" id="reports-content">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Lesson Name</th>
+                                    <th>Completed By</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($this->reports as $lesson => $users): ?>
+                                    <tr>
+                                        <td><?php echo $lesson; ?></td>
+                                        <td><?php foreach ($users as $userName) { echo $userName."<br>";} ?></td>
+                                        <td><?php echo count($users);?></td>
+                                    </tr>
+                                <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden" id="analytics-content">
+                    <div id="donutchart" style="width: 800px; height: 500px;"></div>
+                </div>
+
+                <div class="hidden" id="create-user-content">
+                    <form class="form-horizontal" role="form" method="POST" action="user/create">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2">User Name:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="User Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2">Password:</label>
+                            <div class="col-sm-3">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-3">
+                                <input type="submit" name="submit" value="Create" class="btn btn-default">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="hidden" id="delete-user-content">
+                    <form class="form-inline" role="form" method="POST" id="" action="user/delete">
+                        <div class="form-group">
+                            <label for="username" class="sr-only">User Name:</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="User Name">
+                        </div>
+                        <input type="submit" name="submit" value="Delete" class="btn btn-default">
+                    </form>
+                    <br>
+                    <h4>List of Users:</h4>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <table class="table table-triped">
+                                <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                </tr>
+                                </thead>
+                                <tbody id="delete-user-list">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden" id="lesson-settings-content">
+                    <h4>List of lessons:</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Lesson Name</th>
+                                    <th>Visibility</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($this->allCategoryLesson as $category => $lessons): ?>
+                                    <?php foreach($lessons as $lesson):?>
+                                        <tr>
+                                            <td><?php echo $category; ?></td>
+                                            <td><?php echo $lesson[0]; ?></td>
+                                            <td>
+                                                <div class="btn-group btn-toggle">
+                                                    <?php if (!empty($this->hiddenLessons)
+                                                        && in_array($lesson[0], $this->hiddenLessons)):?>
+                                                        <button class="btn btn-xs btn-default">ON</button>
+                                                        <button class="btn btn-xs btn-primary active">OFF</button>
+                                                    <?php else:?>
+                                                        <button class="btn btn-xs btn-primary active">ON</button>
+                                                        <button class="btn btn-xs btn-default">OFF</button>
+                                                    <?php endif;?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--End main-content-->
             </div>
         </div>
     </div>
 </div>
 
-<div class="hidden" id="overview-content">
-    <p>Total Users: <?php echo $this->totalUsers;?></p>
-    <p>Total Categories: <?php echo $this->totalCategories;?></p>
-    <p>Total Lessons: <?php echo $this->totalLessons;?></p>
-    <p>Total Visible Lessons: <?php echo $this->totalVisibleLessons;?></p>
-</div>
-
-<div class="hidden" id="reports-content">
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Lesson Name</th>
-                    <th>Completed By</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($this->reports as $lesson => $users): ?>
-                        <tr>
-                            <td><?php echo $lesson; ?></td>
-                            <td><?php foreach ($users as $userName) { echo $userName."<br>";} ?></td>
-                            <td><?php echo count($users);?></td>
-                        </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="hidden" id="analytics-content">
-    <div class="row">
-        <div class="col-sm-4">
-            <div id="donutchart"></div>
-        </div>
-    </div>
-</div>
-
-<div class="hidden" id="create-user-content">
-    <form class="form-horizontal" role="form" method="POST" action="user/create">
-        <div class="form-group">
-            <label for="username" class="col-sm-2">User Name:</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" name="username" id="username" placeholder="User Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-2">Password:</label>
-            <div class="col-sm-3">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-3">
-                <input type="submit" name="submit" value="Create" class="btn btn-default">
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="hidden" id="delete-user-content">
-    <form class="form-inline" role="form" method="POST" id="" action="user/delete">
-        <div class="form-group">
-            <label for="username" class="sr-only">User Name:</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="User Name">
-        </div>
-        <input type="submit" name="submit" value="Delete" class="btn btn-default">
-    </form>
-    <br>
-    <h4>List of Users:</h4>
-    <div class="row">
-        <div class="col-sm-3">
-            <table class="table table-triped">
-                <thead>
-                <tr>
-                    <th>User Name</th>
-                </tr>
-                </thead>
-                <tbody id="delete-user-list">
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="hidden" id="lesson-settings-content">
-    <h4>List of lessons:</h4>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Lesson Name</th>
-                    <th>Visibility</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach($this->allCategoryLesson as $category => $lessons): ?>
-                    <?php foreach($lessons as $lesson):?>
-                        <tr>
-                            <td><?php echo $category; ?></td>
-                            <td><?php echo $lesson[0]; ?></td>
-                            <td>
-                                <div class="btn-group btn-toggle">
-                                    <?php if (!empty($this->hiddenLessons)
-                                        && in_array($lesson[0], $this->hiddenLessons)):?>
-                                        <button class="btn btn-xs btn-default">ON</button>
-                                        <button class="btn btn-xs btn-primary active">OFF</button>
-                                    <?php else:?>
-                                        <button class="btn btn-xs btn-primary active">ON</button>
-                                        <button class="btn btn-xs btn-default">OFF</button>
-                                    <?php endif;?>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach;?>
-                <?php endforeach;?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
