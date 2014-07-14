@@ -1,5 +1,21 @@
 <script src="<?php echo jf::url()."/script/workshop.js"?>"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    var noOfLessonsData = <?php echo json_encode($this->analytics)?>;
 
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(noOfLessonsData);
+        var options = {
+            title: 'No of lessons in each category',
+            pieHole: 0.4
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+</script>
 <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/dashboard.css'?>">
 
 <!--navbar
@@ -52,10 +68,10 @@
 </div>
 
 <div class="hidden" id="overview-content">
-    <h4>Total Users: <?php echo $this->totalUsers;?></h4>
-    <h4>Total Categories: <?php echo $this->totalCategories;?></h4>
-    <h4>Total Lessons: <?php echo $this->totalLessons;?></h4>
-    <h4>Total Visible Lessons: <?php echo $this->totalVisibleLessons;?></h4>
+    <p>Total Users: <?php echo $this->totalUsers;?></p>
+    <p>Total Categories: <?php echo $this->totalCategories;?></p>
+    <p>Total Lessons: <?php echo $this->totalLessons;?></p>
+    <p>Total Visible Lessons: <?php echo $this->totalVisibleLessons;?></p>
 </div>
 
 <div class="hidden" id="reports-content">
@@ -84,7 +100,11 @@
 </div>
 
 <div class="hidden" id="analytics-content">
-    <p>Coming Soon...</p>
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="donutchart"></div>
+        </div>
+    </div>
 </div>
 
 <div class="hidden" id="create-user-content">

@@ -63,7 +63,7 @@ class ModeWorkshopAdmin extends JControl
                 $lessonPrefix = "completed_webgoat\\";
                 foreach ($this->allCategoryLesson as $category => $lessons) {
                     foreach ($lessons as $lesson) {
-                        $lessonsCompletedBy[$lesson[0]] = array();
+                        $lessonsCompletedBy[$lesson[0]] = array();  // Index 0 is for name
                         foreach ($workshopUsers as $user) {
                             if (jf::LoadUserSetting($lessonPrefix.$lesson[0], $user['ID'])) {
                                 array_push($lessonsCompletedBy[$lesson[0]], $user['Username']);
@@ -74,8 +74,15 @@ class ModeWorkshopAdmin extends JControl
 
                 // To generate the reports page
                 $this->reports = $lessonsCompletedBy;
-                return $this->Present();
 
+                // To generate analytics
+                $noOfLessonsInCategories = array(array('Category', 'No of Lessons')); // Initialize with heading
+                foreach ($this->allCategoryLesson as $category => $lessons) {
+                    array_push($noOfLessonsInCategories, array($category, count($lessons)));
+                }
+                $this->analytics = $noOfLessonsInCategories;
+
+                return $this->Present();
             } else {
                 // User not authorized
                 $this->Redirect(SiteRoot);  // Redirect to home page instead of Login Page
