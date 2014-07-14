@@ -9,7 +9,9 @@
         var data = google.visualization.arrayToDataTable(noOfLessonsData);
         var options = {
             title: 'No of lessons in each category',
-            pieHole: 0.4
+            pieHole: 0.4,
+            height: 500,
+            width: 800
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -188,4 +190,3 @@
         </div>
     </div>
 </div>
-
