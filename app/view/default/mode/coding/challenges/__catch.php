@@ -5,7 +5,7 @@
 ============-->
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a href="#" class="navbar-brand" style="color:white"><b>Single User Mode</b></a>
+        <a href="#" class="navbar-brand" style="color:white"><b>Secure Coding Mode</b></a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
@@ -52,7 +52,7 @@
                                     <ul class="nav nav-pills nav-stacked">
                                         <li class="<?php if ((isset($this->nameOfLesson) &&
                                             $this->nameOfLesson == $lesson[0])) echo "active"; ?>">
-                                            <a href="<?php echo SINGLE_MODE_LESSON_URL."$lesson[0]/"?>">
+                                            <a href="<?php echo CODING_MODE_LESSON_URL."$lesson[0]/"?>">
                                                 <?php if ($lesson[1]->isCompleted()):?>
                                                     <span class="glyphicon glyphicon-ok"></span>
                                                 <?php endif; ?>
@@ -83,7 +83,7 @@
                             </div>
                             <?php if (!isset($this->error)):?>
                                 <div class="col-md-2">
-                                    <a href="<?php echo SINGLE_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>"
+                                    <a href="<?php echo CODING_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>"
                                        class="btn btn-sm btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
                             <?php endif;?>
