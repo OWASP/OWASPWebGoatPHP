@@ -109,9 +109,9 @@
                 <div class="col-md-7 col-md-offset-3"><!--To Place it in the center-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default" id="hints-btn" >Hints</button>
-                        <button type="button" class="btn btn-info" id="parameter-btn">Parameters</button>
+                        <button type="button" class="btn btn-default" id="parameter-btn">Parameters</button>
                         <button type="button" class="btn btn-default" id="cookie-btn">Cookies</button>
-                        <button type="button" class="btn btn-info" id="lesson-plan-btn">Lesson Plan</button>
+                        <button type="button" class="btn btn-default" id="lesson-plan-btn">Lesson Plan</button>
                         <button type="button" class="btn btn-default" id="solution-btn">Solution</button>
                     </div>
                 </div>
