@@ -43,7 +43,6 @@ class CodingModeController extends JCatchControl
 
                         $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
                         try {
-
                             $lessonObj = \webgoat\LessonScanner::getLessonObject($nameOfLesson);
                             $lessonObj->start();
                             $this->lessonTitle = $lessonObj->getTitle();
