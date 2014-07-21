@@ -57,6 +57,46 @@ abstract class BaseLesson extends \JModel
     }
 
     /**
+     * Get the HTML content of the lesson
+     *
+     * @return string Content of lesson in HTML
+     */
+    public function getContent()
+    {
+        return $this->htmlContent;
+    }
+
+    /**
+     * Get hints of the lesson
+     *
+     * @return array Returns an array containing all the hints
+     */
+    public function getHints()
+    {
+        return $this->hints;
+    }
+
+    /**
+     * Function to enable/disable securing coding mode
+     * for a lesson. To enable secure coding mode override
+     * this method to:
+     *
+     * return array('status' => true, 'start' => Line_No, 'end' => Line_No);
+     *
+     * Lines between 'start' and 'end' will be displayed
+     * to the user to modify.
+     *
+     * By default secure coding mode will be disabled.
+     *
+     * @return array Contains the status of secure coding mode
+     */
+    public function isSecureCodingAllowed()
+    {
+        // FIXME: Start and end line number will change if code is changed.
+        return array('status' => false);
+    }
+
+    /**
      * Set or unset lesson completed
      *
      * @param bool $bool
@@ -115,26 +155,6 @@ abstract class BaseLesson extends \JModel
         }
 
         \jf::DeleteSessionSetting($key);
-    }
-
-    /**
-     * Get the HTML content of the lesson
-     *
-     * @return string Content of lesson in HTML
-     */
-    public function getContent()
-    {
-        return $this->htmlContent;
-    }
-
-    /**
-     * Get hints of the lesson
-     *
-     * @return array Returns an array containing all the hints
-     */
-    public function getHints()
-    {
-        return $this->hints;
     }
 
     /**

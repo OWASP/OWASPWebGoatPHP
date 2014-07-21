@@ -5,7 +5,7 @@
 ============-->
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a href="#" class="navbar-brand" style="color:white"><b>Secure Coding Mode</b></a>
+        <a href="#" class="navbar-brand" style="color:white"><b>Coding Mode</b></a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
@@ -77,25 +77,47 @@
                 <div class="panel-body">
                     <div class="page-header">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?>
                                 </h3>
                             </div>
                             <?php if (!isset($this->error)):?>
+                                <div class="col-md-1"><!--Placed outside if so that in false condition
+                                also reset btn is aligned properly-->
+                                    <?php if (isset($this->sourceCode)): ?>
+                                        <a href="#" class="btn btn-sm btn-success navbar-btn" id="fix-btn">Fix It!</a>
+                                    <?php endif; ?>
+                                </div>
+
                                 <div class="col-md-2">
                                     <a href="<?php echo CODING_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>"
                                        class="btn btn-sm btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="page-body">
                         <?php if(!isset($this->error)) echo $this->htmlContent;?>
+
+                        <div id="source-code" class="hidden">
+                            <br>
+                            <h4 class="text-center">Source Code</h4>
+                            <div id="editor" style="height: 250px;"><?php if(isset($this->sourceCode)) echo $this->sourceCode;?>
+                            </div><!-- End #editor-->
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-5">
+                                    <a href="#" class="btn btn-success" id="scode-submit-btn">Submit</a>
+                                    <a href="#" class="btn btn-default" id="scode-reset-btn">Reset</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div><!--Main content ends-->
             <hr>
 
+            <!-- To display contents of the options menu (hints, cookies etc)-->
             <div id="options-container" class="text-success">
 
             </div>
@@ -114,7 +136,15 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div><!--Row ends-->
 </div><!--container ends-->
+
+<script src="<?php echo jf::url();?>/script/ace/src-min-noconflict/ace.js" type="text/javascript"></script>
+<script src="<?php echo jf::url();?>/script/ace/src-min-noconflict/mode-php.js" type="text/javascript"></script>
+<script>
+    var editor = ace.edit("editor");
+    var initialCode = editor.getSession().getValue();
+    editor.setTheme("ace/theme/solarized_light");
+    editor.getSession().setMode({path:"ace/mode/php", inline:true});    // Won't work without inline. REF #1142 ace repo
+</script>

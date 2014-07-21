@@ -18,12 +18,12 @@ class CodingModeController extends JCatchControl
                 // $request will be mode/single/challenges/HTTPBasics/static/test
                 // $relativePath will be HTTPBasics/static/test
                 $relativePath = $this->getRelativePath($request);
-                $fileName = LESSON_PATH.$relativePath;
+                $absolutePath = LESSON_PATH.$relativePath;
 
                 if (strpos($relativePath, "/static/") !== false) {
-                    if (file_exists($fileName)) {
+                    if (file_exists($absolutePath)) {
                         $FileMan = new \jf\DownloadManager();
-                        return $FileMan->Feed($fileName);
+                        return $FileMan->Feed($absolutePath);
                     }
                 } else {
                     $nameOfLesson = stristr($relativePath, "/", true);
@@ -49,6 +49,16 @@ class CodingModeController extends JCatchControl
                             $this->hints = $lessonObj->getHints();
                             $this->htmlContent = $lessonObj->getContent();
                             $this->nameOfLesson = $nameOfLesson;
+
+                            $secureCoding = $lessonObj->isSecureCodingAllowed();
+                            $sourceCodeToDisplay = "";
+                            if ($secureCoding['status'] === true) {
+                                $sourceCode = file($absolutePath."index.php");
+                                for ($i = $secureCoding['start']; $i < $secureCoding['end']; $i++) {
+                                    $sourceCodeToDisplay .= (trim($sourceCode[$i])."\n");
+                                }
+                                $this->sourceCode = $sourceCodeToDisplay;
+                            }
                         } catch (Exception $e) {
                             //$this->error = "Lesson Not found. Please select a lesson.";
                             $this->error = $e->getMessage();

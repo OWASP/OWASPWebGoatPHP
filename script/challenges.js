@@ -1,7 +1,44 @@
 $(document).ready(function(){
 
-
     $("li.active").closest('div.panel-collapse').addClass('in');
+
+    $("#reset-btn").click(function(e){
+        e.preventDefault();
+
+        $(this).html("Resetting....");
+        $(this).attr("disabled", "disabled");
+
+        $.ajax({
+            url: $(this).attr("href"),
+            success: function(data) {
+                // This way of refresh will ensure that in firefox
+                // POST data is not sent again. Will work even if
+                // hash is present in the url.
+                // window.location.href = window.location.href; not works
+                // if hash is present. window.location.reload(); send
+                // the POST data again causing lesson complete again
+                window.location = window.location.pathname;
+            }
+        });
+    });
+
+    /**
+     * Secure Coding mode functionality
+     */
+    $("#fix-btn").click(function(){
+        $("#source-code").toggleClass("hidden");
+    });
+
+    $("#scode-reset-btn").click(function(e){
+        e.preventDefault();
+        editor.getSession().setValue(initialCode);
+    });
+
+    $("#scode-submit-btn").click(function(e){
+        e.preventDefault();
+        var code = editor.getSession().getValue();
+        console.log(code);
+    });
 
     /********************************************
      *          Code for bottom panel           *
@@ -58,22 +95,4 @@ $(document).ready(function(){
         }
         $("#options-container").html(hints[Math.round((Math.random() * (hints.length - 1)))]);
     });
-
-    $("#reset-btn").click(function(e){
-        e.preventDefault();
-
-        $.ajax({
-            url: $(this).attr("href"),
-            success: function(data) {
-                // This way of refresh will ensure that in firefox
-                // POST data is not sent again. Will work even if
-                // hash is present in the url.
-                // window.location.href = window.location.href; not works
-                // if hash is present. window.location.reload(); send
-                // the POST data again causing lesson complete again
-                window.location = window.location.pathname;
-            }
-        });
-    });
-
 });
