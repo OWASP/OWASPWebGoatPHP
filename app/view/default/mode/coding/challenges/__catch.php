@@ -102,8 +102,11 @@
                         <div id="source-code" class="hidden">
                             <br>
                             <h4 class="text-center">Source Code</h4>
-                            <div id="editor" style="height: 250px;"><?php if(isset($this->sourceCode)) echo $this->sourceCode;?>
-                            </div><!-- End #editor-->
+                            <div id="editor" style="height: 260px;"><?php if(isset($this->sourceCode)) echo $this->sourceCode;?></div>
+                            <form id="scode-form" method="POST">
+                                <!--To submit source code-->
+                                <input type="hidden" name="sourceCode" id="scode-inp">
+                            </form>
                             <br>
                             <div class="row">
                                 <div class="col-sm-3 col-sm-offset-5">

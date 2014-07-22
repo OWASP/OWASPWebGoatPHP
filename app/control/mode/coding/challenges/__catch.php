@@ -59,6 +59,11 @@ class CodingModeController extends JCatchControl
                                 }
                                 $this->sourceCode = $sourceCodeToDisplay;
                             }
+
+                            if (isset($_POST['sourceCode'])) {
+                                // Code to handle source code evaluation
+                            }
+
                         } catch (Exception $e) {
                             //$this->error = "Lesson Not found. Please select a lesson.";
                             $this->error = $e->getMessage();

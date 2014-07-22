@@ -37,6 +37,8 @@ $(document).ready(function(){
     $("#scode-submit-btn").click(function(e){
         e.preventDefault();
         var code = editor.getSession().getValue();
+        $("#scode-inp").val(code);
+        $("#scode-form").submit();
         console.log(code);
     });
 
