@@ -11,6 +11,7 @@ define('SINGLE_MODE_LESSON_URL', jf::url()."/mode/single/challenges/");
 define('WORKSHOP_MODE_LESSON_URL', jf::url()."/mode/workshop/challenges/");
 define('WORKSHOP_ADMIN_URL', jf::url()."/mode/workshop/admin");
 define('CODING_MODE_LESSON_URL', jf::url()."/mode/coding/challenges/");
+define('CONTEST_MODE_URL', jf::url()."/mode/contest/");
 
 //Add autoload rules
 #\jf\Autoload::AddRuleArray(array("Classname"=>jf::root()."/app/model/filepath.php"));

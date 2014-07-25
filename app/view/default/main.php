@@ -54,7 +54,7 @@
         <div class="col-md-3">
             <h3>Contest (CTF) Mode</h3>
             <p >Take part in a live CTF contest. You are required to sign-up before you can take part in a contest.</p>
-            <a href="#" class="btn btn-default">Get Started</a>
+            <a href="<?php echo CONTEST_MODE_URL ?>" class="btn btn-default">Get Started</a>
         </div>
         <div class="col-md-3">
             <h3>Secure Coding Mode</h3>
