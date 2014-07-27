@@ -60,6 +60,10 @@ class CodingModeController extends JCatchControl
                                 $this->sourceCode = $sourceCodeToDisplay;
                             }
 
+                            // To show complete PHP Code
+                            $sourceCode = file_get_contents($absolutePath."index.php");
+                            $this->completeSourceCode = htmlentities($sourceCode);
+
                             if (isset($_POST['sourceCode'])) {
                                 // Code to handle source code evaluation
                             }

@@ -97,4 +97,10 @@ $(document).ready(function(){
         }
         $("#options-container").html(hints[Math.round((Math.random() * (hints.length - 1)))]);
     });
+
+    $("#show-php-btn").click(function(){
+        var w = window.open("about:blank", "Source Code", "height=600,width=600");
+        var html = $("#complete-scode").html();
+        $(w.document.body).html(html);
+    });
 });
