@@ -134,12 +134,12 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2"><!--To Place it in the center-->
                     <div class="btn-group">
-                        <button class="btn btn-default" id="hints-btn" >Hints</button >
-                        <button class="btn btn-default" id="parameter-btn">Parameters</button >
-                        <button class="btn btn-default" id="cookie-btn">Cookies</button >
-                        <button class="btn btn-default" id="lesson-plan-btn">Lesson Plan</button >
-                        <button class="btn btn-default" id="show-php-btn">Show PHP</button >
-                        <button class="btn btn-default" id="solution-btn">Solution</button >
+                        <button class="btn btn-default" id="hints-btn" >Hints</button>
+                        <button class="btn btn-default" id="parameter-btn">Parameters</button>
+                        <button class="btn btn-default" id="cookie-btn">Cookies</button>
+                        <button class="btn btn-default" id="lesson-plan-btn">Lesson Plan</button>
+                        <button class="btn btn-default" id="show-php-btn">Show PHP</button>
+                        <button class="btn btn-default" id="solution-btn">Solution</button>
                     </div>
                 </div>
             </div>
