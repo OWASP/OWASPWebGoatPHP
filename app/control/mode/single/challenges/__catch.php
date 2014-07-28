@@ -19,12 +19,12 @@ class SingleModeController extends JCatchControl
                 // $request will be mode/single/challenges/HTTPBasics/static/test
                 // $relativePath will be HTTPBasics/static/test
                 $relativePath = $this->getRelativePath($request);
-                $fileName = LESSON_PATH.$relativePath;
+                $absolutePath = LESSON_PATH.$relativePath;
 
                 if (strpos($relativePath, "/static/") !== false) {
-                    if (file_exists($fileName)) {
+                    if (file_exists($absolutePath)) {
                         $FileMan = new \jf\DownloadManager();
-                        return $FileMan->Feed($fileName);
+                        return $FileMan->Feed($absolutePath);
                     }
                 } else {
                     $nameOfLesson = stristr($relativePath, "/", true);
@@ -51,6 +51,10 @@ class SingleModeController extends JCatchControl
                             $this->hints = $lessonObj->getHints();
                             $this->htmlContent = $lessonObj->getContent();
                             $this->nameOfLesson = $nameOfLesson;
+
+                            // To show complete PHP Code
+                            $sourceCode = file_get_contents($absolutePath."index.php");
+                            $this->completeSourceCode = htmlentities($sourceCode);
 
                         } catch (Exception $e) {
                             //$this->error = "Lesson Not found. Please select a lesson.";

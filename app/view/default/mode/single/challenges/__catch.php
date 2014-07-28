@@ -99,6 +99,9 @@
             <div id="options-container" class="text-success">
 
             </div>
+            <div class="hidden" id="complete-scode">
+                <pre class="prettyprint"><?php if (isset($this->completeSourceCode)) echo $this->completeSourceCode; ?></pre>
+            </div>
             <br>
 
             <!-- Options
@@ -110,6 +113,7 @@
                         <button type="button" class="btn btn-default" id="parameter-btn">Parameters</button>
                         <button type="button" class="btn btn-default" id="cookie-btn">Cookies</button>
                         <button type="button" class="btn btn-default" id="lesson-plan-btn">Lesson Plan</button>
+                        <button class="btn btn-default" id="show-php-btn">Show PHP</button>
                         <button type="button" class="btn btn-default" id="solution-btn">Solution</button>
                     </div>
                 </div>
