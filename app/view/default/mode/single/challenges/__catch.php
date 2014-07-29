@@ -107,7 +107,7 @@
             <!-- Options
             ============-->
             <div class="row">
-                <div class="col-md-7 col-md-offset-3"><!--To Place it in the center-->
+                <div class="col-md-8 col-md-offset-2"><!--To Place it in the center-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default" id="hints-btn" >Hints</button>
                         <button type="button" class="btn btn-default" id="parameter-btn">Parameters</button>
