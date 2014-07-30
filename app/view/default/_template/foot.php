@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <p>If you have any queries please write to us at
-                     <span style="color:#d2322d">webgoatphp at owasp dot org</span></p>
+                     <span style="color:#d2322d">shivam dot dixit at owasp dot org</span></p>
                 <p>Thank You</p>
             </div>
             <div class="modal-footer">
