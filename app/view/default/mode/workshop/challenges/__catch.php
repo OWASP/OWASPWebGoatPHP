@@ -5,7 +5,7 @@
 ============-->
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a href="#" class="navbar-brand" style="color:white"><b>Workshop Mode</b></a>
+        <a href="#" class="navbar-brand"><b>Workshop Mode</b></a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
