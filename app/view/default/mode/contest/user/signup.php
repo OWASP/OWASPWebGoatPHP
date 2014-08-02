@@ -13,7 +13,7 @@
         <h2 class="form-signin-heading">Contest sign up</h2>
         <input type="text" class="form-control"  name="Username" placeholder="Username" required autofocus>
         <input type="password" class="form-control" name="Password" placeholder="Password" required>
-        <input type="password" class="form-control" name="Confirm" placeholder="Password" required>
+        <input type="password" class="form-control" name="Confirm" placeholder="Confirm password" required>
         <input type="email" class="form-control" name="Email" placeholder="Email" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
