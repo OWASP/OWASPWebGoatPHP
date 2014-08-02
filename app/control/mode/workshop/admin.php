@@ -46,7 +46,9 @@ class ModeWorkshopAdmin extends JControl
                 // To generate 'overview' section of the dashboard
                 // Store all the stats
                 $obj = new \webgoat\WorkshopUsers();
-                $workshopUsers = $obj->getAll();
+                if (($workshopUsers = $obj->getAll()) === null) { // Will return 'null' if no users are present
+                    $workshopUsers = array();   // Initialize it to empty array
+                }
                 $this->totalUsers = count($workshopUsers);
                 $this->totalCategories = count($this->allCategoryLesson);
 
