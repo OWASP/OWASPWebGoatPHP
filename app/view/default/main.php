@@ -43,24 +43,25 @@
             <h3>Single-User Mode</h3>
             <p>Browse all the lessons that are available. You can view hints and submit solutions.
                 This mode is suitable for individuals who want a hands-on experience with various security flaws.</p>
-            <a href="<?php echo SINGLE_MODE_LESSON_URL ?>" class="btn btn-default">Get Started</a>
+            <a href="<?php echo SINGLE_MODE_LESSON_URL; ?>" class="btn btn-default">Get Started</a>
         </div>
         <div class="col-md-3">
             <h3>Workshop Mode</h3>
             <p>It has a  centralized control system using which a lecturer controls various options like
                 challenge selection, hints etc. This mode provides an ideal collaborative learning environment.</p>
-            <a href="<?php echo WORKSHOP_MODE_LESSON_URL ?>" class="btn btn-default">Get Started</a>
+            <a href="<?php echo WORKSHOP_MODE_LESSON_URL; ?>" class="btn btn-default">Get Started</a>
         </div>
         <div class="col-md-3">
             <h3>Contest (CTF) Mode</h3>
-            <p >Take part in a live CTF contest. You are required to sign-up before you can take part in a contest.</p>
-            <a href="<?php echo CONTEST_MODE_URL ?>" class="btn btn-default">Get Started</a>
-        </div>
+            <p>Take part in a live CTF contest. You are required to sign-up before you can take part in a contest.</p>
+            <a href="<?php echo CONTEST_MODE_URL.'user/signup'; ?>" class="btn btn-default">Sign up</a>
+            <a href="<?php echo CONTEST_MODE_URL; ?>" class="btn btn-default">Get Started</a>
+         </div>
         <div class="col-md-3">
             <h3>Secure Coding Mode</h3>
-            <p >Patch security vulnerabilities and learn about secure coding practices.
+            <p>Patch security vulnerabilities and learn about secure coding practices.
                 You are required to modify vulnerable source code in such a way that vulnerability no longer exists.</p>
-            <a href="<?php echo CODING_MODE_LESSON_URL ?>" class="btn btn-default">Get Started</a>
+            <a href="<?php echo CODING_MODE_LESSON_URL; ?>" class="btn btn-default">Get Started</a>
         </div>
     </div>
 </div>
