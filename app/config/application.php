@@ -19,7 +19,7 @@ const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
  * Deploy, Develop or Command Line. Provide necessary logic for it to determine correctly
  */
 if (HttpRequest::Host()=="localhost"
-		or strpos(HttpRequest::Host(),"192.168.")!==false)
+		or strpos(HttpRequest::Host(),"192.168.")!==false or strpos(HttpRequest::Host(),"172.22.")!==false)
 	jf::$RunMode->Add(RunModes::Develop);
 elseif (strpos(HttpRequest::Host(),"webgoatphp.com")!==false) #TODO:replace this with your site
 	jf::$RunMode->Add(RunModes::Deploy);
