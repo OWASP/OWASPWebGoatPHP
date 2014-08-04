@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="author" content="Shivam Dixit">
+        <link rel="shortcut icon" type="image/png" href="<?php echo jf::url().'/images/favicon.ico'; ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/bootstrap.min.css'?>">
         <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/style.css'?>">
         <link rel="stylesheet" href="<?php echo jf::url()?>/style/reveal.css">
