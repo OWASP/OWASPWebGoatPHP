@@ -24,15 +24,22 @@
 
 <div class="container">
     <div class="jumbotron">
-            <h1>WebGoatPHP</h1>
-            <p>
-                WebGoatPHP is a deliberately insecure web application developed using PHP to teach
-                web application security. It offers a set of challenges based on various vulnerabilities listed
-                in OWASP. In each challenge the user must exploit the real vulnerability to demonstrate their
-                understanding. The application is a realistic teaching environment
-                and supports four different modes.
-            </p>
-            <a href="<?php echo jf::url().'/about' ?>" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>WebGoatPHP</h1>
+            </div>
+            <div class="col-sm-2" style="padding-left: 0;">
+                <img src="<?php echo jf::url()."/images/logo.png"?>" class="img-responsive">
+            </div>
+        </div>
+        <p>
+            WebGoatPHP is a deliberately insecure web application developed using PHP to teach
+            web application security. It offers a set of challenges based on various vulnerabilities listed
+            in OWASP. In each challenge the user must exploit the real vulnerability to demonstrate their
+            understanding. The application is a realistic teaching environment
+            and supports four different modes.
+        </p>
+        <a href="<?php echo jf::url().'/about' ?>" class="btn btn-primary btn-lg">Learn more &raquo;</a>
     </div>
     <hr>
 </div>
