@@ -1,6 +1,5 @@
-WebGoatPHP
+WebGoatPHP<img src="https://raw.githubusercontent.com/shivamdixit/WebGoatPHP/master/images/logo.png"  height="50">
 ==========
-![Logo](https://raw.githubusercontent.com/shivamdixit/WebGoatPHP/master/images/logo.png)
 
 OWASP WebGoatPHP is a port of OWASP WebGoat to PHP and MySQL/SQLite databases. The goal is to create an interactive teaching environment for web application security by offering lessons in the form of challenges. In each challenge the user must exploit the vulnerability to demonstrate their understanding.
 
@@ -49,6 +48,12 @@ Adding a new challenge is very simple. All the challenges must be present in 'ch
 There are few methods which your lesson need to implement like start(), getTitle(), getCategory(), reset() etc.
 
 Once you have added the lesson click on "Refresh List" button at the top of the application to display your lesson in the list.
+
+###Contributors
+* Abbas Naderi
+* Johanna Curiel
+* Shivam Dixit
+* Prasham Gupta (Logo)
 
 ###Contact
 If you have any questions join the discussion on our [mailing list](https://lists.owasp.org/mailman/listinfo/owasp_webgoatphp) or write an email to: shivam.dixit[at]owasp.org
