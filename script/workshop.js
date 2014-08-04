@@ -1,3 +1,7 @@
+/**************************************
+ * Script for workshop admin dashboard*
+ **************************************/
+
 var defaultHash = "overview";
 
 /**
