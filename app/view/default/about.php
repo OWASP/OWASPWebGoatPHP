@@ -95,7 +95,7 @@
                             participants etc. A contestant is required to sign-up before taking part in a contest.
                             A real time leader-board is also maintained on the basis of score and time.
                             <br><br>
-                            <a href="<?php echo CONTEST_MODE_DIR."home"; ?>" class="btn btn-primary">Get Started</a>
+                            <a href="<?php echo CONTEST_MODE_HOME; ?>" class="btn btn-primary">Get Started</a>
                         </div>
                     </div>
                 </div>
