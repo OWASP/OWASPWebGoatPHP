@@ -86,7 +86,7 @@ class ModeContestUserSignupController extends JControl
         $myEmail = "admin@webgoatphp.com";
         $content = "Thank you for joining ".constant("jf_Application_Title"). " {$username},
                 Please open the following link in order to activate your account:
-                ".CONTEST_MODE_URL."user/signup?validate={$activationToken}
+                ".CONTEST_MODE_DIR."user/signup?validate={$activationToken}
 
                 If you did not sign up on this site, just ignore this email.";
         return mail($email, "Account Confirmation", $content, "From: ".constant("jf_Application_Name")." <{$myEmail}>");
