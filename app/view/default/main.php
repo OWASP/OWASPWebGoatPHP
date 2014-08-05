@@ -25,10 +25,10 @@
 <div class="container">
     <div class="jumbotron">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-lg-5">
                 <h1>WebGoatPHP</h1>
             </div>
-            <div class="col-sm-2" style="padding-left: 0;">
+            <div class="col-lg-2" style="padding-left: 0;">
                 <img src="<?php echo jf::url()."/images/logo.png"?>" class="img-responsive">
             </div>
         </div>
