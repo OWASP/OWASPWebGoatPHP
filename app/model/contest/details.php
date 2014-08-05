@@ -33,6 +33,8 @@ class ContestDetails extends \JModel
 
     /**
      * Inserts the record into the database
+     * Array must be of the form:
+     * array('col_1' => val_1, 'col_2' => val_2, ...)
      *
      * @param $array Array key-value pairs to insert
      *
