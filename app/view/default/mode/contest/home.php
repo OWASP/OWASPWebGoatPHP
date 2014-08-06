@@ -20,6 +20,9 @@
                 <li><a href="#">Rules</a></li>
                 <li><a href="#">Leaderboard</a></li>
                 <li><a href="#contact" data-toggle="modal">Contact</a></li>
+                <?php if (jf::Check("contest")): ?>
+                    <li><a href="<?php echo CONTEST_ADMIN_URL;?>">Dashboard</a></li>
+                <?php endif;?>
                 <li><a href="<?php echo jf::url().'/user/logout'?>">Logout</a></li>
             </ul>
         </div>
