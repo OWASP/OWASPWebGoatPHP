@@ -23,7 +23,7 @@
 <!--navbar
 ============-->
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <a href="#" class="navbar-brand" style="color:white"><b>Workshop Mode</b></a>
+    <a href="#" class="navbar-brand">Workshop Mode</a>
     <div class="container">
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
