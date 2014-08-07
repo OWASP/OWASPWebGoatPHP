@@ -25,7 +25,6 @@
     <div class="ajax-content"></div>
 </div>
 
-<script type="text/javascript" src="<?php echo jf::url()?>/script/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/prettify/run_prettify.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/jquery.reveal.js"></script>
 <script type="text/javascript" src="<?php echo jf::url()?>/script/challenges.js"></script>
