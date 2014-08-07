@@ -7,12 +7,19 @@
 <script type="text/javascript">
     $(function() {
         // Initialize the date time picker
-        $('#start-date-time').datetimepicker({
-            language: 'en'
+        var startDate = $('#start-date-time');
+        var endDate = $('#end-date-time');
+
+        startDate.datetimepicker({language: 'en'});
+        endDate.datetimepicker({language: 'en'});
+
+        startDate.data("DateTimePicker").setMinDate(new Date());
+        endDate.data("DateTimePicker").setMinDate(new Date());
+
+        startDate.on("dp.change", function(e) {
+            endDate.data("DateTimePicker").setMinDate(new Date(e.date));
         });
-        $('#end-date-time').datetimepicker({
-            language: 'en'
-        });
+
     });
 </script>
 
@@ -82,7 +89,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="contest-name"
-                                               placeholder="Enter name" name="contest_name">
+                                               placeholder="Enter name" name="contest_name" required="required">
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +99,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" id="contest-admin"
-                                               placeholder="Enter name" name="contest_admin">
+                                               placeholder="Enter name" name="contest_admin" required="required">
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +110,7 @@
                                         <div id="start-date-time" class="input-group date">
                                             <div class="input-group">
                                                 <input data-format="DD/MM/YYYY hh:mm a" type="text"
-                                                       class="form-control" name="start_date">
+                                                       class="form-control" name="start_date" required="required">
                                                 <div class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </div>
@@ -115,7 +122,7 @@
                                         <div id="end-date-time" class="input-group date">
                                             <div class="input-group">
                                                 <input data-format="DD/MM/YYYY hh:mm a" type="text"
-                                                       class="form-control" name="end_date">
+                                                       class="form-control" name="end_date" required="required">
                                                 <div class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </div>

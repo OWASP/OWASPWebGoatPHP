@@ -10,14 +10,21 @@ class ModeContestAdmin extends JControl
 
                 if (isset($_POST['contest_submit'])) {
                     // Request to store the contest in the database
-                    $data = array(
-                        'ContestName' => $_POST['contest_name'],
-                        'ContestAdmin' => $_POST['contest_admin'],
-                        'StartTimestamp' => strtotime($_POST['start_date']),
-                        'EndTimestamp' => strtotime($_POST['end_date'])
-                    );
+                    $startTimestamp = strtotime($_POST['start_date']);
+                    $endTimestamp = strtotime($_POST['end_date']);
 
-                    \webgoat\ContestDetails::add($data);
+                    if ($startTimestamp >= $endTimestamp) {
+                        $this->Error = "Invalid Time";
+                    } else {
+                        $data = array(
+                            'ContestName' => $_POST['contest_name'],
+                            'ContestAdmin' => $_POST['contest_admin'],
+                            'StartTimestamp' => strtotime($_POST['start_date']),
+                            'EndTimestamp' => strtotime($_POST['end_date'])
+                        );
+
+                        \webgoat\ContestDetails::add($data);
+                    }
                 }
 
                 if (\webgoat\ContestDetails::isActivePresent()) {
