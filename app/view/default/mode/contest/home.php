@@ -8,6 +8,7 @@
         $(document).ready(function(){
             var countdownTimer = $('.countdown-clock').FlipClock(time, {
                 countdown: true,
+                clockFace: 'DailyCounter',
                 callbacks: {
                     stop: function() {
                         // Refresh the page
@@ -49,11 +50,11 @@
 <div class="container">
     <?php if(isset($this->TimeRemaining)):?>
         <div class="text-center">
-            <h1 class="text-success">Contest <?php echo $this->ContestName;?> starts in &nbsp;&nbsp;&nbsp;</h1>
+            <h1 class="text-success">Contest <strong><?php echo $this->ContestName;?></strong> starts in</h1>
         </div>
         <br>
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 v-center">
+            <div class="col-sm-7 col-sm-offset-3 v-center">
                 <div class="countdown-clock"></div>
             </div>
         </div>
