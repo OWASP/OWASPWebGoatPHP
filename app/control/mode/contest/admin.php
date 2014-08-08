@@ -16,7 +16,15 @@ class ModeContestAdmin extends JControl
                 if (\webgoat\ContestDetails::isActivePresent()) {
                     // If an active contest is present
                     $contestDetails = \webgoat\ContestDetails::getActive();
+                    $contestChallenges = \webgoat\ContestChallenges::getByContestID($contestDetails[0]['ID']);
+                    $contestUsers = \webgoat\ContestUsers::getAll();
+
                     $this->ContestName = $contestDetails[0]['ContestName'];
+                    $this->ContestStart = date("d/m/Y h:i:s A", $contestDetails[0]['StartTimestamp']);
+                    $this->ContestEnd = date("d/m/Y h:i:s A", $contestDetails[0]['EndTimestamp']);
+
+                    $this->UserCount = count($contestUsers);
+                    $this->ChallengeCount = count($contestChallenges);
                 } else {
                     // Show the option to start a contest
                     $this->noActiveContest = true;

@@ -137,7 +137,29 @@
                         </form>
 
                     <?php else: ?>
-                        <h3 class="text-primary">Contest details of '<?php echo $this->ContestName;?>':</h3>
+                        <h3 class="text-warning">Contest details of '<?php echo $this->ContestName;?>'</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Start Time</th>
+                                        <td><?php echo $this->ContestStart;?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>End Time</th>
+                                        <td><?php echo $this->ContestEnd;?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Users</th>
+                                        <td><?php echo $this->UserCount;?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Challenges</th>
+                                        <td><?php echo $this->ChallengeCount;?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     <?php endif;?>
                 </div><!---End overview--->
 
