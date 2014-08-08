@@ -71,7 +71,7 @@
                 <div id="overview-content" class="hidden">
                     <?php if (isset($this->noActiveContest)):?>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <div class="alert alert-danger">
                                     There is no active contest. <strong>Start one!</strong>
                                 </div>
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <h4>Enter contest details</h4>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <label for="contest-name">Contest Name</label>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <input type="text" class="form-control" id="contest-name"
                                                placeholder="Enter name" name="contest_name" required="required">
                                     </div>
@@ -98,7 +98,7 @@
                             <div class="form-group">
                                 <label for="contest-admin">Contest admin</label>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <input type="text" class="form-control" id="contest-admin"
                                                placeholder="Enter name" name="contest_admin" required="required">
                                     </div>
@@ -118,7 +118,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <label for="end-date-time">End date</label>
                                         <div id="end-date-time" class="input-group date">
                                             <div class="input-group">
