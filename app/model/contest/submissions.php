@@ -45,7 +45,7 @@ class ContestSubmissions extends \JModel
     public static function add($array = null)
     {
         if ($array === null || (count($array) <= 0)) {
-            throw new \Exception("Required parameter missing");
+            throw new InvalidArgumentException("Required parameter missing");
         }
 
         $keys = array_keys($array);
@@ -67,7 +67,7 @@ class ContestSubmissions extends \JModel
     public static function getByID($id = null)
     {
         if ($id === null) {
-            throw new \Exception("Required parameter missing");
+            throw new InvalidArgumentException("Required parameter missing");
         }
 
         return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ID = ?", $id);
