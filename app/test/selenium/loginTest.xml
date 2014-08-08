@@ -12,29 +12,29 @@
 <tr><td rowspan="1" colspan="3">loginTest</td></tr>
 </thead><tbody>
 <tr>
-	<td>open</td>
-	<td>/user/login</td>
-	<td></td>
+    <td>open</td>
+    <td>/user/login</td>
+    <td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>name=Username</td>
-	<td>guest</td>
+    <td>type</td>
+    <td>name=Username</td>
+    <td>guest</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>name=Password</td>
-	<td>guest</td>
+    <td>type</td>
+    <td>name=Password</td>
+    <td>guest</td>
 </tr>
 <tr>
-	<td>submitAndWait</td>
-	<td>//form[1]</td>
-	<td></td>
+    <td>submitAndWait</td>
+    <td>//form[1]</td>
+    <td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=b</td>
-	<td>Single User Mode</td>
+    <td>assertText</td>
+    <td>css=b</td>
+    <td>Single User Mode</td>
 </tr>
 
 </tbody></table>
