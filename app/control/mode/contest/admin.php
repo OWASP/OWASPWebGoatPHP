@@ -10,21 +10,7 @@ class ModeContestAdmin extends JControl
 
                 if (isset($_POST['contest_submit'])) {
                     // Request to store the contest in the database
-                    $startTimestamp = strtotime($_POST['start_date']);
-                    $endTimestamp = strtotime($_POST['end_date']);
-
-                    if ($startTimestamp >= $endTimestamp) {
-                        $this->Error = "Invalid Time";
-                    } else {
-                        $data = array(
-                            'ContestName' => $_POST['contest_name'],
-                            'ContestAdmin' => $_POST['contest_admin'],
-                            'StartTimestamp' => strtotime($_POST['start_date']),
-                            'EndTimestamp' => strtotime($_POST['end_date'])
-                        );
-
-                        \webgoat\ContestDetails::add($data);
-                    }
+                    $this->addContest();
                 }
 
                 if (\webgoat\ContestDetails::isActivePresent()) {
@@ -43,6 +29,25 @@ class ModeContestAdmin extends JControl
         } else {
             // User is not authenticated
             $this->Redirect(jf::url()."/user/login?return=/".jf::$BaseRequest);
+        }
+    }
+
+    private function addContest()
+    {
+        $startTimestamp = strtotime($_POST['start_date']);
+        $endTimestamp = strtotime($_POST['end_date']);
+
+        if ($startTimestamp >= $endTimestamp) {
+            $this->Error = "Invalid Time";
+        } else {
+            $data = array(
+                'ContestName' => $_POST['contest_name'],
+                'ContestAdmin' => $_POST['contest_admin'],
+                'StartTimestamp' => strtotime($_POST['start_date']),
+                'EndTimestamp' => strtotime($_POST['end_date'])
+            );
+
+            \webgoat\ContestDetails::add($data);
         }
     }
 }
