@@ -60,6 +60,7 @@
                 <li id="challenges"><a href="#challenges">Challenges</a></li>
             </ul>
             <ul class="nav nav-sidebar">
+                <li id="account-settings"><a href="#settings">Account Settings</a></li>
             </ul>
         </div>
 
@@ -135,7 +136,46 @@
                             <input type="submit" class="btn btn-success btn-lg" name="contest_submit" value="Submit">
                         </form>
                     <?php endif;?>
-                </div>
+                </div><!---End overview--->
+
+                <!--------------------ACCOUNT SETTINGS------------------>
+                <div id="account-settings-content" class="hidden">
+                    <h3>Change Password</h3>
+                    <br>
+                    <form role="form" method="POST" action="<?php echo CONTEST_MODE_DIR."user/update"?>"
+                          id="reset-pass-form">
+                        <div class="form-group">
+                            <label for="old-password">Old Password</label>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <input type="password" id="old-password" class="form-control" name="old_password"
+                                           placeholder="Enter your password" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <input type="password" id="new-password" class="form-control" name="new_password"
+                                        placeholder="Enter new password" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cnew-password">New Password</label>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <input type="password" id="cnew-password" class="form-control" name="cnew_password"
+                                           placeholder="Confirm password" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-default" name="password_reset_submit" value="Submit"
+                            id="pass-reset-btn">
+                    </form>
+                </div><!----End account settings---->
 
             </div><!--End main-content-->
 

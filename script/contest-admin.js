@@ -20,6 +20,31 @@ $(document).ready(function(){
         // If hash is already present in the URL
         chooseWindow();
     }
+
+    // To handle the reset password form
+    $("#reset-pass-form").submit(function(e){
+        e.preventDefault();
+        $("#pass-reset-btn").val("Please wait...");
+
+        $.ajax({
+            method: "POST",
+            url: $(this).attr("action"),
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(data) {
+                $("#pass-reset-btn").val("Submit");
+
+                if (data.status == false) {
+                    alert(data.error);
+                } else {
+                    alert(data.message);
+                    $("#old-password").val('');
+                    $("#new-password").val('');
+                    $("#cnew-password").val('');
+                }
+            }
+        });
+    });
 });
 
 /**
@@ -50,6 +75,10 @@ function chooseWindow()
 
         case "challenges":
             showChallenges();
+            break;
+
+        case "settings":
+            showSettings();
             break;
 
         default:
@@ -112,11 +141,21 @@ function showUsers()
 }
 
 /**
- * To display settings page
+ * To display challenge page
  */
 function showChallenges()
 {
     $("#heading").html("Challenges");
     $("#challenges").addClass("active");
     $("#challenges-content").removeClass("hidden");
+}
+
+/**
+ * To display account settings
+ */
+function showSettings()
+{
+    $("#heading").html("Account Settings");
+    $("#account-settings").addClass("active");
+    $("#account-settings-content").removeClass("hidden");
 }
