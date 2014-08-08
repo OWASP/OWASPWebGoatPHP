@@ -135,6 +135,9 @@
                             <br>
                             <input type="submit" class="btn btn-success btn-lg" name="contest_submit" value="Submit">
                         </form>
+
+                    <?php else: ?>
+                        <h3 class="text-primary">Contest details of '<?php echo $this->ContestName;?>':</h3>
                     <?php endif;?>
                 </div><!---End overview--->
 

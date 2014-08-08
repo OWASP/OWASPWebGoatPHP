@@ -15,7 +15,8 @@ class ModeContestAdmin extends JControl
 
                 if (\webgoat\ContestDetails::isActivePresent()) {
                     // If an active contest is present
-
+                    $contestDetails = \webgoat\ContestDetails::getActive();
+                    $this->ContestName = $contestDetails[0]['ContestName'];
                 } else {
                     // Show the option to start a contest
                     $this->noActiveContest = true;
