@@ -2,6 +2,23 @@
 <script src="<?php echo jf::url().'/script/flipclock.min.js'?>"></script>
 <script src="<?php echo jf::url().'/script/contest.js'?>"></script>
 
+<?php if(isset($this->TimeRemaining)):?>
+    <script>
+        var time = <?php echo $this->TimeRemaining;?>;
+        $(document).ready(function(){
+            var countdownTimer = $('.countdown-clock').FlipClock(time, {
+                countdown: true,
+                callbacks: {
+                    stop: function() {
+                        // Refresh the page
+                        window.location.href = window.location.href;
+                    }
+                }
+            });
+        });
+    </script>
+<?php endif; ?>
+
 <!--navbar
 ============-->
 <div class="navbar navbar-inverse navbar-static-top">
@@ -30,12 +47,19 @@
 </div>
 
 <div class="container">
-    <div class="text-center v-center">
-        <h1>Contest starts in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1><br>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 v-center">
-            <div class="countdown-clock"></div>
+    <?php if(isset($this->TimeRemaining)):?>
+        <div class="text-center">
+            <h1 class="text-success">Contest <?php echo $this->ContestName;?> starts in &nbsp;&nbsp;&nbsp;</h1>
         </div>
-    </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 v-center">
+                <div class="countdown-clock"></div>
+            </div>
+        </div>
+    <?php endif;?>
+
+    <?php if(isset($this->Error)):?>
+        <div class="alert alert-danger text-center"><?php echo $this->Error; ?></div>
+    <?php endif;?>
 </div>
