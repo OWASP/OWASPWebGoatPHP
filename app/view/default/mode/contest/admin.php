@@ -19,7 +19,6 @@
         startDate.on("dp.change", function(e) {
             endDate.data("DateTimePicker").setMinDate(new Date(e.date));
         });
-
     });
 </script>
 
