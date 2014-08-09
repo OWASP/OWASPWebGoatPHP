@@ -51,6 +51,7 @@ CREATE TABLE `contest_challenges` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ContestID` int(11) NOT NULL,
   `ChallengeName` varchar(100) NOT NULL,
+  `NameToDisplay` varchar(100) NOT NULL,
   `Points` int(11) NOT NULL,
   `TotalAttempts` int(11) DEFAULT NULL,
   `CompletedCount` int(11) DEFAULT NULL,
