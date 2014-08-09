@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/dashboard.css'?>">
 <link rel="stylesheet" type="text/css" href="<?php echo jf::url().'/style/bootstrap-datetimepicker.css'?>">
 
+<?php if(isset($this->noActiveContest)):?>
 <script type="text/javascript">
     $(function() {
         // Initialize the date time picker
@@ -21,6 +22,7 @@
         });
     });
 </script>
+<?php endif;?>
 
 <script>
     var addChallengeURL = "<?php echo CONTEST_MODE_DIR."ajax/challenge"?>";
