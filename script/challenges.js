@@ -101,7 +101,7 @@ $(document).ready(function(){
     });
 
     $("#show-php-btn").click(function(){
-        var w = window.open("about:blank", "Source Code", "height=600,width=600");
+        var w = window.open("", "Source Code", "scrollbars=1,height=600,width=600");
         var html = $("#complete-scode").html();
         $(w.document.body).html(html);
     });
