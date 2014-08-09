@@ -162,6 +162,72 @@
                     <?php endif;?>
                 </div><!---End overview--->
 
+                <!-------------------REPORTS---------------------->
+                <div class="hidden" id="reports-content">
+                    <?php if(isset($this->noActiveContest)): ?>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="alert alert-danger">
+                                    <strong>Please create a contest first!</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php else: ?>
+                        <div>Coming Soon...</div>
+                    <?php endif; ?>
+                </div><!--End report-->
+
+                <!-------------------ANALYTICS---------------------->
+                <div class="hidden" id="analytics-content">
+                    <?php if(isset($this->noActiveContest)): ?>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="alert alert-danger">
+                                    <strong>Please create a contest first!</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php else: ?>
+                        <div>Coming Soon...</div>
+                    <?php endif; ?>
+                </div><!--End analytics-->
+
+                <!-------------------USERS---------------------->
+                <div class="hidden" id="users-content">
+                    <?php if(isset($this->noActiveContest)): ?>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="alert alert-danger">
+                                    <strong>Please create a contest first!</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php else: ?>
+                        <div>Coming Soon...</div>
+                    <?php endif; ?>
+                </div><!--End users-->
+
+                <!-------------------CHALLENGES---------------------->
+                <div class="hidden" id="challenges-content">
+                    <?php if(isset($this->noActiveContest)): ?>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="alert alert-danger">
+                                    <strong>Please create a contest first!</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php else: ?>
+                        <div>Coming Soon...</div>
+                    <?php endif; ?>
+                </div><!--End challenges-->
+
+
+
                 <!--------------------ACCOUNT SETTINGS------------------>
                 <div id="account-settings-content" class="hidden">
                     <h3>Change Password</h3>
