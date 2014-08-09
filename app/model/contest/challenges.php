@@ -39,7 +39,7 @@ class ContestChallenges extends \JModel
      * @param $array Array key-value pairs to insert
      *
      * @return int Returns the insert ID (auto increment)
-     * @throws \Exception Required parameter missing
+     * @throws InvalidArgumentException If required parameter is missing
      */
     public static function add($array = null)
     {
@@ -56,12 +56,12 @@ class ContestChallenges extends \JModel
     }
 
     /**
-     * Fetch challenge details from the database
+     * Fetch challenge details from the database by challenge ID
      *
      * @param int $id ID to search for
      *
      * @return array Result of the query
-     * @throws \Exception Required parameter missing
+     * @throws InvalidArgumentException If required parameter is missing
      */
     public static function getByID($id = null)
     {
@@ -72,6 +72,32 @@ class ContestChallenges extends \JModel
         return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ID = ?", $id);
     }
 
+    /**
+     * Fetch details of a challenge by a given name
+     *
+     * @param string $challengeName Name of the challenge
+     *
+     * @return mixed Array containing details of challenge, null
+     * if challenge is not present
+     * @throws InvalidArgumentException
+     */
+    public static function getByName($challengeName = null)
+    {
+        if ($challengeName === null) {
+            throw new InvalidArgumentException("Required parameter missing");
+        }
+
+        return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ChallengeName = ?", $challengeName);
+    }
+
+    /**
+     * Fetch challenges of a given contest from the database
+     *
+     * @param int $contestID ID of the contest
+     *
+     * @return mixed Array of challenges if present, else null
+     * @throws InvalidArgumentException If required params are missing
+     */
     public static function getByContestID($contestID = null)
     {
         if ($contestID === null) {
@@ -79,5 +105,17 @@ class ContestChallenges extends \JModel
         }
 
         return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ContestID = ?", $contestID);
+    }
+
+    /**
+     * Delete all the challenges of a given contest ID
+     */
+    public static function deleteByContestID($contestID = null)
+    {
+        if ($contestID === null) {
+            throw new InvalidArgumentException("Required parameter missing");
+        }
+
+        \jf::SQL("DELETE FROM ".self::TABLE_NAME. " WHERE ContestID = ?", $contestID);
     }
 }
