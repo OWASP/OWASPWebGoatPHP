@@ -4,7 +4,8 @@
 ####################################################################################
 
 //Path to lessons directory
-define('LESSON_PATH', dirname(__FILE__)."/../../challenges/");
+define('LESSON_PATH', dirname(__FILE__)."/../../challenges/single/");
+define('CONTEST_CHALLENGE_PATH', dirname(__FILE__)."/../../challenges/contest/");
 
 //URL of lessons
 define('SINGLE_MODE_LESSON_URL', jf::url()."/mode/single/challenges/");
