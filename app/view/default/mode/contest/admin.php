@@ -22,6 +22,9 @@
     });
 </script>
 
+<script>
+    var addChallengeURL = "<?php echo CONTEST_MODE_DIR."ajax/challenge"?>";
+</script>
 <!--navbar
 ============-->
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -222,7 +225,73 @@
                         </div>
 
                     <?php else: ?>
-                        <div>Coming Soon...</div>
+                        <h3>Present Challenges</h3>
+                        <?php if ($this->ChallengeCount == 0):?>
+                            <p class="text-danger">There are no challenges. Add Now!</p>
+                        <?php else: ?>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Challenge</th>
+                                            <th>Name</th>
+                                            <th>Points</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                            $i = 1;
+                                            foreach ($this->Challenges as $challenge) {
+                                                echo "<tr>";
+                                                echo "<td>$i</td>";
+                                                echo "<td>$challenge[ChallengeName]</td>";
+                                                echo "<td>$challenge[NameToDisplay]</td>";
+                                                echo "<td>$challenge[Points]</td>";
+                                                echo "</tr>";
+                                                $i++;
+                                            }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <hr>
+                        <h3>New Challenges</h3>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width='20%'>Challenge</th>
+                                            <th>Name</th>
+                                            <th width='20%'>Points</th>
+                                            <th width='20%'>Flag</th>
+                                            <th width="5%">Add</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        foreach ($this->newChallenges as $challenge) {
+                                            echo "<tr>";
+                                            echo "<td class='challenge'>$challenge</td>";
+                                            echo '<td><input type="text" class="form-control" name="name"
+                                                            placeholder="Enter Challenge Name"></td>';
+                                            echo '<td><input type="text" class="form-control" name="points"
+                                                            placeholder="Points"></td>';
+                                            echo '<td><input type="text" class="form-control" name="flag"
+                                                            placeholder="Flag"></td>';
+                                            echo '<td><input type="checkbox" class="checkbox"></td>';
+                                            echo "<tr>";
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     <?php endif; ?>
                 </div><!--End challenges-->
 

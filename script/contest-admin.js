@@ -45,6 +45,27 @@ $(document).ready(function(){
             }
         });
     });
+
+    // To handle challenge addition ajax events
+    $(".checkbox").click(function(){
+        var tr = $(this).parents("tr");
+
+        var challenge = tr.find(".challenge").html();
+        var name = tr.find("input[name='name']").val();
+        var points = tr.find("input[name='points']").val();
+        var flag = tr.find("input[name='flag']").val();
+
+        tr.addClass("success");
+
+        $.ajax({
+            method: "POST",
+            url: addChallengeURL,
+            data: "challenge="+challenge+"&name="+name+"&points="+points+"&flag="+flag,
+            success: function() {
+                tr.fadeOut(200);
+            }
+        });
+    });
 });
 
 /**

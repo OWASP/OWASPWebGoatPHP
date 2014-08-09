@@ -25,6 +25,9 @@ class ModeContestAdmin extends JControl
 
                     $this->UserCount = count($contestUsers);
                     $this->ChallengeCount = count($contestChallenges);
+
+                    $this->Challenges = $contestChallenges;
+                    $this->insertNewChallenges();
                 } else {
                     // Show the option to start a contest
                     $this->noActiveContest = true;
@@ -58,5 +61,19 @@ class ModeContestAdmin extends JControl
 
             \webgoat\ContestDetails::add($data);
         }
+    }
+
+    private function insertNewChallenges()
+    {
+        $allChallenges = \webgoat\ContestChallengeScanner::run();
+
+        $result = array();
+        foreach ($allChallenges as $challenge) {
+            if (($details = \webgoat\ContestChallenges::getByName($challenge)) === null) {
+                array_push($result, $challenge);
+            }
+        }
+
+        $this->newChallenges = $result;
     }
 }
