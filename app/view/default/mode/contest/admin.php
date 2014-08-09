@@ -228,38 +228,40 @@
 
                     <?php else: ?>
                         <h3>Present Challenges</h3>
-                        <?php if ($this->ChallengeCount == 0):?>
-                            <p class="text-danger">There are no challenges. Add Now!</p>
-                        <?php else: ?>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>S.No</th>
-                                            <th>Challenge</th>
-                                            <th>Name</th>
-                                            <th>Points</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                            $i = 1;
-                                            foreach ($this->Challenges as $challenge) {
-                                                echo "<tr>";
-                                                echo "<td>$i</td>";
-                                                echo "<td>$challenge[ChallengeName]</td>";
-                                                echo "<td>$challenge[NameToDisplay]</td>";
-                                                echo "<td>$challenge[Points]</td>";
-                                                echo "</tr>";
-                                                $i++;
-                                            }
-                                        ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Challenge</th>
+                                        <th>Name</th>
+                                        <th>Points</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="present-challenges-table">
+                                    <?php
+                                    if ($this->ChallengeCount != 0) {
+                                        $i = 1;
+                                        foreach ($this->Challenges as $challenge) {
+                                            echo "<tr>";
+                                            echo "<td>$i</td>";
+                                            echo "<td>$challenge[ChallengeName]</td>";
+                                            echo "<td>$challenge[NameToDisplay]</td>";
+                                            echo "<td>$challenge[Points]</td>";
+                                            echo "</tr>";
+                                            $i++;
+                                        }
+                                    } else {
+                                        echo '<p class="text-danger" id="no-challenges">
+                                        There are no challenges. Add Now!
+                                        </p>';
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
                             </div>
-                        <?php endif; ?>
+                        </div>
 
                         <hr>
                         <h3>New Challenges</h3>

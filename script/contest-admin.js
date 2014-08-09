@@ -55,6 +55,9 @@ $(document).ready(function(){
         var points = tr.find("input[name='points']").val();
         var flag = tr.find("input[name='flag']").val();
 
+        var currentSNo = -1;   // To store Last S.No of Present Challenges table
+        var pChallengesTable = $("#present-challenges-table");
+
         if (challenge === '') {
             alert("Invalid request");
             return false;
@@ -76,7 +79,27 @@ $(document).ready(function(){
             url: addChallengeURL,
             data: "challenge="+challenge+"&name="+name+"&points="+points+"&flag="+flag,
             success: function() {
+                // When challenge is successfully added, remove it from
+                // the "New Challenges" table and insert it in the
+                // "Present Challenge" Table
                 tr.fadeOut(200);
+
+                if (pChallengesTable.find("tr").length == 0) {
+                    // i.e no entry in this table
+                    currentSNo = 1;
+                    $("#no-challenges").html(""); // Remove the No challenges text
+                } else if (currentSNo != -1) {
+                    // i.e currentSNO is found in prev request
+                    currentSNo++;
+                } else {
+                    currentSNo = pChallengesTable.children("tr:last").children("td:first").html();
+                    currentSNo++;
+                }
+
+                pChallengesTable.append(
+                    "<tr><td>"+currentSNo+"</td><td>"+challenge+"</td><td>"+
+                        name+"</td><td>"+points+"</td></tr>"
+                );
             }
         });
     });
