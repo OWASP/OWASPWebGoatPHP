@@ -1,0 +1,15 @@
+<h3>Solution</h3>
+
+<p>View the source code of the application</p>
+<img src="static/1.png" class="img-responsive" alt="Page Source"><br>
+<p>You will notice some obfuscated JavaScript code. Let's decode it step by step</p>
+<p>1. Separate the statements</p>
+<img src="static/2.png" class="img-responsive"><br>
+<p>2. Change all the occurrences of the variable name to something simpler like 'x'. Use an online <a href="http://ddecode.com/hexdecoder/">decoder</a> to convert the hex to string.
+</p>
+<img src="static/3.png" class="img-responsive"><br>
+<p>3. Substitute the value of variable <em>x[0x1]</em> i.e x[1] and <em>x[0x0]</em> i.e x[0].</p>
+<img src="static/4.png" class="img-responsive"><br>
+<p>4. Use the JS console to convert the remaining ASCII encoded text</p>
+<img src="static/5.png" class="img-responsive"><br>
+<p>You can clearly see the password now! Enter 'itWasE@sz' in the password field to complete the lesson.</p>

@@ -1,0 +1,31 @@
+<p>Try to purchase the HDTV for less than the purchase price, if you have not done so already. </p>
+<hr>
+
+<h4 class="text-center">Shopping Cart</h4>
+<br>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <form method="POST" id="my-form">
+            <input type="hidden" name="price" value="3000">
+        </form>
+        <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Shopping Cart Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>56 inch HDTV (model KTV-551)</td>
+                        <td>3000</td>
+                        <td><input type="text" name="quantity" class="form-control" value="1" form="my-form"></td>
+                    </tr>
+                </tbody>
+        </table>
+
+        <input type="submit" class="btn btn-default" name="submit" value="Submit" form="my-form">
+    </div>
+</div>
+<br>

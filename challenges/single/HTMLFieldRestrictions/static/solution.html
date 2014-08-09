@@ -1,0 +1,8 @@
+<h3>Solution</h3>
+
+<p>To solve this lesson, we need to put invalid characters (slashes, quotes, etc.) into all six fields. Since three of the fields are toggles or dropdowns, we will need to intercept the request with a proxy.
+We still need to put invalid data in the disabled field, however. There are two ways of accomplishing this; we can enable the field using Firebug, or we can insert an additional field using a proxy.
+
+<p>To enable the field, open Firebug and find the form containing all of our fields. Find the text input named "disabled-input". Delete the <em>disabled=""</em> parameter. This causes the field on the page to be unlocked, and will also cause the disabled-input variable to appear in proxy.</p>
+
+<img src="static/sol1.png" class="img-responsive" alt="Firebug">

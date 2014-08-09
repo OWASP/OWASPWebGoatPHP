@@ -1,0 +1,24 @@
+<p> The blue area below represents what is going to be logged in the web server's log file.
+ Your goal is to make it like a username "admin" has succeeded into logging in. Elevate your attack by adding a script to the log file. </p>
+<br>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-1">
+		<form class="form" method="POST">
+		    <div class="form-group">
+		        <label for="username">User Name:</label>
+		        <input type="text" class="form-control" placeholder="User Name" id="username" name="username">
+		    </div>
+		    <div class="form-group">
+		        <label for="resource">Password:</label>
+		        <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+		    </div>
+		    <div class="form-group">
+		    	<input type="submit" class="btn btn-default" value="Login" name="submit">
+		    </div>
+		</form>
+	</div>
+
+	<div class="col-md-5 col-md-offset-1">
+		<label for="logfile">Log File:</label>
+		<div class="alert alert-info" id="logfile">Login failed for username:

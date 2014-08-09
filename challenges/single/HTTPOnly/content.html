@@ -1,0 +1,31 @@
+<script type="text/javascript" src="static/cookie.js"></script>
+<p>To help mitigate the cross site scripting threat, Microsoft has introduced a new cookie attribute entitled 'HttpOnly.' If this flag is set, then the browser should not allow client-side script to access the cookie. Since the attribute is relatively new, several browsers neglect to handle the new attribute properly. </p>
+<p>For a list of supported browsers see: <a href="http://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HTTPOnly">OWASP HTTPOnly Support</a></p>
+
+<p>The purpose of this lesson is to test whether your browser supports the HTTPOnly cookie flag. Note the value of the unique2u cookie. If your browser supports HTTPOnly, and you enable it for a cookie, client side code should NOT be able to read OR write to that cookie, but the browser can still send its value to the server. Some browsers only prevent client side read access, but don't prevent write access.
+</p>
+
+<p>
+With the HTTPOnly attribute turned on, type "javascript:alert(document.cookie)" in the browser address bar. Notice all cookies are displayed except the unique2u cookie.</p>
+
+<hr>
+
+<h4>Do you wish to turn on HTTPOnly ?</h4>
+<form method="POST">
+    <div class="radio">
+        <label>
+            <input type="radio" name="httpOnly" value="true" onclick="this.form.submit();" id="httpOnly-true">
+            Yes
+        </label>
+    </div>
+        <div class="radio">
+        <label>
+            <input type="radio" name="httpOnly" value="false" onclick="this.form.submit();" id="httpOnly-false" checked>
+            No
+        </label>
+    </div>
+</form>
+
+<br>
+<a href="#" class="btn btn-default" id="read-cookie">Read Cookie</a>
+<a href="#" class="btn btn-default" id="write-cookie">Write Cookie</a>

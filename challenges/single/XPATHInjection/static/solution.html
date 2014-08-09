@@ -1,0 +1,11 @@
+<h3>Solution</h3>
+
+<p>XPath injection is similar to SQL Injection. Input is not validated and used to create a XPath query. Here you can see how the XPATH query is built:</p>
+<p><em>$employees = $xml->xpath("/employees/employee[loginID='$_POST[username]' and passwd='$_POST[pass]']");</em></p>
+
+<p>Injecting <em>Smith' or 1=1 or 'a'='a</em> will log you on as the first user defined in the system. Password is a required field, so there you can enter whatever you want.</p>
+
+<p>This is how the server interprets it:<br>
+"/employees/employee[ ( loginID='Smith' or 1=1 ) OR ( 'a'='a' and passwd='password' ) ]"</p>
+
+<img src="static/sol1.png" class="img-responsive" alt="XPATH Injection">

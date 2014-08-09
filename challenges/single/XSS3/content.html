@@ -1,0 +1,23 @@
+<script type="text/javascript" src="static/xss.js"></script>
+<script type="text/javascript" src="static/image.js"></script>
+<p>
+The following image gallery displays images based on the image number without validating the number.</p>
+<p>The goal is to pop a javascript alert on the page</p>
+<hr>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h3>Take a look at our computers...</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button onclick="imageSelect(1)" class="btn btn-default" id="image-1">Computer 1</button>
+                <button onclick="imageSelect(2)" class="btn btn-default" id="image-2">Computer 2</button>
+                <button onclick="imageSelect(3)" class="btn btn-default" id="image-3">Computer 3</button>
+            </div>
+            <div class="panel-body" id="img-content">
+
+            </div>
+        </div>
+        <p>Image Courtesy: Google Images</p>
+    </div>
+</div>

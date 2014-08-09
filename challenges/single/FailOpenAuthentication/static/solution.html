@@ -1,0 +1,5 @@
+<h3>Solution</h3>
+
+<p>First make sure that a proxy (ex ZAP) is enabled and intercepting requests. Enter 'webgoat' as username and any random string as password. Intercept the request, delete the parameter 'password' and send the request. You will be successfully authenticated as 'webgoat' user.</p>
+
+<p>The problem is the method user is authenticated. Before verifying the credentials the user is logged in and a session is created. Now the credentials are checked, if they are incorrect the session is destroyed so that user cannot login. However because of the variable not set exception the code is skipped and the session is not destroyed.</p>

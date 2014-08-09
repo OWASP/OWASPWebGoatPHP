@@ -1,0 +1,27 @@
+<p>The user should be able to bypass the authentication check. Login using the webgoat/webgoat account to see what happens. You may also try owasp/owasp. When you understand the authentication cookie, try changing your identity to alice. </p>
+<hr>
+<!--LoginForm-->
+<div class="row">
+    <div class="col-sm-offset-2 col-sm-5">
+        <h4>Sign In</h4>
+    </div>
+</div>
+<form class="form-horizontal" role="form" method="POST">
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">UserName:</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="username" id="username" placeholder="User Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+            <input type="submit" name="submit" value="Login" class="btn btn-default">
+        </div>
+    </div>
+</form>

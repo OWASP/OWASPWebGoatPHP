@@ -1,0 +1,27 @@
+<script type="text/javascript" src="static/change.js"></script>
+<p>Web applications frequently provide their users the ability to retrieve a forgotten password. Unfortunately, many web applications fail to implement the mechanism properly. The information required to verify the identity of the user is often overly simplistic. </p>
+<h4>General Goal(s)</h4>
+<p>Users can retrieve their password if they can answer the secret question properly. There is no lock-out mechanism on this 'Forgot Password' page. The goal is to retrieve the password of admin. </p>
+<hr>
+<!--BeginForm-->
+<div class="row">
+    <div class="col-md-6 col-md-offset-4">
+        <h4>Recover Password</h4>
+        <form class="form-inline" role="form" method="POST">
+            <div class="form-group" id="form-username">
+                <label class="sr-only" for="username">User Name</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username">
+            </div>
+            <div class="form-group" id="form-color" style="display: none !important;">
+                <label class="sr-only" for="color">Favorite Color</label>
+                <input type="text" class="form-control" name="color" placeholder="Enter your favorite color" id="color">
+            </div>
+            <div class="form-group" id="form-change">
+                <a href="#" onclick="changeScreen();" class="btn btn-default">Next</a>
+            </div>
+            <div class="form-group" id="form-submit" style="display: none !important;">
+                <input type="submit" class="btn btn-default" name="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>

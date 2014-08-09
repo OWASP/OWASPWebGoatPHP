@@ -1,0 +1,37 @@
+<h4>Role Based Access Control</h4>
+<p> In a role-based access control scheme, a role represents a set of access permissions and privileges. A user can be assigned one or more roles. A role-based access control scheme normally consists of two parts: role permission management and role assignment. A broken role-based access control scheme might allow a user to perform accesses that are not allowed by his/her assigned roles, or somehow allow privilege escalation to an unauthorized role. </p>
+<br>
+<h4>General Goal(s):</h4>
+
+<p>Each user is a member of a role that is allowed to access only certain resources. Your goal is to explore the access control rules that govern this site. Only the [Admin] group should have access to the 'Account Manager' resource.</p>
+<br>
+<form class="form-horizontal" method="POST">
+    <div class="form-group">
+        <label for="user" class="col-sm-2 control-label">Change User:</label>
+        <div class="col-sm-4">
+        	<select type="text" name="user" class="form-control" id="user">
+	            <option value="John">John</option>
+	            <option value="Shivam">Shivam</option>
+	            <option value="Larry">Larry</option>
+	            <option value="Mark">Mark</option>
+        	</select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="resource" class="col-sm-2 control-label">Select Resource</label>
+	    <div class="col-sm-4">
+	        <select type="text" name="resource" class="form-control" id="resource">
+	            <option value="public_share">Public Share</option>
+	            <option value="time_card_entry">Time Card Entry</option>
+	            <option value="performance_review">Performance Review</option>
+	            <option value="site_manager">Site Manager</option>
+	            <option value="account_manager">Account Manager</option>
+	        </select>
+    	</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+        	<input type="submit" class="btn btn-default" value="Submit">
+        </div>
+    </div>
+</form>

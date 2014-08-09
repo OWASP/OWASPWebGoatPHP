@@ -1,0 +1,24 @@
+<h3 class="text-center">Title: HTTP Basics</h3>
+<br>
+<h4>Concept / Topic To Teach:</h4>
+<p>This lesson presents the basics for understanding the transfer
+     of data between the browser and the web application</p>
+<h4>How HTTP works:</h4>
+<p>All HTTP transactions follow the same general format. Each client request and server response has
+     three parts: the request or response line, a header section, and the entity body.
+     The client initiates a transaction as follows: </p>
+<p>The client contacts the server and sends a document request </p>
+<p style="text-align: center;">GET /index.html?param=value HTTP/1.0</p>
+<p>Next, the client sends optional header information to inform the server of its configuration
+    and the document formats it will accept.</p>
+<p style="text-align: center;">User-Agent: Mozilla/4.06 Accept: image/gif,image/jpeg, */*</p>
+<p>After sending the request and headers, the client may send additional data.
+    This data is mostly used by CGI programs using the POST method.</p>
+<h4>General Goal(s):</h4>
+<p>Enter your name in the input field below and press "submit" to submit.
+    The server will accept the request, and display it back to the user,
+    illustrating the basics of handling an HTTP request.</p>
+
+<p>The user should become familiar with the features of OWASP ZAP by manipulating the above buttons to view hints,
+    show the HTTP request parameters, the HTTP request cookies, and the PHP source code.
+    You may also try using OWASP ZAP for the first time. </p>

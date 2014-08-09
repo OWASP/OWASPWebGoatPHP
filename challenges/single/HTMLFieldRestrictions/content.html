@@ -1,0 +1,36 @@
+<p>The form below uses HTML form field restrictions. In order to pass this lesson, submit the form with each field containing an unallowed value. You must submit invalid values for all six fields in one form submission.</p>
+<hr>
+
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+        <form class="form" method="POST">
+            <div class="form-group">
+                <label for="select">Select field with 2 possible values</label>
+                <select name="select" class="form-control" id="select">
+                    <option value="foo" >Foo</option>
+                    <option value="bar">Bar</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="radio">Radio with 2 possible values</label><br>
+                <input type="radio" name="radio" value="foo" id="radio" checked=""> Foo<br>
+                <input type="radio" name="radio" value="bar"> Bar
+            </div>
+            <div class="form-group">
+                <label for="checkbox">Checkbox</label><br>
+                <input type="checkbox" name="checkbox" checked="" id="checkbox" > Check
+            </div>
+            <div class="form-group">
+                <label for="input">Input restricted to 5 characters</label>
+                <input type="text" maxlength="5" value="12345" name="input" id="input" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="disabled-input">Disabled input field</label>
+                <input type="text" value="disabled" name="disabled-input" id="disabled-input" class="form-control" disabled="">
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" class="btn btn-default" value="Submit" class="form-control">
+            </div>
+        </form>
+    </div>
+</div>

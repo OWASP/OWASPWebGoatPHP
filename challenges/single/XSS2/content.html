@@ -1,0 +1,24 @@
+<script type="text/javascript" src="static/xss.js"></script>
+<p>
+It is always a good practice to scrub all input, especially those inputs that will later be used as parameters to OS commands, scripts, and database queries. It is particularly important for content that will be permanently stored somewhere in the application. Users should not be able to create message content that could cause another user to load an undesireable page or undesireable content when the user's message is retrieved. </p>
+<p>The goal is to pop a javascript alert on the page</p>
+<hr>
+<form class="form-horizontal" role="form" method="POST">
+    <div class="form-group">
+        <label for="pin" class="col-md-1 control-label">Message</label>
+        <div class="col-md-6">
+            <textarea rows="4" class="form-control" name="message" id="message" placeholder="Enter your message to post" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-4">
+            <input type="submit" value="Submit" class="btn btn-default" name="submit">
+        </div>
+    </div>
+</form>
+<br>
+
+<h4>Users Messages:</h4>
+<div class="row">
+    <div class="col-md-8">
+        <ol>

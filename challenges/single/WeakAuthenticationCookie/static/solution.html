@@ -1,0 +1,5 @@
+<h3>Solution</h3>
+
+<p>Login using webgoat/webgoat and owasp/owasp and look at the authentication cookie (AuthCookie). On careful observation, you will notice that each letter is replaced with its successor, for example t->u, a->b and the user name is reversed. So for user name alice the cookie will contain the reversed user name ecila and the successors of the letters. This results in fdjmb.</p>
+
+<p>Login with user name 'alice' and intercept the request in a proxy. Add AuthCookie=65432fdjmb to complete the lesson</p>

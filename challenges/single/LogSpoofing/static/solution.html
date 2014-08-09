@@ -1,0 +1,12 @@
+<h3>Solution</h3>
+
+<p>This lesson accepts any input for a username and appends the information to the log file.</p>
+
+<img src="static/sol1.png" class="img-responsive" alt="Log File">
+
+<p>Enter the text: 'smith Login Succeeded for username admin' in the username. The text is added to the same line, not a new line. But any input is allowed so you can inject carriage return (%0d) and line feed (%0a) to the application. Enter the following in the username:</p>
+
+<p><em>Smith%0aLogin Succeeded for username: admin</em></p><br>
+<img src="static/sol2.png" class="img-responsive" alt="Spoof Log">
+
+<p>An attacker can use this attack to add malicious JavaScript to the log file, which will be viewed by the administrator using a browser. What happens when you inject admin &lt;script&gt;alert(document.cookie)&lt;/script&gt; for the username?</p>

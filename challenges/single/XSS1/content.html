@@ -1,0 +1,66 @@
+<script type="text/javascript" src="static/xss.js"></script>
+<p>It is always a good practice to validate all input on the server side. XSS can occur when unvalidated user input is used in an HTTP response. In a reflected XSS attack, an attacker can craft a URL with the attack script and post it to another website, email it, or otherwise get a victim to click on it. </p>
+<p>Your goal is to execute a javascript alert on the page.</p>
+<hr>
+
+<div class="row">
+    <div class="col-md-7 col-md-offset-2">
+        <h4 class="text-center">Shopping Cart:</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Shopping Cart Items</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Studio RTA - Laptop/Reading Cart</td>
+                    <td>69.99</td>
+                    <td>1</td>
+                    <td>$69.99</td>
+                </tr>
+                <tr>
+                    <td>Dynex - Traditional Notebook Case</td>
+                    <td>27.99</td>
+                    <td>1</td>
+                    <td>$27.99</td>
+                </tr>
+                <tr>
+                    <td>Hewlett-Packard - Pavilion Notebook</td>
+                    <td>1599.99</td>
+                    <td>1</td>
+                    <td>$1599.99</td>
+                </tr>
+                <tr>
+                    <td>3 - Year Performance Service</td>
+                    <td>299.99</td>
+                    <td>1</td>
+                    <td>$299.99</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<form class="form-horizontal" role="form" method="POST">
+    <div class="form-group">
+        <label for="creditcard" class="col-md-5 control-label">Credit Card Number</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="creditcard" value="5721-3128-1973-0166" id="creditcard" placeholder="Credit Card Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="pin" class="col-md-5 control-label">PIN</label>
+        <div class="col-md-4">
+            <input type="password" class="form-control" name="pin" id="pin" placeholder="Enter 3 Digit Pin">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-5">
+            <input type="submit" value="Submit" class="btn btn-default" name="submit">
+        </div>
+    </div>
+</form>

@@ -1,0 +1,24 @@
+<script type="text/javascript" src="static/request.js"></script>
+<p>
+    This exercise demonstrates the Same Origin Policy Protection. XHR requests can only be passed back to the originating server. Attempts to pass data to a non-originating server will fail.
+</p>
+<br>
+
+<form class="form" method="POST" id="same-origin-frm" action="">
+    <input type="hidden" name="sameOriginReq" value="0" id="hidden-same-origin">
+    <input type="hidden" name="crossOriginReq" value="0" id="hidden-cross-origin">
+    <div class="form-group">
+        <label for="url">Enter a URL:</label>
+        <div class="row">
+        	<div class="col-sm-6">
+		        <input class="form-control" type="text" name="url" placeholder="Click on the links below" id="url">
+        	</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Go">
+    </div>
+</form>
+<a href="#" id="same-origin-link">Same Origin Request </a><small>static/plan.html</small><br>
+<a href="#" id="cross-origin-link">Cross Origin Request </a><small>http://www.google.com/</small>
+<a ></a>
