@@ -68,20 +68,20 @@ $(document).ready(function(){
     });
 
     $("#parameter-btn").click(function(){
-        var $_GET = {};
         var flag = 0;
+        var optionsContainer =  $("#options-container");
 
-        $("#options-container").html("");
+        optionsContainer.html("");
         document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
             function decode(s) {
                 return decodeURIComponent(s.split("+").join(" "));
             }
-            $("#options-container").append("Parameter: "+decode(arguments[1])+", Value: "+decode(arguments[2])+"<br>");
+            optionsContainer.append("Parameter: "+decode(arguments[1])+", Value: "+decode(arguments[2])+"<br>");
             flag = 1;
         });
 
         if (!flag) {
-            $("#options-container").html("No GET parameters found !");
+            optionsContainer.html("No GET parameters found !");
         }
     });
 
@@ -92,10 +92,12 @@ $(document).ready(function(){
     $("#hints-btn").click(function(){
         //Returns a random hint
         //alert(hints[Math.floor((Math.random() * (hints.length - 1)))]);
+        var optionsContainer =  $("#options-container");
+
         if (hints.length == 0) {
-            $("#options-container").html("Sorry, no hints present for this lesson");
+            optionsContainer.html("Sorry, no hints present for this lesson");
         }
-        $("#options-container").html(hints[Math.round((Math.random() * (hints.length - 1)))]);
+        $optionsContainer.html(hints[Math.round((Math.random() * (hints.length - 1)))]);
     });
 
     $("#show-php-btn").click(function(){
