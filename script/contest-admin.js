@@ -55,6 +55,20 @@ $(document).ready(function(){
         var points = tr.find("input[name='points']").val();
         var flag = tr.find("input[name='flag']").val();
 
+        if (challenge === '') {
+            alert("Invalid request");
+            return false;
+        } else if(name === '') {
+            alert("Please input name of challenge");
+            return false;
+        } else if(!$.isNumeric(points)) {
+            alert("Please input points (int only)");
+            return false;
+        } else if(flag === '') {
+            alert("Please input Flag");
+            return false;
+        }
+
         tr.addClass("success");
 
         $.ajax({
