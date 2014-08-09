@@ -36,7 +36,7 @@
                 <li><a href="<?php echo jf::url()?>">Home</a></li>
                 <li><a href="<?php echo jf::url().'/about'?>">About</a></li>
                 <li><a href="#">Documentation</a></li>
-                <li><a href="#">Github</a></li>
+                <li><a href="<?php echo GITHUB_URL;?>" target="_blank">Github</a></li>
                 <li><a href="#contact" data-toggle="modal">Contact</a></li>
                 <li><a href="<?php echo jf::url().'/user/logout'?>">Logout</a></li>
             </ul>

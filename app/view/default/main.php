@@ -12,7 +12,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="<?php echo jf::url().'/about' ?>">About</a></li>
                 <li><a href="#">Documentation</a></li>
-                <li><a href="https://github.com/shivamdixit/WebGoatPHP/">Github</a></li>
+                <li><a href="<?php echo GITHUB_URL;?>" target="_blank">Github</a></li>
                 <li><a href="#contact" data-toggle="modal">Contact</a></li>
                 <?php if (jf::CurrentUser()):?>
                     <li><a href="<?php echo jf::url().'/user/logout'?>">Logout</a></li>

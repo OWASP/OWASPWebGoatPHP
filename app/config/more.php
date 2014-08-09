@@ -16,6 +16,9 @@ define('CONTEST_MODE_DIR', jf::url()."/mode/contest/"); // Notice the trailing s
 define('CONTEST_MODE_HOME', CONTEST_MODE_DIR."home");
 define('CONTEST_ADMIN_URL', CONTEST_MODE_DIR."admin");
 
+// GitHub URL
+define('GITHUB_URL', 'https://github.com/shivamdixit/WebGoatPHP/');
+
 //Add autoload rules
 #\jf\Autoload::AddRuleArray(array("Classname"=>jf::root()."/app/model/filepath.php"));
 DoctrinePlugin::Load();
