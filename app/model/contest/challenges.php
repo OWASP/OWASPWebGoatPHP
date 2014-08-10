@@ -121,4 +121,38 @@ class ContestChallenges extends \JModel
 
         \jf::SQL("DELETE FROM ".self::TABLE_NAME. " WHERE ContestID = ?", $contestID);
     }
+
+    /**
+     * Increments the count of TotalAttempts by 1
+     *
+     * @throws InvalidArgumentException If required parameters are missing
+     */
+    public static function incrementTotalAttempts($challengeName = null)
+    {
+        if ($challengeName === null) {
+            throw new InvalidArgumentException("Required parameter missing");
+        }
+
+        \jf::SQL(
+            "UPDATE ".self::TABLE_NAME." SET TotalAttempts = TotalAttempts + 1 WHERE ChallengeName = ?",
+            $challengeName
+        );
+    }
+
+    /**
+     * Increments the CompletedCount by 1
+     *
+     * @throws InvalidArgumentException If required parameters are missing
+     */
+    public static function incrementCompletedCount($challengeName = null)
+    {
+        if ($challengeName === null) {
+            throw new InvalidArgumentException("Required parameter missing");
+        }
+
+        \jf::SQL(
+            "UPDATE ".self::TABLE_NAME." SET CompletedCount = CompletedCount + 1 WHERE ChallengeName = ?",
+            $challengeName
+        );
+    }
 }
