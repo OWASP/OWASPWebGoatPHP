@@ -15,6 +15,7 @@ define('CODING_MODE_LESSON_URL', jf::url()."/mode/coding/challenges/");
 define('CONTEST_MODE_DIR', jf::url()."/mode/contest/"); // Notice the trailing slash
 define('CONTEST_MODE_HOME', CONTEST_MODE_DIR."home");
 define('CONTEST_ADMIN_URL', CONTEST_MODE_DIR."admin");
+define('CONTEST_MODE_LESSON_URL', CONTEST_MODE_DIR."challenges/");
 
 // GitHub URL
 define('GITHUB_URL', 'https://github.com/shivamdixit/WebGoatPHP/');
