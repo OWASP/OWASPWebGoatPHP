@@ -10,11 +10,21 @@ class ContestHomeController extends JControl
             // User is logged in, check if the user is authorized
             if (jf::Check("view_contest_chal")) {
                 if (($activeContest = \webgoat\ContestDetails::getActive()) !== null) {
+                    $this->ContestName = $activeContest[0]['ContestName'];
+
                     $startTime = $activeContest[0]['StartTimestamp'];
                     $currentTime = time();
 
-                    $this->TimeRemaining = $startTime - $currentTime;
-                    $this->ContestName = $activeContest[0]['ContestName'];
+                    if ($currentTime < $startTime) {
+                        $this->TimeRemaining = $startTime - $currentTime;
+                    } else {
+                        $challenges = \webgoat\ContestChallenges::getByContestID();
+                        if (count($challenges) == 0) {
+                            $this->Error = "Currently there are no challenges in this contest";
+                        } else {
+                            $this->Challenges = $challenges;
+                        }
+                    }
                 } else {
                     $this->Error = "Currently there is no active contest. Check back later!!";
                 }
