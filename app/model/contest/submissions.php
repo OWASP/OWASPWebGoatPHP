@@ -72,4 +72,27 @@ class ContestSubmissions extends \JModel
 
         return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ID = ?", $id);
     }
+
+    /**
+     * Function to check if the submission is correct
+     *
+     * @param $challengeID int Unique ID of challenge
+     * @param $flag String User entered flag
+     *
+     * @return bool true if submission is correct else false
+     * @throws InvalidArgumentException
+     */
+    public static function evaluate($challengeID, $flag)
+    {
+        if ($flag === null || $challengeID === null) {
+            throw new InvalidArgumentException("Required parameters missing");
+        }
+
+        $challenge = ContestChallenges::getByID($challengeID);
+        if ($challenge[0]['CorrectFlag'] == md5($flag)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
