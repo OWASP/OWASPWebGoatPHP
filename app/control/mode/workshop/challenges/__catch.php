@@ -68,6 +68,7 @@ class WorkshopModeController extends JCatchControl
                             }
                         }
 
+                        header("X-XSS-Protection: 0");  // Disable XSS protection
                         return $this->Present();
                     }
                 }

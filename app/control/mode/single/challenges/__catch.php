@@ -42,6 +42,7 @@ class SingleModeController extends JCatchControl
                             \webgoat\LessonScanner::run();
                         }
 
+
                         $this->allCategoryLesson = jf::LoadGeneralSetting("categoryLessons");
                         try {
 
@@ -61,6 +62,7 @@ class SingleModeController extends JCatchControl
                             $this->error = $e->getMessage();
                         }
 
+                        header("X-XSS-Protection: 0");  // Disable XSS protection
                         return $this->Present();
                     }
                 }

@@ -73,6 +73,7 @@ class CodingModeController extends JCatchControl
                             $this->error = $e->getMessage();
                         }
 
+                        header("X-XSS-Protection: 0");  // Disable XSS protection
                         return $this->Present();
                     }
                 }
