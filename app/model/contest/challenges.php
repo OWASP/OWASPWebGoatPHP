@@ -101,7 +101,10 @@ class ContestChallenges extends \JModel
     public static function getByContestID($contestID = null)
     {
         if ($contestID === null) {
-            throw new InvalidArgumentException("Required parameter missing");
+            // If contest ID is not provided use the active contest ID
+            if (($contestID = ContestDetails::getActiveID()) === null) {
+                throw new InvalidArgumentException("Required parameter missing");
+            }
         }
 
         return \jf::SQL("SELECT * FROM ".self::TABLE_NAME." WHERE ContestID = ?", $contestID);
