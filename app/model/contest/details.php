@@ -121,4 +121,19 @@ class ContestDetails extends \JModel
 
         return \jf::SQL($query);
     }
+
+    /**
+     * Get the ID of the active contest
+     *
+     * @return int ID of the active contest, null if no
+     * contest is active
+     */
+    public static function getActiveID()
+    {
+        $currentTime = time();
+        $query = "SELECT * FROM ".self::TABLE_NAME." WHERE EndTimestamp > $currentTime";
+
+        $result = \jf::SQL($query);
+        return $result[0]['ID'];
+    }
 }
