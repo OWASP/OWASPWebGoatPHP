@@ -97,7 +97,7 @@ $(document).ready(function(){
         if (hints.length == 0) {
             optionsContainer.html("Sorry, no hints present for this lesson");
         }
-        $optionsContainer.html(hints[Math.round((Math.random() * (hints.length - 1)))]);
+        optionsContainer.html(hints[Math.round((Math.random() * (hints.length - 1)))]);
     });
 
     $("#show-php-btn").click(function(){
