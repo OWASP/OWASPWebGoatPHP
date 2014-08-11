@@ -77,11 +77,18 @@
                 <div class="panel-body">
                     <div class="page-header">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <h3><?php if(isset($this->error)) echo $this->error; else echo $this->lessonTitle; ?>
                                 </h3>
                             </div>
                             <?php if (!isset($this->error)):?>
+                                <div class="col-md-1"><!--Placed outside if so that in false condition
+                                also reset btn is aligned properly-->
+                                    <?php if (isset($this->sourceCode)): ?>
+                                        <a href="#" class="btn btn-sm btn-success navbar-btn" id="fix-btn">Fix It!</a>
+                                    <?php endif; ?>
+                                </div>
+
                                 <div class="col-md-2">
                                     <a href="<?php echo SINGLE_MODE_LESSON_URL."$this->nameOfLesson/reset/"; ?>"
                                        class="btn btn-sm btn-danger navbar-btn" id="reset-btn">Reset Lesson</a>
@@ -91,6 +98,23 @@
                     </div>
                     <div class="page-body">
                         <?php if(!isset($this->error)) echo $this->htmlContent;?>
+
+                        <div id="source-code" class="hidden">
+                            <br>
+                            <h4 class="text-center">Source Code</h4>
+                            <div id="editor" style="height: 260px;"><?php if(isset($this->sourceCode)) echo $this->sourceCode;?></div>
+                            <form id="scode-form" method="POST">
+                                <!--To submit source code-->
+                                <input type="hidden" name="sourceCode" id="scode-inp">
+                            </form>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-5">
+                                    <a href="#" class="btn btn-success" id="scode-submit-btn">Submit</a>
+                                    <a href="#" class="btn btn-default" id="scode-reset-btn">Reset</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div><!--Main content ends-->
@@ -122,3 +146,12 @@
         </div>
     </div><!--Row ends-->
 </div><!--container ends-->
+
+<script src="<?php echo jf::url();?>/script/ace/src-min-noconflict/ace.js" type="text/javascript"></script>
+<script src="<?php echo jf::url();?>/script/ace/src-min-noconflict/mode-php.js" type="text/javascript"></script>
+<script>
+    var editor = ace.edit("editor");
+    var initialCode = editor.getSession().getValue();
+    editor.setTheme("ace/theme/solarized_light");
+    editor.getSession().setMode({path:"ace/mode/php", inline:true});    // Won't work without inline. REF #1142 ace repo
+</script>
