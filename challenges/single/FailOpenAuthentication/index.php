@@ -123,6 +123,16 @@ class FailOpenAuthentication extends BaseLesson
     }
 
     /**
+     * Overridden method to enable secure coding
+     *
+     * @return array
+     */
+    public function isSecureCodingAllowed()
+    {
+        return array('status' => true, 'start' => 71, 'end' => 92);
+    }
+
+    /**
      * Reset the lesson
      */
     public function reset()
