@@ -72,6 +72,16 @@ class HiddenFields extends BaseLesson
     }
 
     /**
+     * Overridden method to enable secure coding
+     *
+     * @return array
+     */
+    public function isSecureCodingAllowed()
+    {
+        return array('status' => true, 'start' => 62, 'end' => 71);
+    }
+
+    /**
      * Reset the lesson
      */
     public function reset()
