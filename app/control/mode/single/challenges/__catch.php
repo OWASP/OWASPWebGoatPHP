@@ -2,6 +2,8 @@
 
 class SingleModeController extends JCatchControl
 {
+    private $indentSize;
+
     public function Handle($request)
     {
         // This gives complete request path
@@ -57,8 +59,11 @@ class SingleModeController extends JCatchControl
                             $sourceCodeToDisplay = "";
                             if ($secureCoding['status'] === true) {
                                 $sourceCode = file($absolutePath."index.php");
+                                $firstLine = $sourceCode[$secureCoding['start']];
+                                $this->indentSize = strlen($firstLine) - strlen(ltrim($firstLine));
+
                                 for ($i = $secureCoding['start']; $i < $secureCoding['end']; $i++) {
-                                    $sourceCodeToDisplay .= (trim($sourceCode[$i])."\n");
+                                    $sourceCodeToDisplay .= ($this->removeWhitespaces($sourceCode[$i])."\n");
                                 }
                                 $this->sourceCode = $sourceCodeToDisplay;
                             }
@@ -97,5 +102,17 @@ class SingleModeController extends JCatchControl
     {
         $presentDir = basename(dirname(__FILE__));
         return substr($request, (strpos($request, $presentDir) + strlen($presentDir) + 1));
+    }
+
+    /**
+     * Remove whitespaces to indent the code properly
+     *
+     * @param $line String which is to be trimmed
+     *
+     * @return string trimmed result
+     */
+    private function removeWhitespaces($line)
+    {
+        return rtrim(substr($line, $this->indentSize));
     }
 }
