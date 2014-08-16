@@ -18,10 +18,9 @@ const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
  * here jframework tries to determine what mode its running at,
  * Deploy, Develop or Command Line. Provide necessary logic for it to determine correctly
  */
-if (HttpRequest::Host()=="localhost"
-		or strpos(HttpRequest::Host(),"192.168.")!==false or strpos(HttpRequest::Host(),"172.22.")!==false)
+if (strpos(HttpRequest::Host(),"192.168.")!==false or strpos(HttpRequest::Host(),"localhost")!==false)
 	jf::$RunMode->Add(RunModes::Develop);
-elseif (strpos(HttpRequest::Host(),"webgoatphp.com")!==false) #TODO:replace this with your site
+elseif (strpos(HttpRequest::Host(),"webgoatphp.com")!==false)
 	jf::$RunMode->Add(RunModes::Deploy);
 elseif (php_sapi_name()=="cli")
 {
