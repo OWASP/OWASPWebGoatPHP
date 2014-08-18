@@ -6,7 +6,7 @@ class AutoloadIsStaticException extends \Exception {}
  * Handles spl_autoload in jframework
  * @author abiusx
  * @version 1.2
- * 
+ *
  */
 class Autoload
 {
@@ -15,12 +15,12 @@ class Autoload
 	 * @var array
 	 */
 	private static $List=array();
-	 
+
 	function __construct()
 	{
 		throw new AutoloadIsStaticException("Autoload class is static and should not be instantiated.");
 	}
-	
+
 	private static $isRegistered=false;
 	/**
 	 * Register this class as autoload handler
@@ -32,7 +32,7 @@ class Autoload
 		{
 			self::$isRegistered=true;
 			spl_autoload_register ( __NAMESPACE__."\Autoload::Autoload" , true );
-			self::AddCoreModules();	
+			self::AddCoreModules();
 		}
 	}
 	/**
@@ -69,10 +69,10 @@ class Autoload
 				"RBACManager"=>"model/lib/rbac",
 				"ServiceManager"=>"model/service/manager",
 				"Password"=>"model/lib/security/password",
-				
+
 				);
-		
-		
+
+
 		$RuleArray=array();
 		foreach ($Array as $k=>$v)
 		{
@@ -81,8 +81,8 @@ class Autoload
 		}
 		self::AddRuleArray($RuleArray);
 	}
-	
-	
+
+
 	/**
 	 * this array holds conversion rules for converting a classname to a folder for autoloading it
 	 * @var array
@@ -112,7 +112,7 @@ class Autoload
 			$Classname=substr($Classname,4);
 			$Prefix="_j"; //_japp folder
 		}
-		else 
+		else
 			$Prefix="";
 		//separates words in a camelCase word (also CamelCase), a single uppercase letter counts as one. If don't want it, change * to +
 		preg_match_all('/((?:^|[A-Z])[a-z_0-9]*)/',$Classname,$matches);
@@ -131,7 +131,7 @@ class Autoload
 			array_push($Parts, $Type);
 			$folder="model";
 		}
-			
+
 		$File=realpath(__DIR__."/../../../{$Prefix}app/". //_japp or app folder
 			"{$folder}/".strtolower(implode("/",$Parts)).".php");
 		if ($File)
@@ -140,13 +140,13 @@ class Autoload
 			return true;
 		}
 		return false;
-		
+
 	}
 	/**
 	 * Handles autoloading of a class file. Automatically used by PHP SPL.
 	 * If this fails and class is still needed, and error is thrown so calling it with a string is safe.
 	 * @param string $Classname
-	 * @return boolean success 
+	 * @return boolean success
 	 */
 	static function Autoload($Classname)
 	{
@@ -163,14 +163,14 @@ class Autoload
 				}
 				return false;
 			}
-			else 
+			else
 														//its a core module, and loaded.
 				return true;
 		}
 		require_once (self::$List[$Classname]);
 		return true;									//if we got to this line, its loaded!
 	}
-	
+
 	/**
 	 * Add a single rule for autoload handling. Classname and file to include. Nothing is appended to file.
 	 * To get the file for a module, use moduleFile function of JModel class (available in almost all objects)
@@ -183,7 +183,7 @@ class Autoload
 		if (!file_exists($File))
 			throw new AutoloadRuleException("Invalid autoload rule added: {$File} set for autoloading of class '{$Classname}' does not exist.");
 		self::$List[$Classname]=$File;
-	} 
+	}
 	/**
 	 * This is a convenient wrapper for AddRule, which calls moduleFile on the module string and then adds the file to rules.
 	 * @param string $Classname
@@ -196,7 +196,7 @@ class Autoload
 		if (!file_exists($File))
 			throw new AutoloadRuleException("Invalid autoload rule added: {$File} set for autoloading of class '{$Classname}' does not exist.");
 		self::$List[$Classname]=$File;
-		
+
 	}
 	/**
 	 * Adds autoload rules in bulk, array keys are class names and array values are files to be included
@@ -206,7 +206,7 @@ class Autoload
 	{
 		foreach ($RuleArray as $Classname=>$File)
 			self::AddRule($Classname, $File);
-		
+
 	}
 	/**
 	 * An array of callbacks to handle autoloads
@@ -246,8 +246,8 @@ class Autoload
 		}
 		return false;
 	}
-	
-	
+
+
 	/**
 	 * Remove a single autoload rule
 	 * @param string $Classname
@@ -267,7 +267,7 @@ class Autoload
 		foreach ($RuleArray as $Classname=>$v)
 			self::RemoveRule($Classname);
 	}
-	
+
 	/**
 	 * Remove autoload rules in bulk, array values are classnames to be removed
 	 * @param array $RuleArray
@@ -277,7 +277,7 @@ class Autoload
 		foreach ($RuleArray as $Classname)
 			self::RemoveRule($Classname);
 	}
-	
+
 	/**
 	 * Resets rules to the standard rule-set of autoloader
 	 */
