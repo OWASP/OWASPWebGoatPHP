@@ -21,14 +21,12 @@ const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
  * here jframework tries to determine what mode its running at,
  * Deploy, Develop or Command Line. Provide necessary logic for it to determine correctly
  */
-if (strpos(HttpRequest::Host(), "LOCALHOSTURL") !== false) { 
+if (strpos(HttpRequest::Host(), "LOCALHOSTURL") !== false) {
     jf::$RunMode->Add(RunModes::Develop);
 } elseif (php_sapi_name()=="cli") {
     jf::$RunMode->Add(RunModes::CLI);
-    jf::$RunMode->Add(RunModes::Develop);
 } else {
     jf::$RunMode->Add(RunModes::Deploy);
-    throw new Exception("No running state determined, please provide rules in app/config/application.php.");
 }
 
 /**
@@ -49,12 +47,7 @@ define("SiteRoot", HttpRequest::Root());
  * web application, in that case, comment or remove the database username definition
  */
 \jf\DatabaseManager::AddConnection(
-    new \jf\DatabaseSetting(
-        "mysqli",
-        "DBNAME",
-        "DBUSER",
-        "DBPASS"
-    )
+    new \jf\DatabaseSetting("mysqli", "DBNAME", "DBUSER", "DBPASS")
 );
 
 /**

@@ -7,28 +7,26 @@ if (isset($_POST['submit'])) {
     $config['LOCALHOSTURL'] = $_POST['develop_url'];
     #TODO: check if these DB settings actually work!
 
-    
+
     $configFile=__DIR__."/application.php";
     $configData=file_get_contents($configFile);
     $configData=str_replace(array_keys($config), $config, $configData);
     $configData=preg_replace('/jf::import.*?INITIALSETUP\n/', '', $configData);
-    
-    
-    if (is_writable($configFile))
-    {
+
+
+    if (is_writable($configFile)) {
     	file_put_contents($configFile, $configData);
 	    $setup=true;
     }
-    
-    
+
+
     #TODO: populate the DB (ask for admin credentials and create here)
     #TODO: if db exists, populate, else create and populate
     #TODO: if does not exist and creating fails, error and ask to be created
     #can use DB connections Initialize method to populate the data.
 }
 
-if(!$setup)
-{
+if (!$setup) {
 ?>
 
 <!DOCTYPE html>
@@ -100,9 +98,9 @@ if(!$setup)
     <body>
         <h1 class="center">WebGoatPHP Setup</h1>
         <br>
-        <?php if (isset($configData)) //file was not writable, ask user to modify manually 
-        {	
-		?>
+        <?php if (isset($configData)) {
+		      //file was not writable, ask user to modify manually
+        ?>
 		<p>The configuration file <strong><?php echo realpath($configFile)?></strong> was not writable. Please copy the following configurations into it, overriding everything it already has:</p>
 		<div id='config'>
 		<pre onclick='selectText(this);'><?php echo htmlspecialchars($configData); ?></pre>
@@ -121,10 +119,8 @@ if(!$setup)
 	    }
 </script>
 
-		<?php 
-		}
-		else
-		{
+		<?php
+		} else {
         ?>
         <div style="width: 15%; margin: 0 auto;">
             <form method="POST">
@@ -135,7 +131,7 @@ if(!$setup)
                 <input type="submit" value="Submit" name="submit" style="width: 50%">
             </form>
         </div>
-        <?php 
+        <?php
         }
         ?>
     </body>
@@ -143,7 +139,6 @@ if(!$setup)
 
 <?php
 exit(0);
-
 }
 
 ?>
