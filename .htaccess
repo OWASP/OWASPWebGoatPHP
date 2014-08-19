@@ -1,9 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{QUERY_STRING} (.*)
+RewriteCond $1 !^(robots.txt)
 RewriteRule ^(.*)$ _japp/loader.php?__r=$1&%1
-
-
-#RewriteCond %{query_string} ^(.*)
-#RewriteRule (.*) _japp/loader.php?__r=$1&%1
 </IfModule>

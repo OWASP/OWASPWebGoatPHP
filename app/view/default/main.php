@@ -68,7 +68,7 @@
             <h3>Secure Coding Mode</h3>
             <p>Patch security vulnerabilities and learn about secure coding practices.
                 You are required to modify vulnerable source code in such a way that vulnerability no longer exists.</p>
-            <a href="<?php echo CODING_MODE_LESSON_URL; ?>" class="btn btn-default">Get Started</a>
+            <a href="<?php echo SINGLE_MODE_LESSON_URL; ?>" class="btn btn-default">Get Started</a>
         </div>
     </div>
 </div>

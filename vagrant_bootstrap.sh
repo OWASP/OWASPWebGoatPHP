@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mysql_password=1234
+mysql_password=om1234
 apt-get update
 apt-get install -y apache2
 rm -rf /var/www

@@ -70,17 +70,17 @@ class BusinessLayerAccessControl extends BaseLesson
 
         $this->htmlContent .= file_get_contents(__DIR__."/content.html");
 
-        // If a form is submitted
-        // evaluate the submission
-        if (isset($_POST['user']) && isset($_POST['password'])) {   //Form of screen 1
-
-            if ($this->validateLogin($_POST['user'], $_POST['password'])) { //Login Successful
+        // If a form is submitted, evaluate the submission
+        if (isset($_POST['user']) && isset($_POST['password'])) {
+            //Form of screen 1
+            if ($this->validateLogin($_POST['user'], $_POST['password'])) {
+            //Login Successful
                 $this->saveSessionData(self::SESSION_NAME, $_POST['user']);
             } else {    //Login Failed
                 $this->addErrorMessage("Login Failed");
             }
-        } elseif (isset($_POST['action'])) {    //Form of screen 2
 
+        } elseif (isset($_POST['action'])) {    //Form of screen 2
             if ($_POST['action'] == "Logout") {
                 $this->logout();
 
@@ -89,10 +89,10 @@ class BusinessLayerAccessControl extends BaseLesson
                 return true;
 
             } elseif ($_POST['action'] == "Delete") {
-
                 $loggedUser = $this->getSessionData(self::SESSION_NAME);
 
-                if ($_POST['user'] == $loggedUser) {  //User trying to delete itself. Error!!
+                if ($_POST['user'] == $loggedUser) {
+                    //User trying to delete himself. Error!!
                     $this->addErrorMessage("Cannot delete itself");
                 } else {
 
@@ -103,7 +103,6 @@ class BusinessLayerAccessControl extends BaseLesson
 
                     $this->deleteUser($_POST['user']);
                 }
-
             }
         }
 
@@ -279,6 +278,16 @@ class BusinessLayerAccessControl extends BaseLesson
         }
 
         \jf::SQL("DELETE FROM ".self::TABLE_NAME. " WHERE id = ? ", $id);
+    }
+
+    /**
+     * Overridden method to enable secure coding
+     *
+     * @return array
+     */
+    public function isSecureCodingAllowed()
+    {
+        return array('status' => true, 'start' => 83, 'end' => 106);
     }
 
     /**

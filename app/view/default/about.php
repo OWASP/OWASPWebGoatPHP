@@ -116,7 +116,7 @@
                             source code of the application, instead only the relevant part of the source code is shown
                             to the user in a client-side IDE.
                             <br><br>
-                            <a href="<?php echo CODING_MODE_LESSON_URL; ?>" class="btn btn-primary">Get Started</a>
+                            <a href="<?php echo SINGLE_MODE_LESSON_URL; ?>" class="btn btn-primary">Get Started</a>
                         </div>
                     </div>
                 </div>
