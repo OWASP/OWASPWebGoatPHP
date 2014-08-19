@@ -14,6 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 config.vm.provision :shell, path: "vagrant_bootstrap.sh"
   config.vm.network :forwarded_port, host: 8008, guest: 80
   config.vm.network :forwarded_port, host: 8009, guest: 443
+config.vm.synced_folder ".", "/vagrant", :nfs => !RUBY_PLATFORM.downcase.include?("w32")
+config.vm.network "private_network", ip: "192.168.50.4"
+
 config.vm.provider "virtualbox" do |vb|
 	vb.customize ["modifyvm", :id,"--memory", "1024"]
 end
