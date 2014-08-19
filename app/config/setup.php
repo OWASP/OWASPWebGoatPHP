@@ -1,37 +1,40 @@
 <?php
-
+$setup=false;
 if (isset($_POST['submit'])) {
-    $username = $_POST['db_username'];
-    $password = $_POST['db_password'];
-    $dbName = $_POST['db_name'];
-    $deployURL = $_POST['deploy_url'];
-    $developURL = $_POST['develop_url'];
+    $config['DBUSER']= $_POST['db_username'];
+    $config['DBPASS']= $_POST['db_password'];
+    $config['DBNAME']= $_POST['db_name'];
+    $config['LOCALHOSTURL'] = $_POST['develop_url'];
+    #TODO: check if these DB settings actually work!
 
-    $crlf = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')? "\r\n": "\n";
-
-    $output = '<?php'.$crlf.$crlf
-            .'/**'.$crlf
-            .' * Auto-generated configuration file'.$crlf
-            .' * Generate by OWASP WebGoatPHP setup script'.$crlf
-            .' * Date:'.date(DATE_RFC1123).$crlf
-            .' */'.$crlf
-            .$crlf
-            .'$cfg["DatabaseUsername"] = "'.$username.'";'.$crlf
-            .'$cfg["DatabasePassword"] = "'.$password.'";'.$crlf
-            .'$cfg["DatabaseName"] = "'.$dbName.'";'.$crlf
-            .'$cfg["DeployURL"] = "'.$deployURL.'";'.$crlf
-            .'$cfg["DevelopURL"] = "'.$developURL.'";'.$crlf;
-
-    file_put_contents(__DIR__."/config.inc.php", $output);
-    header('Location: '.$_SERVER['REQUEST_URI']);
+    
+    $configFile=__DIR__."/application.php";
+    $configData=file_get_contents($configFile);
+    $configData=str_replace(array_keys($config), $config, $configData);
+    $configData=preg_replace('/jf::import.*?INITIALSETUP\n/', '', $configData);
+    
+    
+    if (is_writable($configFile))
+    {
+    	file_put_contents($configFile, $configData);
+	    $setup=true;
+    }
+    
+    
+    #TODO: populate the DB (ask for admin credentials and create here)
+    #TODO: if db exists, populate, else create and populate
+    #TODO: if does not exist and creating fails, error and ask to be created
+    #can use DB connections Initialize method to populate the data.
 }
 
+if(!$setup)
+{
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo jf_Application_Title." Setup"; ?></title>
+        <title>WebGoatPHP Setup</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="author" content="Shivam Dixit">
@@ -87,22 +90,60 @@ if (isset($_POST['submit'])) {
                 -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
             }
+            #config {
+            	border:3px double gray;
+            	padding:10px;
+            	background-color:#DDD;
+            }
         </style>
     </head>
     <body>
         <h1 class="center">WebGoatPHP Setup</h1>
         <br>
+        <?php if (isset($configData)) //file was not writable, ask user to modify manually 
+        {	
+		?>
+		<p>The configuration file <strong><?php echo realpath($configFile)?></strong> was not writable. Please copy the following configurations into it, overriding everything it already has:</p>
+		<div id='config'>
+		<pre onclick='selectText(this);'><?php echo htmlspecialchars($configData); ?></pre>
+		</div>
+<script type="text/javascript">
+	    function selectText(obj) {
+	        if (document.selection) {
+	            var range = document.body.createTextRange();
+	            range.moveToElementText(obj);
+	            range.select();
+	        } else if (window.getSelection) {
+	            var range = document.createRange();
+	            range.selectNode(obj);
+	            window.getSelection().addRange(range);
+	        }
+	    }
+</script>
+
+		<?php 
+		}
+		else
+		{
+        ?>
         <div style="width: 15%; margin: 0 auto;">
             <form method="POST">
                 <input type="text" placeholder="Enter MySQL Username" name="db_username" required>
                 <input type="text" placeholder="Enter MySQL Password" name="db_password" required>
                 <input type="text" placeholder="Enter Database name" name="db_name" required>
-                <input type="text" placeholder="Develop URL ex: localhost" name="develop_url" required>
-                <input type="text" placeholder="Deploy URL ex: webgoatphp.com" name="deploy_url" required><br>
+                <input type="text" placeholder="Develop URL ex: localhost" name="develop_url" value="<?php echo $_SERVER['HTTP_HOST'];?>" required>
                 <input type="submit" value="Submit" name="submit" style="width: 50%">
             </form>
         </div>
+        <?php 
+        }
+        ?>
     </body>
 </html>
 
-<?php die();?>
+<?php
+exit(0);
+
+}
+
+?>

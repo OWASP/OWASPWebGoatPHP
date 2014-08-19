@@ -1,5 +1,5 @@
 <?php
-
+jf::import("config/setup"); //setup on first run INITIALSETUP
 #####################################################################
 ### this is the application configuration file, please configure  ###
 ### and customize your application before starting to use it      ###
@@ -11,32 +11,23 @@
  * Define your jframework powered web application here. Set at least a version, a Name and a
  * title for your application. Name would better follow identifier rules.
  */
-const jf_Application_Version=jf\version; //put version of your application here, as a string.
+const jf_Application_Version="1.0"; //put version of your application here, as a string.
 const jf_Application_Name="WebGoatPHP" ; //follow identifier rules for this name
 const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
 
-/**
- * Import configuration file
- */
-if (!file_exists(__DIR__."/config.inc.php")) {
-    jf::import("config/setup");
-} else {
-    require_once "config.inc.php";
-}
 
 /**
  * Mode detection
  * here jframework tries to determine what mode its running at,
  * Deploy, Develop or Command Line. Provide necessary logic for it to determine correctly
  */
-if (strpos(HttpRequest::Host(), $cfg["DevelopURL"]) !== false) {
+if (strpos(HttpRequest::Host(), "LOCALHOSTURL") !== false) { 
     jf::$RunMode->Add(RunModes::Develop);
-} elseif (strpos(HttpRequest::Host(), $cfg["DeployURL"])!==false) {
-    jf::$RunMode->Add(RunModes::Deploy);
 } elseif (php_sapi_name()=="cli") {
     jf::$RunMode->Add(RunModes::CLI);
     jf::$RunMode->Add(RunModes::Develop);
 } else {
+    jf::$RunMode->Add(RunModes::Deploy);
     throw new Exception("No running state determined, please provide rules in app/config/application.php.");
 }
 
@@ -60,9 +51,9 @@ define("SiteRoot", HttpRequest::Root());
 \jf\DatabaseManager::AddConnection(
     new \jf\DatabaseSetting(
         "mysqli",
-        $cfg['DatabaseName'],
-        $cfg['DatabaseUsername'],
-        $cfg['DatabasePassword']
+        "DBNAME",
+        "DBUSER",
+        "DBPASS"
     )
 );
 
