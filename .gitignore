@@ -3,3 +3,5 @@ app/config/application.php
 .vagrant/
 .idea/
 .cache/
+.buildpath
+.project
