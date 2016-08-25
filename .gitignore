@@ -5,3 +5,4 @@ app/config/application.php
 .cache/
 .buildpath
 .project
+tags
