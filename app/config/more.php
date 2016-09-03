@@ -16,8 +16,8 @@ define('CONTEST_MODE_HOME', CONTEST_MODE_DIR."home");
 define('CONTEST_ADMIN_URL', CONTEST_MODE_DIR."admin");
 define('CONTEST_MODE_LESSON_URL', CONTEST_MODE_DIR."challenges/");
 
-// GitHub URL
-define('GITHUB_URL', 'https://github.com/shivamdixit/WebGoatPHP/');
+// GitHub URL (OWASP)
+define('GITHUB_URL', 'https://github.com/OWASP/OWASPWebGoatPHP/');
 
 //Add autoload rules
 #\jf\Autoload::AddRuleArray(array("Classname"=>jf::root()."/app/model/filepath.php"));
