@@ -11,7 +11,7 @@ jf::import("config/setup"); //setup on first run INITIALSETUP
  * Define your jframework powered web application here. Set at least a version, a Name and a
  * title for your application. Name would better follow identifier rules.
  */
-const jf_Application_Version="1.0"; //put version of your application here, as a string.
+const jf_Application_Version="1.1"; //put version of your application here, as a string.
 const jf_Application_Name="WebGoatPHP" ; //follow identifier rules for this name
 const jf_Application_Title="OWASP WebGoatPHP" ; //title of your application
 
