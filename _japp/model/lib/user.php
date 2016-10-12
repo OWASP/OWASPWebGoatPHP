@@ -242,8 +242,8 @@ class UserManager extends Model
 		$Result = $this->UserExists ( $Username );
 		if ($Result) return null;
 		$HashedPass=new Password($Username, $Password);
-		$Result = jf::SQL ( "INSERT INTO {$this->TablePrefix()}users (Username,Password,Salt,Protocol)
-			VALUES (?,?,?,?)", $Username, $HashedPass->Password(), $HashedPass->Salt(),$HashedPass->Protocol());
+		$Result = jf::SQL ( "INSERT INTO {$this->TablePrefix()}users (Username,Password,Salt,Protocol,discriminator)
+			VALUES (?,?,?,?,?)", $Username, $HashedPass->Password(), $HashedPass->Salt(), $HashedPass->Protocol(), '');
 		return $Result;
 	}
 
