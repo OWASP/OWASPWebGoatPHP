@@ -125,7 +125,7 @@ if (!$setup) {
         <div style="width: 15%; margin: 0 auto;">
             <form method="POST">
                 <input type="text" placeholder="Enter MySQL Username" name="db_username" required>
-                <input type="text" placeholder="Enter MySQL Password" name="db_password" required>
+                <input type="text" placeholder="Enter MySQL Password" name="db_password">
                 <input type="text" placeholder="Enter Database name" name="db_name" required>
                 <input type="text" placeholder="Develop URL ex: localhost" name="develop_url" value="<?php echo $_SERVER['HTTP_HOST'];?>" required>
                 <input type="submit" value="Submit" name="submit" style="width: 50%">
