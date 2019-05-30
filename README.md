@@ -27,7 +27,7 @@ Workshop Mode:
 
 ![Workshop Mode](https://raw.githubusercontent.com/shivamdixit/WebGoatPHP/master/images/workshop_dashboard.png "Workshop Mode")
 
-###Installation
+### Installation
 * Clone the git repo. `git clone https://github.com/shivamdixit/WebGoatPHP.git`
 * Move it to your document root
 * Import the database from SQL/webgoat.php
@@ -58,5 +58,5 @@ Once you have added the lesson click on "Refresh List" button at the top of the 
 ### More Info
 https://www.owasp.org/index.php/WebGoatPHP
 
-###Contact
+### Contact
 If you have any questions join the discussion on our [mailing list](https://lists.owasp.org/mailman/listinfo/owasp_webgoatphp) or write an email to: shivam.dixit[at]owasp.org
