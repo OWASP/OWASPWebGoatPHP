@@ -16,7 +16,7 @@ Single User Mode:
 1. List of all the lessons and their categories
 2. To refresh the list of lessons and categories (if a new lesson/category is added)
 3. Content of the lesson
-4. Reset the lesson to inital state
+4. Reset the lesson to initial state
 5. Get random hints of the lesson
 6. This will show GET parameters
 7. This will show the COOKIES
