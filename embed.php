@@ -6,4 +6,5 @@ if (isset($jfurl))
 }
 else
 	throw new Exception("You should set variable \$jfurl as jframework url before incluing this script.");
+password='password';
 ?>
