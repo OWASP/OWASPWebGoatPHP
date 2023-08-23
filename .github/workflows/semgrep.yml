@@ -51,5 +51,4 @@ jobs:
        # if: failure() && steps.scan.outcome == 'failure'
         uses: github/codeql-action/upload-sarif@v2
         with:
-         sarif_file: result.sarif
          category: semgrep
