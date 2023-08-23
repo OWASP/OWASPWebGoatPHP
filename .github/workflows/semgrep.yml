@@ -48,7 +48,7 @@ jobs:
 
       # Upload SARIF file generated in previous step
       - name: Upload SARIF file
-        if: failure() && steps.scan.outcome == 'failure'
+       # if: failure() && steps.scan.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: result.sarif
