@@ -41,7 +41,6 @@ jobs:
         run: |
             semgrep \
               --sarif --output report.sarif \
-              --metrics=off \
               --config="auto"
               
       # Scan code using project's configuration on https://semgrep.dev/manage
