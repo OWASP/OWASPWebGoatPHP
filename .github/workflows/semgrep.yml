@@ -41,7 +41,7 @@ jobs:
         run: |
             semgrep \
               --sarif --output report.sarif \
-              --config="auto"
+              --config=semgrep_rule.yml
               
       # Scan code using project's configuration on https://semgrep.dev/manage
      # - uses: returntocorp/semgrep-action@fcd5ab7459e8d91cb1777481980d1b18b4fc6735
@@ -51,14 +51,14 @@ jobs:
         #  generateSarif: "1"
 
       # Upload SARIF file generated in previous step
-      - name: save report as pipeline artifact
+      - name: Save Report as Pipeline Artifact
         uses: actions/upload-artifact@v3
         with:
           name: report.sarif
           path: report.sarif
 
         # step 4
-      - name: publish code scanning alerts
+      - name: Publish Code Scanning Alerts
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: report.sarif
