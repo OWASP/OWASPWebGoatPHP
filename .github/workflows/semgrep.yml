@@ -41,7 +41,7 @@ jobs:
         run: |
             semgrep \
               --sarif --output report.sarif \
-              --config=semgrep_rules.yml
+              --config=.github/semgrep_rules.yml
               
       # Scan code using project's configuration on https://semgrep.dev/manage
      # - uses: returntocorp/semgrep-action@fcd5ab7459e8d91cb1777481980d1b18b4fc6735
