@@ -44,13 +44,11 @@ jobs:
               --config=semgrep_rules.yaml
               - name: Semgrep Scan
       - name: Replace Error Severity
-        id: SED Error
         run: |
             sed -i ':a;N;$!ba;s/"defaultConfiguration": {
                 "level": “error”/“defaultConfiguration": {
                 "level": “High”/g’ report.sarif
       - name: Replace Warning Severity
-        id: SED Warning
         run: |
             sed -i ':a;N;$!ba;s/"defaultConfiguration": {
                 "level": “warning”/“defaultConfiguration": {
