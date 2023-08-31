@@ -42,18 +42,7 @@ jobs:
             semgrep \
               --sarif --output report.sarif \
               --config=semgrep_rules.yaml
-              - name: Semgrep Scan
-      - name: Replace Error Severity
-        run: |
-            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
-                "level": “error”/“defaultConfiguration": {
-                "level": “High”/g’ report.sarif
-      - name: Replace Warning Severity
-        run: |
-            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
-                "level": “warning”/“defaultConfiguration": {
-                "level": “Medium”/g’ report.sarif
-
+      
       # Scan code using project's configuration on https://semgrep.dev/manage
      # - uses: returntocorp/semgrep-action@fcd5ab7459e8d91cb1777481980d1b18b4fc6735
       #  with:
@@ -62,6 +51,19 @@ jobs:
         #  generateSarif: "1"
 
       # Upload SARIF file generated in previous step
+      
+      - name: Replace Error Severity
+        run: |
+            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
+                "level": “error”/“defaultConfiguration": {
+                "level": “High”/g’ report.sarif
+
+      - name: Replace Warning Severity
+        run: |
+            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
+                "level": “warning”/“defaultConfiguration": {
+                "level": “Medium”/g’ report.sarif
+
       - name: Save Report as Pipeline Artifact
         uses: actions/upload-artifact@v3
         with:
