@@ -54,11 +54,11 @@ jobs:
       
       - name: Replace Error Severity
         run: |
-            sed -i ':a;N;$!ba;s/"level": “error”/"level": “High”/g’ report.sarif
+            sed -i ':a;N;$!ba;s/'"level": “error”'/'"level": “High”'/g’ report.sarif
 
       - name: Replace Warning Severity
         run: |
-            sed -i ':a;N;$!ba;s/"level": “warning”/"level": “Medium”/g’ report.sarif
+            sed -i ':a;N;$!ba;s/'"level": “warning”'/'"level": “Medium”'/g’ report.sarif
 
       - name: Save Report as Pipeline Artifact
         uses: actions/upload-artifact@v3
