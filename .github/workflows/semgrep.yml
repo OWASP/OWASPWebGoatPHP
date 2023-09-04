@@ -40,7 +40,7 @@ jobs:
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
         run: |
             semgrep \
-              --sarif -o report.sarif \
+              --sarif --output report.sarif \
               --config=semgrep_rules.yaml
       
       # Scan code using project's configuration on https://semgrep.dev/manage
