@@ -54,7 +54,7 @@ jobs:
       
       - name: Replace Error Severity
         run: |
-            sed -i 's/error/High/g’ report.sarif > report.sarif
+            sed -e 's/error/High/g’ report.sarif > report.sarif
 
       - name: Replace Warning Severity
         run: |
