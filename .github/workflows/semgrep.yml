@@ -12,10 +12,10 @@ name: Semgrep
 
 on:
   push:
-    branches: [ "Testing" ]
+    branches: [ "Testing-2" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "Testing" ]
+    branches: [ "Testing-2" ]
   schedule:
     - cron: '44 18 * * 2'
 
@@ -56,12 +56,12 @@ jobs:
         env:
           SEMGREP_SEVERITY: ${{ steps.scan.outputs.severity }}
         run: |
-          if [[ "$SEMGREP_SEVERITY" == "HIGH" ]]; then
-             gh issue list | grep "Semgrep" | grep "Error" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "High"
-          elif [[ "$SEMGREP_SEVERITY" == "MEDIUM" ]]; then
-            gh issue list | grep "Semgrep" | grep "Warning" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Medium"
-          elif [[ "$SEMGREP_SEVERITY" == "LOW" ]]; then
-            gh issue list | grep "Semgrep" | grep "Info" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Low"
+          if [[ "$SEMGREP_SEVERITY" == "error" ]]; then
+             gh issue list | grep "Semgrep" | grep "error" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "High"
+          elif [[ "$SEMGREP_SEVERITY" == "warning" ]]; then
+            gh issue list | grep "Semgrep" | grep "warning" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Medium"
+          elif [[ "$SEMGREP_SEVERITY" == "info" ]]; then
+            gh issue list | grep "Semgrep" | grep "info" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Low"
           fi
           
   # Make sure you have the GitHub CLI (gh) available and configured in your workflow.
