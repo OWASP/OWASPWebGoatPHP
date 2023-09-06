@@ -52,14 +52,20 @@ jobs:
 
       # Upload SARIF file generated in previous step
       
-    #  - name: Replace Error Severity
-     #   run: |
-    #      sed -i 's/"error"/"High"/g' report.sarif
-
-   #   - name: Replace Warning Severity
-   #     run: |
-   #       sed -i 's/"warning"/"Medium"/g' report.sarif
+      - name: Add Labels to Code Scanning Issues
+        env:
+          SEMGREP_SEVERITY: ${{ steps.scan.outputs.severity }}
+        run: |
+          if [[ "$SEMGREP_SEVERITY" == "HIGH" ]]; then
+             gh issue list | grep "Semgrep" | grep "Error" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "High"
+          elif [[ "$SEMGREP_SEVERITY" == "MEDIUM" ]]; then
+            gh issue list | grep "Semgrep" | grep "Warning" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Medium"
+          elif [[ "$SEMGREP_SEVERITY" == "LOW" ]]; then
+            gh issue list | grep "Semgrep" | grep "Info" | cut -d' ' -f1 | xargs -I {} gh issue add-label {} "Low"
+          fi
           
+  # Make sure you have the GitHub CLI (gh) available and configured in your workflow.
+
      # - name: Save Report as Pipeline Artifact
      #   uses: actions/upload-artifact@v3
      #   with:
