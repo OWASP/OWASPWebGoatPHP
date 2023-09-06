@@ -60,12 +60,12 @@ jobs:
         run: |
           sed -i 's/"warning"/"Medium"/g' report.sarif
           
-      - name: Save Report as Pipeline Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: report.sarif
-          path: report.sarif
-
+     # - name: Save Report as Pipeline Artifact
+     #   uses: actions/upload-artifact@v3
+     #   with:
+     #     name: report.sarif
+     #     path: report.sarif
+  
         # step 4
       - name: Publish Code Scanning Alerts
         uses: github/codeql-action/upload-sarif@v2
