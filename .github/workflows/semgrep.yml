@@ -70,7 +70,7 @@ jobs:
           path: report.sarif
   
         # step 4
-      - name: Publish Code Scanning Alerts
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: report.sarif
+     # - name: Publish Code Scanning Alerts
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: report.sarif
