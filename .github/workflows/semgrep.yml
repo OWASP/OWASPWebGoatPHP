@@ -55,17 +55,13 @@ jobs:
         id: sevMedium
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
         run: |
-            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
-                "level": "warning"/"defaultConfiguration": {
-                "level": “Medium”/g' report.sarif 
+            sed -i ':a;N;$!ba;s/"warning"/"Medium"/g' report.sarif 
                 
       - name: Severity Error to High
         id: sevHigh
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
         run: |
-            sed -i ':a;N;$!ba;s/"defaultConfiguration": {
-                "level": "error”/“defaultConfiguration": {
-                "level": "High"/g' report.sarif
+            sed -i ':a;N;$!ba;s/"error"/"High"/g' report.sarif
 
       - name: Save Report as Pipeline Artifact
         uses: actions/upload-artifact@v3
