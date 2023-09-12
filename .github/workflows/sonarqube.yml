@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_HOST_URL: ${{ job.container.network }}
+          SONAR_HOST_URL: http://${{ job.container.network }}:9000/
       
      # - name: Install SonarScanner
      #   run: |
