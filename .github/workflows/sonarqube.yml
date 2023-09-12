@@ -42,12 +42,16 @@ jobs:
     name: Scan
     runs-on: ubuntu-latest
     container:
-      image: sonarqube
-      options: --user root
+      image: sonarqube 
+      options: --user root --network host
+      ports: 
+        - 9000:9000
+      
     steps:
-      - uses: actions/checkout@v3
-      - name: Install SonarScanner
-        run: |
-            npm install -g sonarqube-scanner
-      - name: Run SonarScanner
-        run: sonar-scanner
+      - uses: sonarsource/sonarqube-scan-action@master
+      
+     # - name: Install SonarScanner
+     #   run: |
+     #       npm install -g sonarqube-scanner
+     # - name: Run SonarScanner
+     #   run: sonar-scanner
