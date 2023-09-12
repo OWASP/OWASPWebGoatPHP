@@ -38,17 +38,18 @@ permissions:
     pull-requests: read # allows SonarQube to decorate PRs with analysis results
 
 jobs:
-  services:
-    runs-on: ubuntu-latest 
-    container:
-      image: sonarqube
-      options: --user root
-      ports:
-        - 9000:9000
+  sonarqube:
+    runs-on: ubuntu-latest
+    services:
+      qubesonar:
+        image: sonarqube
+        options: --user root
+        ports:
+          - 9000:9000
     steps:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_HOST_URL: http://sonarqube:9000/
+          SONAR_HOST_URL: http://qubesonar:9000/
         
      # - name: Run SonarScanner
      #   run: sonar-scanner
