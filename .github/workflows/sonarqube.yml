@@ -43,10 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: sonarqube
+      options: --user root
     steps:
       - uses: actions/checkout@v3
       - name: Semgrep Scan
         id: scan
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
-        run: |
-            which sonar-scanner
+        run: which sonar-scanner
