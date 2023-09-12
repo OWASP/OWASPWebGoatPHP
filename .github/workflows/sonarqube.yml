@@ -43,17 +43,11 @@ jobs:
     services:
       qubesonar:
         image: sonarqube
-        options: --user root
+      #  options: --user root
         ports:
           - 9000:9000
     steps:
-      
-      - name: Run SonarScanner
-        run: |
-          docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube >> qwerty /
-          echo qwerty
-
       - uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_HOST_URL: http://127.0.0.1:9000/
+          SONAR_HOST_URL: http://localhost:9000/
 
