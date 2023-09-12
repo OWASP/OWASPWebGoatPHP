@@ -46,14 +46,9 @@ jobs:
       ports:
         - 9000:9000
     steps:
-      #- uses: sonarsource/sonarqube-scan-action@master
-      #  env:
-      #    SONAR_HOST_URL: http://sonarqube:9000/
-      - name: Info
-        id: info
-        run: |
-          docker container ls /
-          docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_HOST_URL: http://sonarqube:9000/
         
      # - name: Run SonarScanner
      #   run: sonar-scanner
