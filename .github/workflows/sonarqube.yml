@@ -48,8 +48,8 @@ jobs:
           - 9000:9000
     steps:
       - uses: sonarsource/sonarqube-scan-action@master
-        #env:
-        #  SONAR_HOST_URL: http://qubesonar:9000/
+        env:
+          SONAR_HOST_URL: http://localhost:9000/
         
      # - name: Run SonarScanner
      #   run: sonar-scanner
