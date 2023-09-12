@@ -38,22 +38,22 @@ permissions:
     pull-requests: read # allows SonarQube to decorate PRs with analysis results
 
 jobs:
-  sonarqube:
-    name: Scan
-    runs-on: ubuntu-latest
+  services:
+    runs-on: ubuntu-latest 
     container:
-      image: sonarqube 
+      image: sonarqube
       options: --user root
-      ports: 
+      ports:
         - 9000:9000
-      
     steps:
-      - name: Run SonarScanner
-        run: ping ${{ job.container.network }}
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_HOST_URL: http://${{ job.container.network }}:9000/
-      
-
+      #- uses: sonarsource/sonarqube-scan-action@master
+      #  env:
+      #    SONAR_HOST_URL: http://sonarqube:9000/
+      - name: Info
+        id: info
+        run: |
+          docker container ls /
+          docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 
+        
      # - name: Run SonarScanner
      #   run: sonar-scanner
