@@ -43,12 +43,14 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: sonarqube 
-      options: --user root --network "host"
+      options: --user root
       ports: 
         - 9000:9000
       
     steps:
       - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_HOST_URL: ${{ job.container.network }}
       
      # - name: Install SonarScanner
      #   run: |
