@@ -49,4 +49,4 @@ jobs:
       - name: Semgrep Scan
         id: scan
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
-        run: sonar-scanner
+        run: sonar-scanner-cli
