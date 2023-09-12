@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: sonarqube 
-      options: --user root --network host
+      options: --user root --network "host"
       ports: 
         - 9000:9000
       
