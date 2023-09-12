@@ -46,9 +46,6 @@ jobs:
       options: --user root
     steps:
       - uses: actions/checkout@v3
-      - name: Semgrep Scan
-        id: scan
-        #run: semgrep ci --config=auto --suppress-errors --sarif || true
       - name: Install SonarScanner
         run: |
             npm install -g sonarqube-scanner
