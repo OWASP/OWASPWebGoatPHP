@@ -48,12 +48,12 @@ jobs:
         - 9000:9000
       
     steps:
+      - name: Run SonarScanner
+        run: curl http://${{ job.container.network }}:9000/
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_HOST_URL: http://${{ job.container.network }}:9000/
       
-     # - name: Install SonarScanner
-     #   run: |
-     #       npm install -g sonarqube-scanner
+
      # - name: Run SonarScanner
      #   run: sonar-scanner
