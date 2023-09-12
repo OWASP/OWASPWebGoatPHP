@@ -49,4 +49,8 @@ jobs:
       - name: Semgrep Scan
         id: scan
         #run: semgrep ci --config=auto --suppress-errors --sarif || true
-        run: sonarqube
+      - name: Install SonarScanner
+        run: |
+            npm install -g sonarqube-scanner
+      - name: Run SonarScanner
+        run: sonar-scanner
