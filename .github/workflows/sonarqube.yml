@@ -51,7 +51,7 @@ jobs:
 
       - name: Start SonarQube Server
         run: |
-          docker run -d sonarqube:latest --name qubesonar -p 9000:9000
+          docker run -d --name qubesonar -p 9000:9000 sonarqube:latest
 
       - name: Get Container IP
         id: get_container_ip
