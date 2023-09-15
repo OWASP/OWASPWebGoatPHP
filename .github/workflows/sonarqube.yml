@@ -69,10 +69,10 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@master
         env:
             SONAR_HOST_URL: http://${{ steps.get_container_ip.outputs.container_ip }}:9000
-        with:
-          args: >
-            -Dsonar.host.url=http://${{ steps.get_container_ip.outputs.container_ip }}:9000
-            -Dsonar.login=none
+       # with:
+       #   args: >
+       #     -Dsonar.host.url=http://${{ steps.get_container_ip.outputs.container_ip }}:9000
+       #     -Dsonar.login=none
 
       - name: Stop SonarQube Server
         run: |
