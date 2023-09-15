@@ -47,12 +47,12 @@ jobs:
         ports:
           - 9000:9000
     steps:
-      - name: Get SonarQube Container Name
-        id: get_container_name
-        run: |
-          CONTAINER_NAME=$(echo ${{ sonarqube.services.qubesonar.name }})
-          echo "SonarQube Container Name: $CONTAINER_NAME"
-          echo "::set-output name=container_name::$CONTAINER_NAME"
+      #- name: Get SonarQube Container Name
+      #  id: get_container_name
+      #  run: |
+      #    CONTAINER_NAME=$(echo ${{ services.qubesonar.name }})
+      #    echo "SonarQube Container Name: $CONTAINER_NAME"
+      #    echo "::set-output name=container_name::$CONTAINER_NAME"
 
       - name: Get Container IP
         id: get_container_ip
