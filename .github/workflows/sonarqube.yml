@@ -60,7 +60,7 @@ jobs:
           CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
           echo "Container IP: $CONTAINER_IP"
           echo "::set-output name=container_ip::$CONTAINER_IP"
-          STARTSVC=$(docker exec -it sh -c 'ls -la; start.sh' qubesonar-container)
+          STARTSVC=$(docker exec -it qubesonar-container sh -c 'ls -la; start.sh')
           echo "Container IP: $CONTAINER_IP"
           echo "Output: $STARTSVC"
 
