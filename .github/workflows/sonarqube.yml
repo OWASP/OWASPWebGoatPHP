@@ -53,15 +53,25 @@ jobs:
         run: |
           docker run -d sonarqube:latest --name qubesonar -p 9000:9000
 
+      - name: Get Container IP
+        id: get_container_ip
+        run: |
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
+          echo "Container IP: $CONTAINER_IP"
+          echo "::set-output name=container_ip::$CONTAINER_IP"
+          STARTSVC=$(docker exec qubesonar-container wget http://$CONTAINER_IP:900/)
+          echo "Container IP: $CONTAINER_IP"
+          echo "Output: $STARTSVC"
+      
       - name: Wait for SonarQube Server to Start
         run: |
-          timeout 300 bash -c 'until wget http://localhost:9000/about; do sleep 1; done'
+          timeout 300 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/about; do sleep 1; done'
 
       - name: Run SonarQube Analysis
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
-            -Dsonar.host.url=http://localhost:9000
+            -Dsonar.host.url=http://${{ steps.get_container_ip.outputs.container_ip }}:9000
             -Dsonar.login=none
         #  env:
         #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -93,16 +103,7 @@ jobs:
       #    echo "SonarQube Container Name: $CONTAINER_NAME"
       #    echo "::set-output name=container_name::$CONTAINER_NAME"
 
-    #  - name: Get Container IP
-    #    id: get_container_ip
-    #    run: |
-    #      CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
-    #      echo "Container IP: $CONTAINER_IP"
-    #      echo "::set-output name=container_ip::$CONTAINER_IP"
-    #      STARTSVC=$(docker exec qubesonar-container wget http://$CONTAINER_IP:900/)
-    #      echo "Container IP: $CONTAINER_IP"
-    #      echo "Output: $STARTSVC"
-
+      
       #- name: Run SonarQube Analysis
       #  run: |
        #   CONTAINER_IP=${{ steps.get_container_ip.outputs.container_ip }}
