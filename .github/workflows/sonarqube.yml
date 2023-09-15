@@ -50,7 +50,7 @@ jobs:
       - name: Get SonarQube Container Name
         id: get_container_name
         run: |
-          CONTAINER_NAME=$(echo ${{ services.sonarqube.name }})
+          CONTAINER_NAME=$(echo ${{ services.qubesonar.name }})
           echo "SonarQube Container Name: $CONTAINER_NAME"
           echo "::set-output name=container_name::$CONTAINER_NAME"
 
