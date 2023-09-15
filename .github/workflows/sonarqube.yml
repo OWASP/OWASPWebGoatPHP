@@ -42,12 +42,32 @@ jobs:
     runs-on: ubuntu-latest
     services:
       qubesonar:
-        image: sonarqube
-      #  options: --user root
+        image: sonarqube:latest
+        options: --name qubesonar-container
         ports:
           - 9000:9000
     steps:
+      - name: Get SonarQube Container Name
+        id: get_container_name
+        run: |
+          CONTAINER_NAME=$(echo ${{ services.sonarqube.name }})
+          echo "SonarQube Container Name: $CONTAINER_NAME"
+          echo "::set-output name=container_name::$CONTAINER_NAME"
+
+      - name: Get Container IP
+        id: get_container_ip
+        run: |
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
+          echo "Container IP: $CONTAINER_IP"
+          echo "::set-output name=container_ip::$CONTAINER_IP"
+
+      #- name: Run SonarQube Analysis
+      #  run: |
+       #   CONTAINER_IP=${{ steps.get_container_ip.outputs.container_ip }}
+       #   SONAR_URL="http://${CONTAINER_IP}:9000"  # Assuming SonarQube runs on port 9000
+       #   sonar-scanner -Dsonar.host.url=$SONAR_URL
+
       - uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_HOST_URL: http://localhost:9000/
+          SONAR_HOST_URL: http://${{steps.get_container_ip.outputs.container_ip}}:9000/
 
