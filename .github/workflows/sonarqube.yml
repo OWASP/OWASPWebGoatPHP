@@ -40,11 +40,11 @@ permissions:
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
-    name: Container Start
-    container:
-      image: sonarqube:latest
-      ports:
-        - 9000:9000
+    #name: Container Start
+    #container:
+    #  image: sonarqube:latest
+    #  ports:
+    #    - 9000:9000
 
 
    #   - name: Start SonarQube Server
@@ -55,12 +55,12 @@ jobs:
    #     run: |
    #       timeout 300 bash -c 'until curl -sSf http://localhost:9000/about; do sleep 1; done'
 
-    #services:
-    #  qubesonar:
-    #    image: sonarqube:latest
-    #    options: --name qubesonar-container
-    #    ports:
-    #      - 9000:9000
+    services:
+      qubesonar:
+        image: sonarqube:latest
+        options: --name qubesonar-container
+        ports:
+          - 9000:9000
     steps:
       #- name: Get SonarQube Container Name
       #  id: get_container_name
@@ -72,12 +72,10 @@ jobs:
       - name: Get Container IP
         id: get_container_ip
         run: |
-          qwerty=$(docker ps | awk '{print $13}')
-          echo $qwerty
-          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $qwerty)
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
           echo "Container IP: $CONTAINER_IP"
           echo "::set-output name=container_ip::$CONTAINER_IP"
-          STARTSVC=$(docker exec $qwerty wget http://$qwerty:9000/)
+          STARTSVC=$(docker exec qubesonar-container wget http://$CONTAINER_IP:9000/)
           echo "Container IP: $CONTAINER_IP"
           echo "Output: $STARTSVC"
 
