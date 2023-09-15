@@ -56,12 +56,10 @@ jobs:
       - name: Get Container IP
         id: get_container_ip
         run: |
-          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar)
           echo "Container IP: $CONTAINER_IP"
           echo "::set-output name=container_ip::$CONTAINER_IP"
-          STARTSVC=$(docker exec qubesonar-container wget http://$CONTAINER_IP:900/)
           echo "Container IP: $CONTAINER_IP"
-          echo "Output: $STARTSVC"
       
       - name: Wait for SonarQube Server to Start
         run: |
