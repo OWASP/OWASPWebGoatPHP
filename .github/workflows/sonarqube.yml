@@ -60,6 +60,9 @@ jobs:
           CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar-container)
           echo "Container IP: $CONTAINER_IP"
           echo "::set-output name=container_ip::$CONTAINER_IP"
+          STARTSVC=$(docker exec -it sh -c 'ls -la; start.sh' qubesonar-container)
+          echo "Container IP: $CONTAINER_IP"
+          echo "Output: $STARTSVC"
 
       #- name: Run SonarQube Analysis
       #  run: |
@@ -67,19 +70,19 @@ jobs:
        #   SONAR_URL="http://${CONTAINER_IP}:9000"  # Assuming SonarQube runs on port 9000
        #   sonar-scanner -Dsonar.host.url=$SONAR_URL
 
-     # - uses: sonarsource/sonarqube-scan-action@master
-     #   env:
-     #     SONAR_HOST_URL: http://localhost:9000/
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_HOST_URL: http://${{ steps.get_container_ip.outputs.container_ip }}:9000/
 
-      - name: Download SonarScanner CLI
-        run: |
-          curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
-          unzip sonar-scanner.zip
-          chmod +x sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner
-          mv sonar-scanner-4.6.0.2311-linux /opt/sonar-scanner
-          echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
+     # - name: Download SonarScanner CLI
+     #   run: |
+     #     curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
+     #     unzip sonar-scanner.zip
+     #     chmod +x sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner
+     #     mv sonar-scanner-4.6.0.2311-linux /opt/sonar-scanner
+     #     echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
 
-      - name: Run SonarQube Analysis
-        run: |
-          sonar-scanner -Dsonar.host.url=https://${{ steps.get_container_ip.outputs.container_ip }}:9000 -Dsonar.login=none
+     # - name: Run SonarQube Analysis
+     #   run: |
+     #     sonar-scanner -Dsonar.host.url=https://${{ steps.get_container_ip.outputs.container_ip }}:9000 -Dsonar.login=none
 
