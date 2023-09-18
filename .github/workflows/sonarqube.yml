@@ -63,8 +63,8 @@ jobs:
       
       - name: Wait for SonarQube Server to Start
         run: |
-          timeout 300 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/about; do sleep 1; done'
-          timeout 300 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/index; do sleep 10; done'
+          timeout 300 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/index; do sleep 1; done'
+          sleep 30
           echo "Done"
 
       - name: Run SonarQube Analysis
