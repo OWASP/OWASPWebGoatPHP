@@ -40,11 +40,6 @@ permissions:
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
-    #name: Container Start
-    #container:
-    #  image: sonarqube:latest
-    #  ports:
-    #    - 9000:9000
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -76,54 +71,10 @@ jobs:
             -Dsonar.login=admin
             -Dsonar.password=admin
             -Dsonar.projectKey=virajresume
-
-      - name: Stop SonarQube Server
-        run: |
-          docker stop sonarqube
-          docker rm sonarqube
-
-   #   - name: Start SonarQube Server
-   #     run: |
-   #       docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
-
-   #   - name: Wait for SonarQube Server to Start
-   #     run: |
-   #       timeout 300 bash -c 'until curl -sSf http://localhost:9000/about; do sleep 1; done'
-
-   # services:
-   #   qubesonar:
-   #     image: sonarqube:latest
-   #     options: --name qubesonar-container
-   #     ports:
-   #       - 9000:9000
-   # steps:
-      #- name: Get SonarQube Container Name
-      #  id: get_container_name
-      #  run: |
-      #    CONTAINER_NAME=$(echo ${{ services.qubesonar.name }})
-      #    echo "SonarQube Container Name: $CONTAINER_NAME"
-      #    echo "::set-output name=container_name::$CONTAINER_NAME"
-
-      
-      #- name: Run SonarQube Analysis
-      #  run: |
-       #   CONTAINER_IP=${{ steps.get_container_ip.outputs.container_ip }}
-       #   SONAR_URL="http://${CONTAINER_IP}:9000"  # Assuming SonarQube runs on port 9000
-       #   sonar-scanner -Dsonar.host.url=$SONAR_URL
-
-   #   - uses: sonarsource/sonarqube-scan-action@master
-   #     env:
-   #       SONAR_HOST_URL: http://${{ steps.get_container_ip.outputs.container_ip }}:9000/
-
-     # - name: Download SonarScanner CLI
-     #   run: |
-     #     curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
-     #     unzip sonar-scanner.zip
-     #     chmod +x sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner
-     #     mv sonar-scanner-4.6.0.2311-linux /opt/sonar-scanner
-     #     echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
-
-     # - name: Run SonarQube Analysis
-     #   run: |
-     #     sonar-scanner -Dsonar.host.url=https://${{ steps.get_container_ip.outputs.container_ip }}:9000 -Dsonar.login=none
-#qwerty
+            -Dsonar.sarifReportPaths=qwerty.sarif
+            
+      - name: Save Report as Pipeline Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: qwerty.sarif
+          path: qwerty.sarif
