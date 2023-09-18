@@ -63,7 +63,7 @@ jobs:
           echo "Done"
 
       - name: Run SonarQube Analysis
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: sonarsource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
         env:
             SONAR_HOST_URL: http://${{ steps.get_container_ip.outputs.container_ip }}:9000
         with:
@@ -71,10 +71,3 @@ jobs:
             -Dsonar.login=admin
             -Dsonar.password=admin
             -Dsonar.projectKey=virajresume
-            -Dsonar.sarifReportPaths=qwerty.sarif
-            
-      - name: Save Report as Pipeline Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: qwerty.sarif
-          path: qwerty.sarif
