@@ -51,17 +51,17 @@ jobs:
         #  generateSarif: "1"
 
       # Upload SARIF file generated in previous step
-      - name: Severity Warning to Medium
-        id: sevMedium
-        #run: semgrep ci --config=auto --suppress-errors --sarif || true
-        run: |
-            sed -i ':a;N;$!ba;s/"warning"/"Medium"/g' report.sarif 
+     # - name: Severity Warning to Medium
+     #   id: sevMedium
+     #   #run: semgrep ci --config=auto --suppress-errors --sarif || true
+     #   run: |
+     #       sed -i ':a;N;$!ba;s/"warning"/"Medium"/g' report.sarif 
                 
-      - name: Severity Error to High
-        id: sevHigh
-        #run: semgrep ci --config=auto --suppress-errors --sarif || true
-        run: |
-            sed -i ':a;N;$!ba;s/"error"/"High"/g' report.sarif
+     # - name: Severity Error to High
+    #    id: sevHigh
+     #   #run: semgrep ci --config=auto --suppress-errors --sarif || true
+    #    run: |
+   #         sed -i ':a;N;$!ba;s/"error"/"High"/g' report.sarif
 
       - name: Save Report as Pipeline Artifact
         uses: actions/upload-artifact@v3
