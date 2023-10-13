@@ -1,4 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -43,6 +42,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        id: code_checkout
 
       - name: Start SonarQube Server
         run: |
@@ -51,21 +51,65 @@ jobs:
         id: get_container_ip
         run: |
           CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qubesonar)
-          echo "Container IP: $CONTAINER_IP"
           echo "::set-output name=container_ip::$CONTAINER_IP"
           echo "Container IP: $CONTAINER_IP"
+          ABC=${GITHUB_REPOSITORY#*/}
+          echo $ABC
       
       - name: Wait for SonarQube Server to Start
         run: |
           timeout 300 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/index; do sleep 1; done'
-          sleep 50
+          sleep 75
           echo "Done"
+    
+      - name: Download and Setup sonar-scanner-cli
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+          unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+          mv sonar-scanner-5.0.1.3006-linux sonar-scanner
+          rm -rf sonar-scanner-cli-5.0.1.3006-linux.zip
+
+      - name: test sonar-scanner
+        run: |
+          ./sonar-scanner/bin/sonar-scanner --version
+          ABC=${{ steps.code_checkout.outputs.GITHUB_REPOSITORY }}
+          echo $ABC
+
       - name: Run SonarQube Analysis
-        uses: SonarSource/sonarqube-scan-action@master
-        env:
-            SONAR_HOST_URL: http://${{ steps.get_container_ip.outputs.container_ip }}:9000
-        with:
-          args: >
-            -Dsonar.login=admin
-            -Dsonar.password=admin
-            -Dsonar.projectKey=owaspwebgoat
+        run: |
+          ./sonar-scanner/bin/sonar-scanner -Dsonar.projectBaseDir=. -Dsonar.host.url=http://${{ steps.get_container_ip.outputs.container_ip }}:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.projectKey=${GITHUB_REPOSITORY#*/}
+     
+      - name: Waiting for the Scans to Complete
+        run: |
+          timeout 500 bash -c 'until wget http://${{ steps.get_container_ip.outputs.container_ip }}:9000/dashboard?id=juices; do sleep 1; done'
+          sleep 75
+          echo "Done"
+
+      - name: Generating Local Sonar Token
+        id: get_token
+        run: |
+          gen_token_res=$(curl -u admin:admin -X POST "http://${{ steps.get_container_ip.outputs.container_ip }}:9000/api/user_tokens/generate" -d "name=sonar_token&login=admin&type=GLOBAL_ANALYSIS_TOKEN")
+          token=$(echo $gen_token_res | jq -r '.token')
+          echo "::set-output name=sonar_token::$token"
+
+      - name: Fetching the WEB API to Export findings to JSON
+        run: |
+          curl -u ${{ steps.get_token.outputs.sonar_token }} -o result.json "http://${{ steps.get_container_ip.outputs.container_ip }}:9000/api/issues/search?project=${GITHUB_REPOSITORY#*/}"
+          echo "Result File Generated"
+      # mv result.json result.sarif
+          
+     # - name: Integrating JIRA and using JSON data to create tickets
+     #   run: |
+     #     security_data=$(jq '.issues | map(select(.type == "Vulnerability"))' result.json)
+     #     echo $security_data
+  
+     # - name: Upload scan reports
+     #   uses: actions/upload-artifact@v3
+     #   with:
+     #     path: result.sarif
+
+     # - name: Upload result to Security Tab
+     #   uses: actions/upload-artifact@v3
+     #   with:
+     #     name: my-artifact
+     #     path: result.sarif
