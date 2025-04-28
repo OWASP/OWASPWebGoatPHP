@@ -56,7 +56,7 @@ class HTMLFieldRestrictions extends BaseLesson
     public function start()
     {
         $this->hints = array(
-            'Use OWASP ZAP',
+            'Use ZAP',
             'Modify the values of all the parameters in request'
         );
 
